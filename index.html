@@ -5,19 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>diode — a terminal text editor</title>
 <meta name="description" content="diode is a terminal text editor. Coming soon.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 132 112'%3E%3Cpath d='M18 8 L98 56 L18 104 Z' fill='%2360aaf3'/%3E%3Crect x='106' y='8' width='16' height='96' fill='%2360aaf3'/%3E%3C/svg%3E">
 <style>
+  @font-face {
+    font-family: "JetBrains Mono";
+    font-style: normal;
+    font-weight: 400 500;
+    font-display: swap;
+    src: url("jetbrains-mono-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+2000-206F;
+  }
   :root {
-    --bg: #0d1117;
-    --fg: #e6edf3;
-    --dim: #8b949e;
-    --accent: #f0883e;
+    --bg: #0c0c0d;
+    --fg: #f2f0eb;
+    --dim: #868686;
+    --accent: #60aaf3;
+    --accent: oklch(0.72 0.13 250);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { height: 100%; }
   body {
     background: var(--bg);
     color: var(--fg);
-    font-family: ui-monospace, "SF Mono", "Cascadia Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    font-family: "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,13 +35,24 @@
   }
   main { text-align: left; max-width: 34rem; width: 100%; }
   .prompt { color: var(--dim); }
-  h1 {
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: 0.42em;
     font-size: clamp(2.5rem, 10vw, 4.5rem);
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    margin: 0.25rem 0 1rem;
+    margin: 0.3em 0 0.35em;
   }
-  h1 .accent { color: var(--accent); }
+  .mark {
+    height: 1.05em;
+    width: auto;
+    flex: none;
+  }
+  .mark path, .mark rect { fill: var(--accent); }
+  h1 {
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
   .cursor {
     display: inline-block;
     width: 0.55em;
@@ -57,7 +78,13 @@
 <body>
 <main>
   <div class="prompt">$ diode</div>
-  <h1>di<span class="accent">o</span>de<span class="cursor"></span></h1>
+  <div class="lockup">
+    <svg class="mark" viewBox="0 0 132 112" aria-hidden="true">
+      <path d="M18 8 L98 56 L18 104 Z"/>
+      <rect x="106" y="8" width="16" height="96"/>
+    </svg>
+    <h1>diode<span class="cursor"></span></h1>
+  </div>
   <p class="tagline">a terminal text editor</p>
   <p class="soon">coming soon</p>
   <footer><a href="https://github.com/diode-editor">github.com/diode-editor</a></footer>
