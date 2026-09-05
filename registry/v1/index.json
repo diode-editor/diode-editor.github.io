@@ -16,6 +16,20 @@
             }
         },
         {
+            "id": "test.sample-lang",
+            "publisher": "test",
+            "name": "sample-lang",
+            "displayName": "Diode Sample Language",
+            "description": "Sample registry entry: a synthetic Diode extension contributing the .diodesample language and its grammar",
+            "kind": "native",
+            "latest": {
+                "version": "0.0.1",
+                "engines": {
+                    "vscode": "^1.0.0"
+                }
+            }
+        },
+        {
             "id": "test.tab-setter",
             "publisher": "test",
             "name": "tab-setter",
