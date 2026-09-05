@@ -1,0 +1,29 @@
+{
+    "schemaVersion": 1,
+    "id": "EditorConfig.EditorConfig",
+    "publisher": "EditorConfig",
+    "name": "EditorConfig",
+    "displayName": "EditorConfig",
+    "description": "EditorConfig Support for Visual Studio Code",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/editorconfig/editorconfig-vscode",
+    "license": "MIT",
+    "homepage": "https://editorconfig.org/",
+    "readme": "# EditorConfig\n\nApplies `.editorconfig` settings to the editor: indentation style and size, trailing whitespace trimming, final newline, and end-of-line style.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "0.18.2",
+            "engines": {
+                "vscode": "^1.100.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/EditorConfig/EditorConfig/0.18.2/file/EditorConfig.EditorConfig-0.18.2.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "cbc0370ff204bc16d84a3ee6830536fc04355856fa0e895ab064e1a03cfcb84a",
+            "size": 250184,
+            "publishedAt": "2026-04-09T04:09:42.629Z"
+        }
+    ]
+}

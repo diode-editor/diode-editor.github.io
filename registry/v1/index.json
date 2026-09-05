@@ -1,0 +1,33 @@
+{
+    "schemaVersion": 1,
+    "extensions": [
+        {
+            "id": "EditorConfig.EditorConfig",
+            "publisher": "EditorConfig",
+            "name": "EditorConfig",
+            "displayName": "EditorConfig",
+            "description": "EditorConfig Support for Visual Studio Code",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "0.18.2",
+                "engines": {
+                    "vscode": "^1.100.0"
+                }
+            }
+        },
+        {
+            "id": "test.tab-setter",
+            "publisher": "test",
+            "name": "tab-setter",
+            "displayName": "Tab Setter",
+            "description": "Sample registry entry: a tiny Diode test extension that sets tabSize=7 on activation",
+            "kind": "native",
+            "latest": {
+                "version": "0.0.1",
+                "engines": {
+                    "vscode": "^1.0.0"
+                }
+            }
+        }
+    ]
+}
