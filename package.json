@@ -1,0 +1,13 @@
+{
+    "name": "diode-editor.github.io",
+    "version": "0.0.0",
+    "private": true,
+    "description": "Diode website and extension registry",
+    "scripts": {
+        "validate": "node scripts/registry.mjs validate",
+        "build": "node scripts/registry.mjs build"
+    },
+    "dependencies": {
+        "semver": "^7.8.5"
+    }
+}
