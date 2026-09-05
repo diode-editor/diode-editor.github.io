@@ -1,0 +1,25 @@
+{
+    "schemaVersion": 1,
+    "id": "test.sample-lang",
+    "publisher": "test",
+    "name": "sample-lang",
+    "displayName": "Diode Sample Language",
+    "description": "Sample registry entry: a synthetic Diode extension contributing the .diodesample language and its grammar",
+    "kind": "native",
+    "repository": "https://github.com/diode-editor/diode",
+    "readme": "# Diode Sample Language\n\nA synthetic entry that exists to prove the second shape of a `native` extension: a purely **declarative** one — it contributes a language and a TextMate grammar and ships no extension code at all, so it never reaches the extension host.\n\nOpening a `.diodesample` file gives it the `Diode Sample` language, which the status bar shows. Nothing else happens, and nothing else is meant to.\n\nSource and the deterministic packer live in the Diode repository (`e2e/marketplace/sample-extension`).\n",
+    "versions": [
+        {
+            "version": "0.0.1",
+            "engines": {
+                "vscode": "^1.0.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://diode-editor.github.io/artifacts/test.sample-lang-0.0.1.vsix"
+            },
+            "sha256": "caba30c2c8030bc6fbf66af0a88c66df1987014b040ac657663e44e3654b7e15",
+            "size": 2004
+        }
+    ]
+}
