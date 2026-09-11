@@ -16,6 +16,20 @@
             }
         },
         {
+            "id": "detachhead.basedpyright",
+            "publisher": "detachhead",
+            "name": "basedpyright",
+            "displayName": "BasedPyright",
+            "description": "VS Code static type checking for Python (but based)",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "1.40.0",
+                "engines": {
+                    "vscode": "^1.101.0"
+                }
+            }
+        },
+        {
             "id": "test.sample-lang",
             "publisher": "test",
             "name": "sample-lang",

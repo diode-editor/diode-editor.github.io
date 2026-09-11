@@ -1,0 +1,29 @@
+{
+    "schemaVersion": 1,
+    "id": "detachhead.basedpyright",
+    "publisher": "detachhead",
+    "name": "basedpyright",
+    "displayName": "BasedPyright",
+    "description": "VS Code static type checking for Python (but based)",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/detachhead/basedpyright",
+    "license": "MIT",
+    "homepage": "https://docs.basedpyright.com/",
+    "readme": "# BasedPyright\n\nPython language support powered by the bundled basedpyright language server (a pyright fork): type-checking diagnostics, completion, hover, go to definition, find all references, and signature help.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "1.40.0",
+            "engines": {
+                "vscode": "^1.101.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/detachhead/basedpyright/1.40.0/file/detachhead.basedpyright-1.40.0.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "67e47122039ab2a687dd31e470eaa282093efefe7ad20f502c76331b8d058333",
+            "size": 6398297,
+            "publishedAt": "2026-09-07T13:49:34.766Z"
+        }
+    ]
+}
