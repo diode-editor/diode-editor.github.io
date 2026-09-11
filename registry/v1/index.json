@@ -30,20 +30,6 @@
             }
         },
         {
-            "id": "maptz.regionfolder",
-            "publisher": "maptz",
-            "name": "regionfolder",
-            "displayName": "#region folding for VS Code",
-            "description": "Provides folding for text wrapped with #region comments in VS Code.",
-            "kind": "proxy-hosted",
-            "latest": {
-                "version": "1.0.22",
-                "engines": {
-                    "vscode": "^1.76.0"
-                }
-            }
-        },
-        {
             "id": "test.sample-lang",
             "publisher": "test",
             "name": "sample-lang",
