@@ -31,7 +31,7 @@ const SRC_DIR = "extensions";
 /** Публикуемый вид версионирован по схеме: ломающая смена формата встанет рядом в v2. */
 const OUT_DIR = path.join("registry", "v1");
 
-const KINDS = new Set(["proxy-openvsx", "native"]);
+const KINDS = new Set(["proxy-openvsx", "proxy-hosted", "native"]);
 const ORIGINS = new Set(["openvsx", "github-release"]);
 
 /**

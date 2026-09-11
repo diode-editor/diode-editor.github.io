@@ -1,0 +1,27 @@
+{
+    "schemaVersion": 1,
+    "id": "maptz.regionfolder",
+    "publisher": "maptz",
+    "name": "regionfolder",
+    "displayName": "#region folding for VS Code",
+    "description": "Provides folding for text wrapped with #region comments in VS Code.",
+    "kind": "proxy-hosted",
+    "repository": "https://github.com/maptz/Maptz.VSCode.Extensions.customfolding",
+    "license": "MIT",
+    "readme": "# #region folding for VS Code\n\nAdds folding for `#region` / `#endregion` comment markers on top of indentation folding, for many languages.\n\nThis is the unmodified extension by maptz, pinned to a specific version and verified to work in Diode. It is not published on Open VSX, so the `.vsix` is rehosted in this registry under its MIT license.\n",
+    "versions": [
+        {
+            "version": "1.0.22",
+            "engines": {
+                "vscode": "^1.76.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://diode-editor.github.io/artifacts/maptz.regionfolder-1.0.22.vsix"
+            },
+            "sha256": "9256f0345027133a13a938c324da43fb1744f960b86d3467c5c1e1c09983b989",
+            "size": 271752,
+            "publishedAt": "2026-09-11T00:00:00.000Z"
+        }
+    ]
+}
