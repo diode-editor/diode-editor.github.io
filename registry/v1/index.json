@@ -16,6 +16,21 @@
             }
         },
         {
+            "id": "charliermarsh.ruff",
+            "publisher": "charliermarsh",
+            "name": "ruff",
+            "displayName": "Ruff",
+            "description": "A Visual Studio Code extension with support for the Ruff linter and formatter for Python.",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "2026.80.0",
+                "engines": {
+                    "diode": ">=0.3.1",
+                    "vscode": "^1.75.0"
+                }
+            }
+        },
+        {
             "id": "detachhead.basedpyright",
             "publisher": "detachhead",
             "name": "basedpyright",
