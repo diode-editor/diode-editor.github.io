@@ -31,6 +31,20 @@
             }
         },
         {
+            "id": "dbaeumer.vscode-eslint",
+            "publisher": "dbaeumer",
+            "name": "vscode-eslint",
+            "displayName": "ESLint",
+            "description": "Integrates ESLint JavaScript into VS Code.",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "3.0.34",
+                "engines": {
+                    "vscode": "^1.90.0"
+                }
+            }
+        },
+        {
             "id": "detachhead.basedpyright",
             "publisher": "detachhead",
             "name": "basedpyright",
