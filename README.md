@@ -4,6 +4,7 @@
 
 ```
 index.html                          сайт
+benchmarks/index.html               страница бенчмарков: читает ветку bench-data репозитория diode
 extensions/<publisher>.<name>.json  ИСТОЧНИК ПРАВДЫ реестра — PR-ы сюда
 artifacts/<id>-<version>.vsix       байты ТОЛЬКО наших собственных расширений
 registry/v1/index.json              СГЕНЕРИРОВАНО — руками не трогать
