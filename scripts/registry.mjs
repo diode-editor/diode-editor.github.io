@@ -87,7 +87,11 @@ const SHA256_RE = /^[0-9a-f]{64}$/;
 const ID_RE = /^[a-z0-9][a-z0-9_-]*\.[a-z0-9][a-z0-9_-]*$/i;
 
 const META_REQUIRED = ["schemaVersion", "id", "publisher", "name", "displayName", "description", "kind", "versions"];
-const META_OPTIONAL = ["repository", "license", "homepage", "readme"];
+/** Опциональные поля-строки: проверяются одним циклом «непустая строка». */
+const META_OPTIONAL_STRINGS = ["repository", "license", "homepage", "readme"];
+/** Все опциональные поля меты; `support` — объект, у него своя проверка. */
+const META_OPTIONAL = [...META_OPTIONAL_STRINGS, "support"];
+const SUPPORT_LEVELS = new Set(["full", "partial"]);
 const VERSION_REQUIRED = ["version", "engines", "artifact", "sha256"];
 const VERSION_OPTIONAL = ["targetPlatform", "size", "publishedAt"];
 
@@ -146,6 +150,15 @@ function canonicalVersion(version) {
     return out;
 }
 
+/** Пометка о поддержке в канонической форме; `undefined` — её нет. */
+function canonicalSupport(support) {
+    if (support === undefined) return undefined;
+    const out = { level: support.level };
+    put(out, "works", support.works);
+    put(out, "limits", support.limits);
+    return out;
+}
+
 function canonicalMeta(meta) {
     const out = {
         schemaVersion: SCHEMA_VERSION,
@@ -156,6 +169,7 @@ function canonicalMeta(meta) {
         description: meta.description,
         kind: meta.kind,
     };
+    put(out, "support", canonicalSupport(meta.support));
     put(out, "repository", meta.repository);
     put(out, "license", meta.license);
     put(out, "homepage", meta.homepage);
@@ -211,6 +225,36 @@ function checkKeys(record, where, required, optional, file, errors) {
     for (const key of Object.keys(record)) {
         // Неизвестный ключ фатален: опечатка вроде "licence" иначе молча теряется при сборке.
         if (!known.has(key)) errors.push({ file, message: `${where}: unknown key "${key}"` });
+    }
+}
+
+/**
+ * Курационная пометка о поддержке. Клиент битую пометку просто игнорирует, а
+ * реестр обязан её не опубликовать: `partial` без единого ограничения — это
+ * предупреждение, которое ничего не сообщает.
+ */
+function validateSupport(value, file, errors) {
+    if (value === undefined) return;
+    if (!isRecord(value)) {
+        errors.push({ file, message: "support: expected an object" });
+        return;
+    }
+    checkKeys(value, "support", ["level"], ["works", "limits"], file, errors);
+    if (value.level !== undefined && !SUPPORT_LEVELS.has(value.level)) {
+        errors.push({
+            file,
+            message: `support.level: must be one of ${[...SUPPORT_LEVELS].join(", ")}, got ${JSON.stringify(value.level)}`,
+        });
+    }
+    for (const key of ["works", "limits"]) {
+        const list = value[key];
+        if (list === undefined) continue;
+        if (!Array.isArray(list) || list.length === 0 || !list.every(isNonEmptyString)) {
+            errors.push({ file, message: `support.${key}: expected a non-empty array of non-empty strings` });
+        }
+    }
+    if (value.level === "partial" && value.limits === undefined) {
+        errors.push({ file, message: 'support: level "partial" requires "limits" — say what does not work' });
     }
 }
 
@@ -326,11 +370,12 @@ function validateMeta(raw, file, errors) {
     if (!KINDS.has(raw.kind)) {
         errors.push({ file, message: `kind: must be one of ${[...KINDS].join(", ")}, got ${JSON.stringify(raw.kind)}` });
     }
-    for (const key of META_OPTIONAL) {
+    for (const key of META_OPTIONAL_STRINGS) {
         if (raw[key] !== undefined && !isNonEmptyString(raw[key])) {
             errors.push({ file, message: `${key}: expected a non-empty string` });
         }
     }
+    validateSupport(raw.support, file, errors);
     if (isNonEmptyString(raw.publisher) && isNonEmptyString(raw.name)) {
         const expected = `${raw.publisher}.${raw.name}`;
         if (raw.id !== expected) {
@@ -574,6 +619,9 @@ function buildOutputs(metas) {
             displayName: meta.displayName,
             description: meta.description,
             kind: meta.kind,
+            // Пометка едет и в индекс: бейдж списка обязан быть виден до того,
+            // как человек откроет страницу расширения.
+            ...(meta.support === undefined ? {} : { support: canonicalSupport(meta.support) }),
             latest: { version: latest.version, engines: canonicalEngines(latest.engines) },
         };
     });
