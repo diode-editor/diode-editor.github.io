@@ -2,6 +2,20 @@
     "schemaVersion": 1,
     "extensions": [
         {
+            "id": "Catppuccin.catppuccin-vsc",
+            "publisher": "Catppuccin",
+            "name": "catppuccin-vsc",
+            "displayName": "Catppuccin for VSCode",
+            "description": "🦌 Soothing pastel theme for VSCode",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "3.19.0",
+                "engines": {
+                    "vscode": "^1.80.0"
+                }
+            }
+        },
+        {
             "id": "EditorConfig.EditorConfig",
             "publisher": "EditorConfig",
             "name": "EditorConfig",
