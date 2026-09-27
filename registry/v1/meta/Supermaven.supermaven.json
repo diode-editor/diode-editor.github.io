@@ -1,0 +1,41 @@
+{
+    "schemaVersion": 1,
+    "id": "Supermaven.supermaven",
+    "publisher": "Supermaven",
+    "name": "supermaven",
+    "displayName": "Supermaven",
+    "description": "The fastest copilot.",
+    "kind": "proxy-openvsx",
+    "support": {
+        "level": "partial",
+        "works": [
+            "Inline completions (ghost text): Tab accepts, Esc dismisses",
+            "The extension downloads and runs its own completion engine",
+            "Status bar entry with the engine state",
+            "Sign-in to the free tier: the prompt asks for your email in a quick input"
+        ],
+        "limits": [
+            "Chat panel does not open: it is a webview, and Diode has none by design",
+            "Commands that need that panel do nothing: New Chat, History, Settings, Select Model, Add to Chat, Edit with Supermaven, Fix with Supermaven",
+            "Pro sign-in goes through a browser, which a remote or headless terminal may not have"
+        ]
+    },
+    "homepage": "https://supermaven.com/",
+    "readme": "# Supermaven\n\nInline AI completions from Supermaven. The extension downloads its own completion engine on first activation and asks you to sign in — the free tier needs only an email address.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode. You need your own Supermaven account; Diode neither resells nor proxies the service.\n\n## What works in Diode\n\nInline completions appear as ghost text while you type: Tab accepts, Esc dismisses. The extension spawns its own engine process and reports its state in the status bar.\n\n## What does not\n\nThe chat side panel is a webview, and Diode does not implement webviews — the panel never opens, and the commands that drive it (New Chat, History, Settings, Select Model, Add to Chat, Edit with Supermaven, Fix with Supermaven) do nothing. Signing in to Supermaven Pro opens a browser, which is not available in every terminal session; the free tier asks only for an email and works entirely inside the editor.\n",
+    "versions": [
+        {
+            "version": "1.1.5",
+            "engines": {
+                "vscode": "^1.68.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/Supermaven/supermaven/1.1.5/file/Supermaven.supermaven-1.1.5.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "e7f5efa2919b3c9c6bcc71f342cf1214ea5843f7cbb46a1dd01734c36ac6315f",
+            "size": 238582,
+            "publishedAt": "2024-08-30T18:36:02.478Z"
+        }
+    ]
+}
