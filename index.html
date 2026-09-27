@@ -194,6 +194,9 @@
     padding: 10px 18px; font-size: 13px; color: var(--text-code);
   }
   .install .prompt { color: var(--text-faint); user-select: none; }
+  /* подпись под командой: ближе к ней, чем шаг сетки hero (gap 26px) */
+  .install-alt { font-size: 12px; color: var(--text-faint); margin-top: -14px; text-align: center; }
+  .install-alt a { color: var(--text-body); }
 
   /* продукт-шот: скриншот редактора */
   .shot { padding: 24px 34px 34px; }
@@ -286,7 +289,8 @@
 
     <p class="tagline">A full-featured editor where all you have is a terminal. Non-modal, with familiar keybindings and language support — no environment to install or configure.</p>
 
-    <div class="install"><span class="prompt">$</span> curl -sL diode.sh | sh</div>
+    <div class="install"><span class="prompt">$</span> curl -fsSL https://diode-editor.github.io/install.sh | sh</div>
+    <p class="install-alt">Linux and macOS, no root. Also <a href="https://github.com/diode-editor/diode/blob/main/docs/public/INSTALL.md">apt, Homebrew, npm, winget</a>.</p>
   </section>
 
   <figure class="shot">
