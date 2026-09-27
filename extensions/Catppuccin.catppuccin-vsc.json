@@ -1,0 +1,29 @@
+{
+    "schemaVersion": 1,
+    "id": "Catppuccin.catppuccin-vsc",
+    "publisher": "Catppuccin",
+    "name": "catppuccin-vsc",
+    "displayName": "Catppuccin for VSCode",
+    "description": "🦌 Soothing pastel theme for VSCode",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/catppuccin/vscode",
+    "license": "MIT",
+    "homepage": "https://github.com/catppuccin/vscode/tree/main/packages/catppuccin-vsc#readme",
+    "readme": "# Catppuccin for VSCode\n\nSoothing pastel color themes: **Catppuccin Mocha**, Macchiato, Frappé (dark) and Latte (light). After installing, reload the window and pick a theme with `Preferences: Color Theme` (Ctrl+K Ctrl+T), or set `\"workbench.colorTheme\": \"Catppuccin Mocha\"` in settings.json.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode. The extension's runtime part (theme regeneration from settings) is not used: Diode reads the bundled theme files as they are.\n",
+    "versions": [
+        {
+            "version": "3.19.0",
+            "engines": {
+                "vscode": "^1.80.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/Catppuccin/catppuccin-vsc/3.19.0/file/Catppuccin.catppuccin-vsc-3.19.0.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "ebf347664837edbe91c9920ff3d14c96d4a28beeec0b95137c76058326329780",
+            "size": 132230,
+            "publishedAt": "2026-05-02T09:34:59.583Z"
+        }
+    ]
+}
