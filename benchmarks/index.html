@@ -204,7 +204,9 @@
 
   // ── History: small multiples, one series per cell ──
   const METRICS = [
-    { key: "ours", label: "our ms above Node floor", get: (s) => median(s.ours), fmt: fmtMs },
+    // Кухня воркбенча без парса бандла — то, что зажимает этап «Кухня»; «наших мс»
+    // над полом node остаются главной цифрой таблицы последнего прогона.
+    { key: "overBinary", label: "above binary floor (to text − diode --version)", get: (s) => median(s.overBinary), fmt: fmtMs },
     { key: "ctrlEnd", label: "Ctrl+End latency", get: (s) => median(s.workload && s.workload.ctrlEnd), fmt: fmtMs },
     { key: "rss", label: "peak RSS", get: (s) => median(s.peakRss), fmt: fmtBytes },
   ];
