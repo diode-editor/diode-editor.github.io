@@ -1,0 +1,29 @@
+{
+    "schemaVersion": 1,
+    "id": "dbaeumer.vscode-eslint",
+    "publisher": "dbaeumer",
+    "name": "vscode-eslint",
+    "displayName": "ESLint",
+    "description": "Integrates ESLint JavaScript into VS Code.",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/microsoft/vscode-eslint",
+    "license": "MIT",
+    "homepage": "https://github.com/microsoft/vscode-eslint",
+    "readme": "# ESLint\n\nLints JavaScript and TypeScript with the ESLint installed in your project (`node_modules/eslint`): diagnostics as you type, quick fixes per rule, and `source.fixAll.eslint` for fix-on-save via `editor.codeActionsOnSave`.\n\nThe extension does not bundle ESLint itself — install it in your workspace (`npm install eslint`) and add an `eslint.config.*` file.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "3.0.34",
+            "engines": {
+                "vscode": "^1.90.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/dbaeumer/vscode-eslint/3.0.34/file/dbaeumer.vscode-eslint-3.0.34.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "ca5334d46f6a39079e751ef4601bfc9f86bc3a46483e87291ec609239d161308",
+            "size": 264365,
+            "publishedAt": "2026-07-17T04:12:54.913Z"
+        }
+    ]
+}

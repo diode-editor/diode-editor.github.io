@@ -4,6 +4,7 @@
 
 ```
 index.html                          сайт
+benchmarks/index.html               страница бенчмарков: читает ветку bench-data репозитория diode
 extensions/<publisher>.<name>.json  ИСТОЧНИК ПРАВДЫ реестра — PR-ы сюда
 artifacts/<id>-<version>.vsix       байты ТОЛЬКО наших собственных расширений
 registry/v1/index.json              СГЕНЕРИРОВАНО — руками не трогать
@@ -41,14 +42,26 @@ scripts/registry.mjs                валидатор и сборщик
 2. Заполнить запись версии: `version`, `engines` (хотя бы одно из `diode`/`vscode`, валидный
    semver-диапазон), `artifact` (`https`, разрешённый хост), `sha256` (64 hex в нижнем регистре),
    опционально `size` и `publishedAt`.
-3. Проверить локально:
+3. Если в Diode работает не всё — добавить пометку `support`:
+   ```json
+   "support": {
+       "level": "partial",
+       "works": ["Что работает — коротким пунктом"],
+       "limits": ["Что не работает и почему"]
+   }
+   ```
+   `level: "partial"` требует непустого `limits`: пометка без объяснения ничего не сообщает.
+   Пометка едет и в `index.json` — бейдж `Partial` виден в списке до установки, а на странице
+   расширения разворачивается в два списка. Типичный повод — webview: языковая часть расширения
+   работает, панель не открывается (`Supermaven.supermaven`).
+4. Проверить локально:
    ```sh
    npm ci
    node scripts/registry.mjs validate --fetch
    ```
    `--fetch` реально скачивает артефакт и сверяет `sha256` и `size` — то есть проверяет пин, а не
    его переписанную копию.
-4. Прислать PR, трогающий только `extensions/` (и `artifacts/`, если расширение наше).
+5. Прислать PR, трогающий только `extensions/` (и `artifacts/`, если расширение наше).
    `registry/v1/**` собирает CI после мержа — в PR этих файлов быть не должно.
 
 Форма записи и её нормативное описание — `src/vs/platform/extensionManagement/common/registryFormat.ts`

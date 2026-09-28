@@ -35,6 +35,29 @@ const KINDS = new Set(["proxy-openvsx", "proxy-hosted", "native"]);
 const ORIGINS = new Set(["openvsx", "github-release"]);
 
 /**
+ * Словарь платформенных таргетов VS Code Marketplace / Open VSX. Клиент diode
+ * значение со словарём не сверяет (неизвестный таргет просто не совпадёт с его
+ * платформой), реестр — сверяет: опечатка в таргете иначе тихо сделала бы
+ * запись недостижимой на всех платформах.
+ */
+const TARGET_PLATFORMS = new Set([
+    "win32-x64",
+    "win32-arm64",
+    "linux-x64",
+    "linux-arm64",
+    "linux-armhf",
+    "alpine-x64",
+    "alpine-arm64",
+    "darwin-x64",
+    "darwin-arm64",
+]);
+
+/** Ключ уникальности/иммутабельности записи версии: одна semver-версия может лежать по-записи-на-платформу. */
+function versionKey(version) {
+    return version.targetPlatform === undefined ? version.version : `${version.version}@${version.targetPlatform}`;
+}
+
+/**
  * Куда разрешено указывать артефактам. URL приходят из PR недоверенного
  * контрибьютора, а `--fetch` по ним ходит — без списка это SSRF. Список
  * проверяется и на конечном адресе после редиректов, поэтому в нём есть и CDN,
@@ -64,9 +87,13 @@ const SHA256_RE = /^[0-9a-f]{64}$/;
 const ID_RE = /^[a-z0-9][a-z0-9_-]*\.[a-z0-9][a-z0-9_-]*$/i;
 
 const META_REQUIRED = ["schemaVersion", "id", "publisher", "name", "displayName", "description", "kind", "versions"];
-const META_OPTIONAL = ["repository", "license", "homepage", "readme"];
+/** Опциональные поля-строки: проверяются одним циклом «непустая строка». */
+const META_OPTIONAL_STRINGS = ["repository", "license", "homepage", "readme"];
+/** Все опциональные поля меты; `support` — объект, у него своя проверка. */
+const META_OPTIONAL = [...META_OPTIONAL_STRINGS, "support"];
+const SUPPORT_LEVELS = new Set(["full", "partial"]);
 const VERSION_REQUIRED = ["version", "engines", "artifact", "sha256"];
-const VERSION_OPTIONAL = ["size", "publishedAt"];
+const VERSION_OPTIONAL = ["targetPlatform", "size", "publishedAt"];
 
 // --- вывод -----------------------------------------------------------------
 
@@ -117,8 +144,18 @@ function canonicalVersion(version) {
         artifact: canonicalArtifact(version.artifact),
         sha256: version.sha256,
     };
+    put(out, "targetPlatform", version.targetPlatform);
     put(out, "size", version.size);
     put(out, "publishedAt", version.publishedAt);
+    return out;
+}
+
+/** Пометка о поддержке в канонической форме; `undefined` — её нет. */
+function canonicalSupport(support) {
+    if (support === undefined) return undefined;
+    const out = { level: support.level };
+    put(out, "works", support.works);
+    put(out, "limits", support.limits);
     return out;
 }
 
@@ -132,6 +169,7 @@ function canonicalMeta(meta) {
         description: meta.description,
         kind: meta.kind,
     };
+    put(out, "support", canonicalSupport(meta.support));
     put(out, "repository", meta.repository);
     put(out, "license", meta.license);
     put(out, "homepage", meta.homepage);
@@ -187,6 +225,36 @@ function checkKeys(record, where, required, optional, file, errors) {
     for (const key of Object.keys(record)) {
         // Неизвестный ключ фатален: опечатка вроде "licence" иначе молча теряется при сборке.
         if (!known.has(key)) errors.push({ file, message: `${where}: unknown key "${key}"` });
+    }
+}
+
+/**
+ * Курационная пометка о поддержке. Клиент битую пометку просто игнорирует, а
+ * реестр обязан её не опубликовать: `partial` без единого ограничения — это
+ * предупреждение, которое ничего не сообщает.
+ */
+function validateSupport(value, file, errors) {
+    if (value === undefined) return;
+    if (!isRecord(value)) {
+        errors.push({ file, message: "support: expected an object" });
+        return;
+    }
+    checkKeys(value, "support", ["level"], ["works", "limits"], file, errors);
+    if (value.level !== undefined && !SUPPORT_LEVELS.has(value.level)) {
+        errors.push({
+            file,
+            message: `support.level: must be one of ${[...SUPPORT_LEVELS].join(", ")}, got ${JSON.stringify(value.level)}`,
+        });
+    }
+    for (const key of ["works", "limits"]) {
+        const list = value[key];
+        if (list === undefined) continue;
+        if (!Array.isArray(list) || list.length === 0 || !list.every(isNonEmptyString)) {
+            errors.push({ file, message: `support.${key}: expected a non-empty array of non-empty strings` });
+        }
+    }
+    if (value.level === "partial" && value.limits === undefined) {
+        errors.push({ file, message: 'support: level "partial" requires "limits" — say what does not work' });
     }
 }
 
@@ -257,6 +325,12 @@ function validateVersion(value, index, file, errors) {
     if (typeof value.sha256 !== "string" || !SHA256_RE.test(value.sha256)) {
         errors.push({ file, message: `${where}.sha256: expected 64 lowercase hex chars` });
     }
+    if (value.targetPlatform !== undefined && !TARGET_PLATFORMS.has(value.targetPlatform)) {
+        errors.push({
+            file,
+            message: `${where}.targetPlatform: must be one of ${[...TARGET_PLATFORMS].join(", ")}, got ${JSON.stringify(value.targetPlatform)}`,
+        });
+    }
     if (value.size !== undefined && (!Number.isInteger(value.size) || value.size <= 0)) {
         errors.push({ file, message: `${where}.size: expected a positive integer` });
     }
@@ -296,11 +370,12 @@ function validateMeta(raw, file, errors) {
     if (!KINDS.has(raw.kind)) {
         errors.push({ file, message: `kind: must be one of ${[...KINDS].join(", ")}, got ${JSON.stringify(raw.kind)}` });
     }
-    for (const key of META_OPTIONAL) {
+    for (const key of META_OPTIONAL_STRINGS) {
         if (raw[key] !== undefined && !isNonEmptyString(raw[key])) {
             errors.push({ file, message: `${key}: expected a non-empty string` });
         }
     }
+    validateSupport(raw.support, file, errors);
     if (isNonEmptyString(raw.publisher) && isNonEmptyString(raw.name)) {
         const expected = `${raw.publisher}.${raw.name}`;
         if (raw.id !== expected) {
@@ -318,10 +393,11 @@ function validateMeta(raw, file, errors) {
         raw.versions.forEach((version, index) => {
             validateVersion(version, index, file, errors);
             if (isRecord(version) && isNonEmptyString(version.version)) {
-                if (seen.has(version.version)) {
-                    errors.push({ file, message: `versions[${index}].version: duplicate version ${version.version}` });
+                const key = versionKey(version);
+                if (seen.has(key)) {
+                    errors.push({ file, message: `versions[${index}].version: duplicate version ${key}` });
                 }
-                seen.add(version.version);
+                seen.add(key);
             }
         });
     }
@@ -409,16 +485,16 @@ function checkImmutability(base, allowRemovals, errors) {
 
         const headByVersion = new Map();
         for (const version of headRaw.versions) {
-            if (isRecord(version) && isNonEmptyString(version.version)) headByVersion.set(version.version, version);
+            if (isRecord(version) && isNonEmptyString(version.version)) headByVersion.set(versionKey(version), version);
         }
         for (const baseVersion of baseMeta.versions) {
             if (!isRecord(baseVersion) || !isNonEmptyString(baseVersion.version)) continue;
-            const head = headByVersion.get(baseVersion.version);
+            const head = headByVersion.get(versionKey(baseVersion));
             if (head === undefined) {
                 if (!allowRemovals) {
                     errors.push({
                         file,
-                        message: `version ${baseVersion.version} removed (published versions are immutable)`,
+                        message: `version ${versionKey(baseVersion)} removed (published versions are immutable)`,
                     });
                 }
                 continue;
@@ -426,7 +502,7 @@ function checkImmutability(base, allowRemovals, errors) {
             if (canonicalJson(head) !== canonicalJson(baseVersion)) {
                 errors.push({
                     file,
-                    message: `version ${baseVersion.version} was modified (published versions are immutable; add a new version instead)`,
+                    message: `version ${versionKey(baseVersion)} was modified (published versions are immutable; add a new version instead)`,
                 });
             }
         }
@@ -474,9 +550,9 @@ async function fetchArtifact(url, file, where, errors) {
 async function checkArtifacts(metas, publishedVersions, errors) {
     for (const meta of metas) {
         for (const [index, version] of meta.versions.entries()) {
-            const key = `${meta.id}@${version.version}`;
+            const key = `${meta.id}@${versionKey(version)}`;
             if (publishedVersions.has(key)) continue;
-            const where = `versions[${index}] (${version.version})`;
+            const where = `versions[${index}] (${versionKey(version)})`;
             const file = path.posix.join(SRC_DIR, `${meta.id}.json`);
             const url = new URL(version.artifact.url);
             const buffer =
@@ -505,7 +581,9 @@ function publishedVersionsAt(base) {
             const meta = JSON.parse(text);
             if (!isRecord(meta) || !Array.isArray(meta.versions)) continue;
             for (const version of meta.versions) {
-                if (isRecord(version) && isNonEmptyString(version.version)) published.add(`${meta.id}@${version.version}`);
+                if (isRecord(version) && isNonEmptyString(version.version)) {
+                    published.add(`${meta.id}@${versionKey(version)}`);
+                }
             }
         } catch {
             continue;
@@ -541,6 +619,9 @@ function buildOutputs(metas) {
             displayName: meta.displayName,
             description: meta.description,
             kind: meta.kind,
+            // Пометка едет и в индекс: бейдж списка обязан быть виден до того,
+            // как человек откроет страницу расширения.
+            ...(meta.support === undefined ? {} : { support: canonicalSupport(meta.support) }),
             latest: { version: latest.version, engines: canonicalEngines(latest.engines) },
         };
     });

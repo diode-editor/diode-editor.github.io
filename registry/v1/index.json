@@ -2,6 +2,20 @@
     "schemaVersion": 1,
     "extensions": [
         {
+            "id": "Catppuccin.catppuccin-vsc",
+            "publisher": "Catppuccin",
+            "name": "catppuccin-vsc",
+            "displayName": "Catppuccin for VSCode",
+            "description": "🦌 Soothing pastel theme for VSCode",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "3.19.0",
+                "engines": {
+                    "vscode": "^1.80.0"
+                }
+            }
+        },
+        {
             "id": "EditorConfig.EditorConfig",
             "publisher": "EditorConfig",
             "name": "EditorConfig",
@@ -12,6 +26,63 @@
                 "version": "0.18.2",
                 "engines": {
                     "vscode": "^1.100.0"
+                }
+            }
+        },
+        {
+            "id": "Supermaven.supermaven",
+            "publisher": "Supermaven",
+            "name": "supermaven",
+            "displayName": "Supermaven",
+            "description": "The fastest copilot.",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Inline completions (ghost text): Tab accepts, Esc dismisses",
+                    "The extension downloads and runs its own completion engine",
+                    "Status bar entry with the engine state",
+                    "Sign-in to the free tier: the prompt asks for your email in a quick input"
+                ],
+                "limits": [
+                    "Chat panel does not open: it is a webview, and Diode has none by design",
+                    "Commands that need that panel do nothing: New Chat, History, Settings, Select Model, Add to Chat, Edit with Supermaven, Fix with Supermaven",
+                    "Pro sign-in goes through a browser, which a remote or headless terminal may not have"
+                ]
+            },
+            "latest": {
+                "version": "1.1.5",
+                "engines": {
+                    "vscode": "^1.68.0"
+                }
+            }
+        },
+        {
+            "id": "charliermarsh.ruff",
+            "publisher": "charliermarsh",
+            "name": "ruff",
+            "displayName": "Ruff",
+            "description": "A Visual Studio Code extension with support for the Ruff linter and formatter for Python.",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "2026.80.0",
+                "engines": {
+                    "diode": ">=0.3.1",
+                    "vscode": "^1.75.0"
+                }
+            }
+        },
+        {
+            "id": "dbaeumer.vscode-eslint",
+            "publisher": "dbaeumer",
+            "name": "vscode-eslint",
+            "displayName": "ESLint",
+            "description": "Integrates ESLint JavaScript into VS Code.",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "3.0.34",
+                "engines": {
+                    "vscode": "^1.90.0"
                 }
             }
         },

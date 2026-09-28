@@ -32,7 +32,7 @@
   "url": "https://diode-editor.github.io/",
   "description": "A non-modal editor for the terminal: familiar keybindings, LSP, VS Code extensions, a single binary.",
   "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "Linux, macOS",
+  "operatingSystem": "Linux, macOS, Windows",
   "offers": { "@type": "Offer", "price": "0" }
 }
 </script>
@@ -294,9 +294,10 @@
   </section>
 
   <figure class="shot">
-    <!-- ЗАГЛУШКА: чужой баннер, заменить на скриншот diode -->
-    <img src="assets/screenshot-placeholder.webp" width="1920" height="1080"
-         alt="Placeholder: a diode screenshot goes here">
+    <!-- кадр снят растеризатором скриншот-демо (e2e/helpers в diode) с релизного бинарника v0.4.0:
+         TypeScript, тема Dark+, автодополнение от стокового typescript-language-server -->
+    <img src="assets/screenshot.png" width="1080" height="576"
+         alt="diode in a terminal: Dark+ theme, TypeScript file with syntax highlighting, LSP completion popup, file explorer and status bar">
   </figure>
 
   <section class="features">
@@ -306,7 +307,7 @@
     </div>
     <div>
       <h2>02 / LANGUAGE SUPPORT</h2>
-      <p>LSP: completion, go to definition, diagnostics, rename. TypeScript and JavaScript are built in; other languages install from the extension store.</p>
+      <p>LSP: completion, go to definition, references, hover, diagnostics. TypeScript and JavaScript are built in; other languages install from the extension store.</p>
     </div>
     <div>
       <h2>03 / VS CODE EXTENSIONS</h2>
@@ -318,7 +319,7 @@
     </div>
     <div>
       <h2>05 / A SINGLE BINARY</h2>
-      <p>One-command install, no dependencies, no configuration. Starts in ~100 ms. Works over ssh, in containers, on servers without a GUI. Numbers are in the <a href="https://github.com/diode-editor/diode/blob/main/docs/public/BENCHMARKS.md">benchmarks</a>.</p>
+      <p>One-command install, no dependencies, no configuration. Starts in ~100 ms. Works over ssh, in containers, on servers without a GUI. Numbers are in the <a href="/benchmarks/">benchmarks</a>.</p>
     </div>
   </section>
 
@@ -326,7 +327,7 @@
     <span class="badge">alpha</span>
     <a href="https://github.com/diode-editor/diode/blob/main/docs/public/ROADMAP.md">roadmap</a>
     <a href="https://github.com/diode-editor/diode/blob/main/docs/public/API-COVERAGE.md">api coverage</a>
-    <a href="https://github.com/diode-editor/diode/blob/main/docs/public/BENCHMARKS.md">benchmarks</a>
+    <a href="/benchmarks/">benchmarks</a>
   </section>
 </main>
 
@@ -340,9 +341,9 @@
       </svg>diode
     </div>
     <div class="footer-meta">
-      <span>MIT</span>
+      <a href="https://github.com/diode-editor/diode/blob/main/LICENSE">GPL-3.0</a>
       <a href="https://github.com/diode-editor">github</a>
-      <span class="version">0.4.2-alpha</span>
+      <a class="version" href="https://github.com/diode-editor/diode/releases/latest">0.4.0</a>
     </div>
   </div>
 </footer>

@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>diode — open-file benchmark</title>
+<meta name="description" content="How fast diode opens a file: our milliseconds above the Node floor, key latency after opening, peak RSS — measured weekly on CI, history from the bench-data branch.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 132 112'%3E%3Cpath d='M18 8 L98 56 L18 104 Z' fill='%2360aaf3'/%3E%3Crect x='106' y='8' width='16' height='96' fill='%2360aaf3'/%3E%3C/svg%3E">
+<style>
+  @font-face {
+    font-family: "JetBrains Mono";
+    font-style: normal;
+    font-weight: 400 500;
+    font-display: swap;
+    src: url("../jetbrains-mono-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+2000-206F;
+  }
+  :root {
+    color-scheme: dark;
+    --bg: #0c0c0d;
+    --surface: #141416;
+    --fg: #f2f0eb;
+    --dim: #868686;
+    --muted: #4a4a4c;
+    --grid: #232326;
+    --accent: #60aaf3;
+    --accent: oklch(0.72 0.13 250);
+    --series-1: #3987e5;
+    --warn: #c98500;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "JetBrains Mono", ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    padding: 2rem 1rem 4rem;
+  }
+  main { max-width: 68rem; margin: 0 auto; }
+  .prompt { color: var(--dim); }
+  h1 { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.02em; margin: 0.2em 0 0.6em; }
+  h2 { font-size: 1.05rem; font-weight: 500; margin: 2.4rem 0 0.6rem; }
+  p { max-width: 60rem; }
+  p.lead { color: var(--dim); margin-bottom: 0.4rem; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+  a:hover { border-bottom-color: var(--accent); }
+  .meta { color: var(--dim); font-size: 0.85rem; margin: 0.3rem 0 1.2rem; }
+  .meta div { margin-top: 0.15rem; }
+  .meta code { color: var(--fg); }
+  .status { color: var(--dim); padding: 1rem 0; }
+  .status.error { color: #e66767; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.85rem; margin: 0.6rem 0 0.2rem; }
+  th, td { padding: 0.35rem 0.6rem; text-align: right; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+  th { color: var(--dim); font-weight: 400; }
+  th:first-child, td:first-child { text-align: left; }
+  td.main { font-weight: 500; }
+  td.noisy { color: var(--warn); }
+  .table-wrap { overflow-x: auto; }
+  .hint { color: var(--dim); font-size: 0.8rem; margin-top: 0.3rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0.8rem; margin-top: 0.8rem; }
+  .cell { background: var(--surface); border: 1px solid var(--grid); border-radius: 6px; padding: 0.7rem 0.8rem 0.5rem; }
+  .cell .title { color: var(--dim); font-size: 0.78rem; display: flex; justify-content: space-between; gap: 0.5rem; }
+  .cell .value { font-size: 1.25rem; font-weight: 500; margin: 0.1rem 0 0.2rem; }
+  .cell .value small { color: var(--dim); font-size: 0.75rem; font-weight: 400; margin-left: 0.4em; }
+  .cell svg { display: block; width: 100%; height: 5.5rem; overflow: visible; }
+  .cell .empty { color: var(--muted); font-size: 0.8rem; padding: 1.5rem 0; text-align: center; }
+  .legend { color: var(--dim); font-size: 0.8rem; margin-top: 0.6rem; display: flex; gap: 1.4rem; flex-wrap: wrap; }
+  .legend span::before { content: ""; display: inline-block; width: 0.55rem; height: 0.55rem; border-radius: 50%; margin-right: 0.4rem; vertical-align: middle; background: var(--series-1); }
+  .legend span.local::before { background: var(--surface); border: 2px solid var(--series-1); width: 0.4rem; height: 0.4rem; }
+  .tooltip {
+    position: fixed; pointer-events: none; z-index: 10; display: none;
+    background: var(--surface); border: 1px solid var(--grid); border-radius: 4px;
+    padding: 0.35rem 0.55rem; font-size: 0.78rem; color: var(--fg); white-space: nowrap;
+  }
+  .tooltip .d { color: var(--dim); }
+  details { margin-top: 0.8rem; }
+  summary { cursor: pointer; color: var(--dim); }
+  footer { color: var(--dim); font-size: 0.85rem; margin-top: 3rem; }
+  @media (max-width: 40rem) { body { padding: 1.2rem 1rem 3rem; } h1 { font-size: 1.3rem; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="prompt">$ diode <span id="cmd">--bench</span></div>
+  <h1>open-file benchmark</h1>
+  <p class="lead">How fast diode opens a file, measured weekly on CI (GitHub Actions, shared runner) and stored in the
+    <a href="https://github.com/diode-editor/diode/tree/bench-data/open">bench-data</a> branch.
+    The headline is <strong>our milliseconds</strong>: time to the first frame with the file's text minus the Node floor
+    (<code>node -e ""</code> spawned the same way, through a PTY). Method and columns:
+    <a href="https://github.com/diode-editor/diode/blob/main/docs/public/BENCH-OPEN.md">BENCH-OPEN.md</a>.</p>
+
+  <div id="status" class="status">Loading the latest run…</div>
+  <div id="report" hidden>
+    <div class="meta" id="meta"></div>
+
+    <h2>Latest run — from the floor</h2>
+    <p class="hint">Medians over runs. <em>above binary</em> also subtracts <code>diode --version</code>, i.e. the SEA bundle parse.
+      IQR is the interquartile range; a row is marked <span style="color:var(--warn)">noisy</span> when IQR exceeds 20 % of the median.</p>
+    <div class="table-wrap"><table id="floor-table"></table></div>
+
+    <h2>Latest run — key latency after opening</h2>
+    <p class="hint">From the key hitting the PTY to the frame where the change is visible, median ms. Caret in the middle of the file.</p>
+    <div class="table-wrap"><table id="keys-table"></table></div>
+
+    <details>
+      <summary>Startup ladder (white box: <code>performance.mark</code> inside the process, median ms from spawn)</summary>
+      <div class="table-wrap"><table id="ladder-table"></table></div>
+    </details>
+
+    <h2>History</h2>
+    <p class="hint">One point per published run, newest on the right. Hover a point for the date and commit.</p>
+    <div id="history"></div>
+    <div class="legend"><span>CI shared runner</span><span class="local">local developer machine</span></div>
+  </div>
+
+  <div class="tooltip" id="tooltip"></div>
+  <footer><a href="../">diode</a> · <a href="https://github.com/diode-editor/diode">github.com/diode-editor/diode</a></footer>
+</main>
+
+<script>
+(async function () {
+  // `?base=<url>` — предпросмотр с локальной копией ветки (python3 -m http.server + bench-publish.mjs).
+  const BASE = new URLSearchParams(location.search).get("base") || "https://raw.githubusercontent.com/diode-editor/diode/bench-data/open/";
+  const HISTORY_RUNS = 26; // half a year of weekly runs
+  const status = document.getElementById("status");
+  const fail = (message) => { status.textContent = message; status.classList.add("error"); };
+
+  const fmtMs = (v) => (v === null || v === undefined ? "—" : `${Math.round(v)} ms`);
+  const fmtBytes = (b) => {
+    if (b === null || b === undefined) return "—";
+    const MiB = 1024 * 1024;
+    return b >= MiB ? `${(b / MiB).toFixed(b >= 100 * MiB ? 0 : 1)} MB` : `${(b / 1024).toFixed(1)} KB`;
+  };
+  const fmtCount = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const median = (s) => (s && typeof s.median === "number" ? s.median : null);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+  let index;
+  try {
+    const res = await fetch(BASE + "index.json", { cache: "no-cache" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    index = await res.json();
+  } catch (e) {
+    fail(`Could not load bench-data/open/index.json (${e.message}). The bench-data branch is written by the weekly Bench workflow; it may not have run yet.`);
+    return;
+  }
+  if (!Array.isArray(index) || index.length === 0) { fail("No published runs yet."); return; }
+
+  const recent = index.slice(-HISTORY_RUNS);
+  let runs;
+  try {
+    runs = await Promise.all(recent.map(async (entry) => {
+      const res = await fetch(BASE + entry.file, { cache: "no-cache" });
+      if (!res.ok) throw new Error(`${entry.file}: HTTP ${res.status}`);
+      return { entry, report: await res.json() };
+    }));
+  } catch (e) { fail(`Could not load a run: ${e.message}`); return; }
+
+  const latest = runs[runs.length - 1].report;
+  status.hidden = true;
+  document.getElementById("report").hidden = false;
+  document.getElementById("cmd").textContent = latest.sizes.map((s) => s.key).join(" ");
+
+  // ── Header ──
+  const f = latest.floors;
+  document.getElementById("meta").innerHTML = [
+    `taken ${esc(latest.generatedAt.slice(0, 10))}, commit <code>${esc(latest.commit)}</code>, diode ${esc(latest.binaryVersion)}`,
+    `machine: ${esc(latest.env.cpu)} (${latest.env.cores} cores, ${latest.env.memGb} GB), ${esc(latest.env.platform)}`,
+    `conditions: ${esc(latest.env.conditions)}`,
+    `floors (PTY, median): node <code>node -e ""</code> ${fmtMs(f.node.medianMs)} · binary <code>diode --version</code> ${fmtMs(f.binary.medianMs)}` +
+      (f.nodeVersion ? ` · <code>node --version</code> ${fmtMs(f.nodeVersion.medianMs)} (answers before V8 boots)` : ""),
+  ].map((l) => `<div>${l}</div>`).join("");
+
+  // ── Latest tables ──
+  const floorTable = document.getElementById("floor-table");
+  floorTable.innerHTML = `<tr><th>file</th><th>size</th><th>lines</th><th>our ms</th><th>above binary</th><th>to text</th><th>to highlight</th><th>IQR (to text)</th><th>peak RSS</th><th>runs</th></tr>` +
+    latest.sizes.map((s) => {
+      const measured = s.runs.filter((r) => !r.warmup && r.outcome === "ok").length;
+      const failed = s.runs.filter((r) => r.outcome !== "ok").map((r) => r.signal !== null ? `${r.outcome} (signal ${r.signal})` : r.outcome);
+      const noisy = s.content && s.content.noisy;
+      return `<tr><td><code>${esc(s.key)}</code></td><td>${fmtBytes(s.fixtureBytes)}</td><td>${fmtCount(s.fixtureLines)}</td>` +
+        `<td class="main">${fmtMs(median(s.ours))}</td><td>${fmtMs(median(s.overBinary))}</td>` +
+        `<td>${fmtMs(median(s.content))}${failed.length ? " " + esc(failed.join(", ")) : ""}</td>` +
+        `<td>${s.kind === "log" ? "— (plaintext)" : fmtMs(median(s.highlight))}</td>` +
+        `<td class="${noisy ? "noisy" : ""}">${s.content ? `${Math.round(s.content.iqr)} ms${noisy ? " noisy" : ""}` : "—"}</td>` +
+        `<td>${s.peakRss ? fmtBytes(s.peakRss.median) : "—"}</td><td>${measured}</td></tr>`;
+    }).join("");
+
+  const STEPS = [["insert", "insert char"], ["enter", "Enter"], ["undoEnter", "undo (Enter)"], ["undoInsert", "undo (char)"], ["ctrlEnd", "Ctrl+End"], ["search", "search word"]];
+  document.getElementById("keys-table").innerHTML = `<tr><th>file</th>${STEPS.map(([, l]) => `<th>${l}</th>`).join("")}</tr>` +
+    latest.sizes.map((s) => `<tr><td><code>${esc(s.key)}</code></td>${STEPS.map(([k]) => `<td>${fmtMs(median(s.workload && s.workload[k]))}</td>`).join("")}</tr>`).join("");
+
+  const LADDER = [["processStart", "process start (timeOrigin)"], ["nodeBootstrap", "node bootstrap complete"], ["mainStart", "bundle evaluated (main:start)"],
+    ["configLoaded", "config loaded"], ["keybindingsLoaded", "keybindings loaded"], ["stateLoaded", "session state loaded"], ["extensionsScanned", "extensions scanned"],
+    ["themesReady", "themes ready"], ["containerCreated", "DI container built"], ["workbenchMounted", "workbench mounted"], ["firstFrame", "first frame"],
+    ["workbenchActivated", "workbench activated"], ["grammarsPreloaded", "grammars preloaded"], ["fileRead", "file read from disk"], ["fileDecoded", "file decoded"],
+    ["documentBuilt", "document built"], ["tokenizerReady", "tokenizer at the editor"], ["filesOpened", "tabs opened"], ["extensionsRegistered", "builtin extensions registered"],
+    ["frameWithText", "frame with the file's text"], ["frameWithHighlight", "frame with highlighting"], ["extHostActivated", "extension host up"], ["startupComplete", "startup complete"]];
+  document.getElementById("ladder-table").innerHTML = `<tr><th>milestone</th>${latest.sizes.map((s) => `<th><code>${esc(s.key)}</code></th>`).join("")}</tr>` +
+    LADDER.map(([k, l]) => `<tr><td>${l}</td>${latest.sizes.map((s) => `<td>${fmtMs(median(s.ladder && s.ladder[k]))}</td>`).join("")}</tr>`).join("") +
+    `<tr><td>to text (black box, PTY)</td>${latest.sizes.map((s) => `<td>${fmtMs(median(s.content))}</td>`).join("")}</tr>` +
+    `<tr><td>black − white box (text)</td>${latest.sizes.map((s) => `<td>${fmtMs(median(s.boxGap))}</td>`).join("")}</tr>`;
+
+  // ── History: small multiples, one series per cell ──
+  const METRICS = [
+    // Кухня воркбенча без парса бандла — то, что зажимает этап «Кухня»; «наших мс»
+    // над полом node остаются главной цифрой таблицы последнего прогона.
+    { key: "overBinary", label: "above binary floor (to text − diode --version)", get: (s) => median(s.overBinary), fmt: fmtMs },
+    { key: "ctrlEnd", label: "Ctrl+End latency", get: (s) => median(s.workload && s.workload.ctrlEnd), fmt: fmtMs },
+    { key: "rss", label: "peak RSS", get: (s) => median(s.peakRss), fmt: fmtBytes },
+  ];
+  const sizeKeys = [];
+  for (const run of runs) for (const s of run.report.sizes) if (!sizeKeys.includes(s.key)) sizeKeys.push(s.key);
+  const tooltip = document.getElementById("tooltip");
+  const history = document.getElementById("history");
+
+  for (const metric of METRICS) {
+    const h = document.createElement("h2");
+    h.textContent = metric.label;
+    h.style.fontSize = "0.95rem";
+    history.appendChild(h);
+    const grid = document.createElement("div");
+    grid.className = "grid";
+    for (const sizeKey of sizeKeys) {
+      const points = runs.map(({ entry, report }) => {
+        const size = report.sizes.find((s) => s.key === sizeKey);
+        const value = size ? metric.get(size) : null;
+        return { value, date: report.generatedAt.slice(0, 10), commit: report.commit, local: entry.ci === false, noisy: !!(size && size.content && size.content.noisy) };
+      });
+      grid.appendChild(cell(sizeKey, metric, points));
+    }
+    history.appendChild(grid);
+  }
+
+  function cell(sizeKey, metric, points) {
+    const el = document.createElement("div");
+    el.className = "cell";
+    const valid = points.map((p, i) => ({ ...p, i })).filter((p) => p.value !== null);
+    const last = valid.length ? valid[valid.length - 1] : null;
+    const title = `<div class="title"><span>${esc(sizeKey)}</span><span>${valid.length} run${valid.length === 1 ? "" : "s"}</span></div>`;
+    if (!last) { el.innerHTML = title + `<div class="empty">no data</div>`; return el; }
+    const prev = valid.length > 1 ? valid[valid.length - 2] : null;
+    const delta = prev ? ` <small>${last.value >= prev.value ? "+" : "−"}${metric.fmt(Math.abs(last.value - prev.value))} vs previous</small>` : "";
+    el.innerHTML = title + `<div class="value">${metric.fmt(last.value)}${delta}</div>`;
+    el.appendChild(chart(valid, points.length, metric));
+    return el;
+  }
+
+  function chart(valid, count, metric) {
+    const W = 240, H = 88, PAD = { l: 4, r: 4, t: 8, b: 8 };
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    svg.setAttribute("role", "img");
+    svg.setAttribute("aria-label", `${metric.label}, ${valid.length} runs`);
+    const max = Math.max(...valid.map((p) => p.value)) || 1;
+    const x = (i) => count === 1 ? W / 2 : PAD.l + (i / (count - 1)) * (W - PAD.l - PAD.r);
+    const y = (v) => H - PAD.b - (v / max) * (H - PAD.t - PAD.b);
+    const ns = (tag, attrs) => { const n = document.createElementNS("http://www.w3.org/2000/svg", tag); for (const k in attrs) n.setAttribute(k, attrs[k]); return n; };
+    // baseline + one recessive gridline at the max
+    svg.appendChild(ns("line", { x1: 0, x2: W, y1: y(0), y2: y(0), stroke: "var(--grid)", "stroke-width": 1 }));
+    svg.appendChild(ns("line", { x1: 0, x2: W, y1: y(max), y2: y(max), stroke: "var(--grid)", "stroke-width": 1 }));
+    // line between consecutive valid points (gaps stay gaps)
+    let d = "";
+    for (let k = 0; k < valid.length; k++) {
+      const p = valid[k];
+      d += (k > 0 && valid[k - 1].i === p.i - 1 ? "L" : "M") + `${x(p.i).toFixed(1)},${y(p.value).toFixed(1)} `;
+    }
+    svg.appendChild(ns("path", { d: d.trim(), fill: "none", stroke: "var(--series-1)", "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }));
+    for (const p of valid) {
+      const dot = ns("circle", { cx: x(p.i), cy: y(p.value), r: 4, fill: p.local ? "var(--surface)" : "var(--series-1)", stroke: p.local ? "var(--series-1)" : "var(--surface)", "stroke-width": 2 });
+      const hit = ns("circle", { cx: x(p.i), cy: y(p.value), r: 12, fill: "transparent" });
+      hit.style.cursor = "default";
+      hit.addEventListener("mouseenter", (ev) => {
+        tooltip.innerHTML = `<div>${metric.fmt(p.value)}${p.noisy ? ' <span class="d">· noisy run</span>' : ""}</div><div class="d">${esc(p.date)} · ${esc(p.commit)}${p.local ? " · local" : ""}</div>`;
+        tooltip.style.display = "block";
+        move(ev);
+      });
+      hit.addEventListener("mousemove", move);
+      hit.addEventListener("mouseleave", () => { tooltip.style.display = "none"; });
+      svg.appendChild(dot);
+      svg.appendChild(hit);
+    }
+    return svg;
+  }
+  function move(ev) {
+    const pad = 14;
+    let left = ev.clientX + pad, top = ev.clientY + pad;
+    const r = tooltip.getBoundingClientRect();
+    if (left + r.width > window.innerWidth - 8) left = ev.clientX - r.width - pad;
+    if (top + r.height > window.innerHeight - 8) top = ev.clientY - r.height - pad;
+    tooltip.style.left = `${left}px`;
+    tooltip.style.top = `${top}px`;
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+{
+    "schemaVersion": 1,
+    "id": "charliermarsh.ruff",
+    "publisher": "charliermarsh",
+    "name": "ruff",
+    "displayName": "Ruff",
+    "description": "A Visual Studio Code extension with support for the Ruff linter and formatter for Python.",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/astral-sh/ruff-vscode",
+    "license": "MIT",
+    "homepage": "https://docs.astral.sh/ruff/",
+    "readme": "# Ruff\n\nPython linting and formatting powered by the bundled native `ruff server`: lint diagnostics, quick fixes, organize imports / fix all code actions, and document/selection formatting. No Python interpreter required.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode. The extension ships platform-specific builds with the native ruff binary inside; the registry entry carries one artifact per platform.\n",
+    "versions": [
+        {
+            "version": "2026.80.0",
+            "engines": {
+                "diode": ">=0.3.1",
+                "vscode": "^1.75.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/charliermarsh/ruff/linux-x64/2026.80.0/file/charliermarsh.ruff-2026.80.0@linux-x64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "f4701b51b79fb99140de3f516e30d21d6dcb552e19f011c445d9bbaa2a12e5fa",
+            "targetPlatform": "linux-x64",
+            "size": 11244685,
+            "publishedAt": "2026-09-10T18:36:46.332Z"
+        },
+        {
+            "version": "2026.80.0",
+            "engines": {
+                "diode": ">=0.3.1",
+                "vscode": "^1.75.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/charliermarsh/ruff/linux-arm64/2026.80.0/file/charliermarsh.ruff-2026.80.0@linux-arm64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "effc534718f641988ca9397c789d0ffdd259492288409f3c4ca181d2bf2a9c35",
+            "targetPlatform": "linux-arm64",
+            "size": 10844290,
+            "publishedAt": "2026-09-10T18:36:46.332Z"
+        },
+        {
+            "version": "2026.80.0",
+            "engines": {
+                "diode": ">=0.3.1",
+                "vscode": "^1.75.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/charliermarsh/ruff/darwin-x64/2026.80.0/file/charliermarsh.ruff-2026.80.0@darwin-x64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "69f658bfbdaf56ba2ab8bd3fe2084543a25f246e43c54193f291605e64a5d475",
+            "targetPlatform": "darwin-x64",
+            "size": 11096928,
+            "publishedAt": "2026-09-10T18:36:46.332Z"
+        },
+        {
+            "version": "2026.80.0",
+            "engines": {
+                "diode": ">=0.3.1",
+                "vscode": "^1.75.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/charliermarsh/ruff/darwin-arm64/2026.80.0/file/charliermarsh.ruff-2026.80.0@darwin-arm64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "d7c4c443d76bf0c5f159b21c959b8fc7dadeaae73b27f67971c007979ceea05a",
+            "targetPlatform": "darwin-arm64",
+            "size": 10757392,
+            "publishedAt": "2026-09-10T18:36:46.332Z"
+        },
+        {
+            "version": "2026.80.0",
+            "engines": {
+                "diode": ">=0.3.1",
+                "vscode": "^1.75.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/charliermarsh/ruff/win32-x64/2026.80.0/file/charliermarsh.ruff-2026.80.0@win32-x64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "ac867d35e797a87b92b0b0293b0351568bd8c39f600f2dcf57c3ef6e2c862185",
+            "targetPlatform": "win32-x64",
+            "size": 11515288,
+            "publishedAt": "2026-09-10T18:36:46.332Z"
+        },
+        {
+            "version": "2026.80.0",
+            "engines": {
+                "diode": ">=0.3.1",
+                "vscode": "^1.75.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/charliermarsh/ruff/win32-arm64/2026.80.0/file/charliermarsh.ruff-2026.80.0@win32-arm64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "986c4666e58b49ebe5a1829f30da49fdf879dabdb2383ec2dcdb0338380e3bbd",
+            "targetPlatform": "win32-arm64",
+            "size": 11515288,
+            "publishedAt": "2026-09-10T18:36:46.332Z"
+        }
+    ]
+}
