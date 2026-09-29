@@ -115,6 +115,38 @@
             }
         },
         {
+            "id": "redhat.java",
+            "publisher": "redhat",
+            "name": "java",
+            "displayName": "Language Support for Java(TM) by Red Hat",
+            "description": "Java Linting, Intellisense, formatting, refactoring, Maven/Gradle support and more...",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Diagnostics from the Eclipse JDT language server, in the editor and the Problems panel",
+                    "Hover with Javadoc read from dependency jars, and completion from the project and the JDK",
+                    "Go to definition into your own code and into library sources, opened read-only",
+                    "Find All References, code actions and quick fixes, and formatting",
+                    "Source generators that ask you to pick: Override/Implement Methods, Generate Constructors, toString",
+                    "Maven and Gradle projects are imported by the server; its state shows in the status bar"
+                ],
+                "limits": [
+                    "The formatter settings editor does not open: it is a custom editor (a webview), and Diode has none by design — edit java.format.* in settings.json instead",
+                    "Documentation previews and the Change Signature dialog are webviews too, and do nothing",
+                    "Debugging, test running and the Java Projects view are not in this extension: they need the rest of the Extension Pack for Java, which Diode does not support",
+                    "The universal build needs JDK 21 or newer on your PATH or in JAVA_HOME; the platform builds bundle a JRE and need nothing"
+                ]
+            },
+            "latest": {
+                "version": "1.57.2026092608",
+                "engines": {
+                    "diode": ">=0.5.0",
+                    "vscode": "^1.77.0"
+                }
+            }
+        },
+        {
             "id": "test.sample-lang",
             "publisher": "test",
             "name": "sample-lang",
