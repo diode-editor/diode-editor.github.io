@@ -79,7 +79,15 @@ const ARTIFACT_HOSTS = new Set([
  */
 const SELF_HOST = "diode-editor.github.io";
 
-const MAX_ARTIFACT_BYTES = 64 * 1024 * 1024;
+/**
+ * Держим в лок-степе с `DEFAULT_MAX_ARTIFACT_BYTES` клиента
+ * (`platform/extensionManagement/node/httpRegistrySource.ts`): реестр не должен
+ * публиковать артефакт, который редактор откажется скачать. Клиент тянет артефакт
+ * потоком в файл, поэтому лимит тут — защита от неадеквата в записи, а не от
+ * расхода памяти; 256 МиБ берёт платформенные сборки с вшитым JRE (redhat.java —
+ * 132–139 МБ) с запасом на рост.
+ */
+const MAX_ARTIFACT_BYTES = 256 * 1024 * 1024;
 const FETCH_TIMEOUT_MS = 60_000;
 
 const SHA256_RE = /^[0-9a-f]{64}$/;
