@@ -1,0 +1,44 @@
+{
+    "schemaVersion": 1,
+    "id": "esbenp.prettier-vscode",
+    "publisher": "esbenp",
+    "name": "prettier-vscode",
+    "displayName": "Prettier - Code formatter",
+    "description": "Code formatter using prettier",
+    "kind": "proxy-openvsx",
+    "support": {
+        "level": "partial",
+        "works": [
+            "Format Document (Ctrl+K Ctrl+E) and Format Selection (Ctrl+K Ctrl+F) on every language Prettier supports",
+            "Markdown, JSON, YAML, CSS/LESS/SCSS and HTML — languages no language server formats in Diode",
+            "Format on save via editor.formatOnSave",
+            "Bundled Prettier, or the prettier from your project's node_modules when there is one",
+            ".prettierrc / .editorconfig are read, and re-read when you edit them",
+            "Status bar entry with the formatter state; its log is in Output → Prettier"
+        ],
+        "limits": [
+            "Prettier: Create Configuration File does nothing — it opens a folder picker, which Diode does not have yet",
+            "No way to choose between formatters: Diode has no editor.defaultFormatter, and on TypeScript/JavaScript Prettier wins over the built-in TypeScript formatter"
+        ]
+    },
+    "repository": "https://github.com/prettier/prettier-vscode",
+    "license": "MIT",
+    "homepage": "https://prettier.io",
+    "readme": "# Prettier - Code formatter\n\nFormats your code with [Prettier](https://prettier.io): Format Document (`Ctrl+K Ctrl+E`), Format Selection (`Ctrl+K Ctrl+F`), and format-on-save through `editor.formatOnSave`.\n\nThis is the formatter for the languages no language server covers in Diode — Markdown, JSON, YAML, CSS/LESS/SCSS, HTML — as well as for JavaScript and TypeScript.\n\nPrettier itself ships inside the extension, so it works with no setup. When your project has its own `prettier` in `node_modules`, that one is used instead, and `.prettierrc` / `.editorconfig` are picked up from the workspace.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n\n## What works in Diode\n\nFormatting end to end: the whole document or the selection, on every language Prettier supports, with configuration resolved the same way as in VS Code. The status bar shows the formatter state and `Prettier: Open Output` (or clicking the entry) shows what it did.\n\n## What does not\n\n`Prettier: Create Configuration File` opens a folder picker to choose where to write `.prettierrc` — Diode has no folder-picker dialog yet, so the command does nothing. Write the config file by hand instead.\n\nDiode has no `editor.defaultFormatter` and no \"Format Document With…\" picker, so when two extensions offer a formatter for the same language the first one registered wins. In practice that means Prettier formats TypeScript and JavaScript, not the built-in TypeScript server. If you want the TypeScript formatter back on those files, uninstall Prettier.\n",
+    "versions": [
+        {
+            "version": "12.4.0",
+            "engines": {
+                "vscode": "^1.101.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/esbenp/prettier-vscode/12.4.0/file/esbenp.prettier-vscode-12.4.0.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "fb730ea4306d09cdc0a3aaa9e9baae28058cc97a4fbfce8b056b377a0639a9fe",
+            "size": 3643663,
+            "publishedAt": "2026-03-16T19:14:43.319Z"
+        }
+    ]
+}
