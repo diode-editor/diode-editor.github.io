@@ -101,6 +101,35 @@
             }
         },
         {
+            "id": "esbenp.prettier-vscode",
+            "publisher": "esbenp",
+            "name": "prettier-vscode",
+            "displayName": "Prettier - Code formatter",
+            "description": "Code formatter using prettier",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Format Document (Ctrl+K Ctrl+E) and Format Selection (Ctrl+K Ctrl+F) on every language Prettier supports",
+                    "Markdown, JSON, YAML, CSS/LESS/SCSS and HTML — languages no language server formats in Diode",
+                    "Format on save via editor.formatOnSave",
+                    "Bundled Prettier, or the prettier from your project's node_modules when there is one",
+                    ".prettierrc / .editorconfig are read, and re-read when you edit them",
+                    "Status bar entry with the formatter state; its log is in Output → Prettier"
+                ],
+                "limits": [
+                    "Prettier: Create Configuration File does nothing — it opens a folder picker, which Diode does not have yet",
+                    "No way to choose between formatters: Diode has no editor.defaultFormatter, and on TypeScript/JavaScript Prettier wins over the built-in TypeScript formatter"
+                ]
+            },
+            "latest": {
+                "version": "12.4.0",
+                "engines": {
+                    "vscode": "^1.101.0"
+                }
+            }
+        },
+        {
             "id": "maptz.regionfolder",
             "publisher": "maptz",
             "name": "regionfolder",
