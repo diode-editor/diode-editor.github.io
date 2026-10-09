@@ -202,6 +202,36 @@
                     "vscode": "^1.0.0"
                 }
             }
+        },
+        {
+            "id": "tihonove.bazel-java-tihonove",
+            "publisher": "tihonove",
+            "name": "bazel-java-tihonove",
+            "displayName": "Bazel for Java (community fork, Bazel 9)",
+            "description": "Bazel support for Java Linting, Intellisense, formatting, refactoring and more... Fork of sfdc.bazel-vscode-java with Bazel 9 / bzlmod fixes.",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Bazel workspaces are imported by the Java language server: classpath between targets, diagnostics, completion and navigation across //packages",
+                    "Synchronize Projects with Bazel, Refresh Bazel Projects (after branch switch / pull), Update Classpath — from the command palette",
+                    "The Bazel Build Status terminal with the synchronization log (Java: Show Bazel Build Status)",
+                    "Language Support for Java by Red Hat is installed automatically as a dependency",
+                    ".bazelproject project views, BUILD / Starlark syntax highlighting, buildifier formatting"
+                ],
+                "limits": [
+                    "The Bazel Targets tree view is not shown: Diode does not render extension tree views yet",
+                    "Run targets from IntelliJ run configurations are not executed: there is no task runner (tasks.executeTask)",
+                    "Needs bazel (or bazelisk) on PATH and a Bazel 9 workspace with WORKSPACE or WORKSPACE.bazel present"
+                ]
+            },
+            "latest": {
+                "version": "1.4.6",
+                "engines": {
+                    "diode": ">=0.7.0",
+                    "vscode": "^1.80.0"
+                }
+            }
         }
     ]
 }
