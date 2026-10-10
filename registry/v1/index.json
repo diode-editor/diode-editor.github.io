@@ -168,7 +168,7 @@
                 ]
             },
             "latest": {
-                "version": "1.57.2026092608",
+                "version": "1.56.0",
                 "engines": {
                     "diode": ">=0.5.0",
                     "vscode": "^1.77.0"

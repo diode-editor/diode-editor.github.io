@@ -29,114 +29,114 @@
     "readme": "# Language Support for Java(TM) by Red Hat\n\nJava language support powered by Eclipse JDT Language Server: diagnostics, hover with Javadoc, completion, go to definition (including into library sources and the JDK), find all references, code actions and quick fixes, source generation (Override/Implement Methods, Generate Constructors, toString), and formatting. Maven and Gradle projects are imported by the server itself.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode. The platform-specific builds bundle a JRE, so on Linux, macOS and Windows you do not need to install a JDK yourself; the universal build is smaller but requires JDK 21 or newer on your PATH or in JAVA_HOME.\n\n## What works in Diode\n\nEverything the language server drives: diagnostics in the editor and the Problems panel, hover with Javadoc read from dependency jars, completion from the project and the JDK, F12 into your own code and into library sources (opened as a read-only virtual document), Find All References, the full jdt.ls code action menu with quick fixes applied, and the interactive source generators that ask you to pick methods. The server reports its state in the status bar.\n\n## What does not\n\nThe formatter settings editor is a custom editor — a webview — and Diode has none by design, so it never opens; edit the `java.format.*` settings in settings.json instead. The same applies to the documentation previews and the Change Signature dialog. Debugging, test running and the Java Projects view are not part of this extension at all: they live in the rest of the Extension Pack for Java, which Diode does not support.\n\n## Notes\n\nDiode ships one curated default for this extension: `java.jdt.ls.lombokSupport.enabled` is set to `false`. The Lombok javaagent that the extension enables by default breaks compilation inside JDT on current builds, replacing your diagnostics with an internal compiler error. You can override the default in your own settings.\n",
     "versions": [
         {
-            "version": "1.57.2026092608",
+            "version": "1.56.0",
             "engines": {
                 "diode": ">=0.5.0",
                 "vscode": "^1.77.0"
             },
             "artifact": {
                 "type": "url",
-                "url": "https://open-vsx.org/api/redhat/java/darwin-arm64/1.57.2026092608/file/redhat.java-1.57.2026092608@darwin-arm64.vsix",
+                "url": "https://open-vsx.org/api/redhat/java/darwin-arm64/1.56.0/file/redhat.java-1.56.0@darwin-arm64.vsix",
                 "origin": "openvsx"
             },
-            "sha256": "e0685a06e053ef30e1e527518f25eaf7a3dbad2cbcdd11958534a027768cb0d3",
+            "sha256": "0326b19b55d378dfdd11cc01a86eb6c90fcc42755c542f6261179be41d7e1812",
             "targetPlatform": "darwin-arm64",
-            "size": 133681345,
-            "publishedAt": "2026-09-26T08:20:46.832206Z"
+            "size": 128645601,
+            "publishedAt": "2026-09-03T12:27:16.171880Z"
         },
         {
-            "version": "1.57.2026092608",
+            "version": "1.56.0",
             "engines": {
                 "diode": ">=0.5.0",
                 "vscode": "^1.77.0"
             },
             "artifact": {
                 "type": "url",
-                "url": "https://open-vsx.org/api/redhat/java/darwin-x64/1.57.2026092608/file/redhat.java-1.57.2026092608@darwin-x64.vsix",
+                "url": "https://open-vsx.org/api/redhat/java/darwin-x64/1.56.0/file/redhat.java-1.56.0@darwin-x64.vsix",
                 "origin": "openvsx"
             },
-            "sha256": "c5d2177f736cee0d6be9a23b10fe822fc826fe79ab92833b871105ab281220d8",
+            "sha256": "08de8c954a3230f4823276baee066db1f9c1a283cd36b445f19ac7d90c4beffe",
             "targetPlatform": "darwin-x64",
-            "size": 134928373,
-            "publishedAt": "2026-09-26T08:20:54.158572Z"
+            "size": 129746881,
+            "publishedAt": "2026-09-03T12:27:21.535540Z"
         },
         {
-            "version": "1.57.2026092608",
+            "version": "1.56.0",
             "engines": {
                 "diode": ">=0.5.0",
                 "vscode": "^1.77.0"
             },
             "artifact": {
                 "type": "url",
-                "url": "https://open-vsx.org/api/redhat/java/linux-arm64/1.57.2026092608/file/redhat.java-1.57.2026092608@linux-arm64.vsix",
+                "url": "https://open-vsx.org/api/redhat/java/linux-arm64/1.56.0/file/redhat.java-1.56.0@linux-arm64.vsix",
                 "origin": "openvsx"
             },
-            "sha256": "e6fb9d4271a2c4e315b4f4d3314c5ca1566ba0e219a25cf874de2a35388e05f7",
+            "sha256": "d244c0d865214ce8df3e8ae55ad991cdb654386f4f994127f86caaf75eb74f64",
             "targetPlatform": "linux-arm64",
-            "size": 138120975,
-            "publishedAt": "2026-09-26T08:21:02.013322Z"
+            "size": 131936991,
+            "publishedAt": "2026-09-03T12:27:44.454475Z"
         },
         {
-            "version": "1.57.2026092608",
+            "version": "1.56.0",
             "engines": {
                 "diode": ">=0.5.0",
                 "vscode": "^1.77.0"
             },
             "artifact": {
                 "type": "url",
-                "url": "https://open-vsx.org/api/redhat/java/linux-x64/1.57.2026092608/file/redhat.java-1.57.2026092608@linux-x64.vsix",
+                "url": "https://open-vsx.org/api/redhat/java/linux-x64/1.56.0/file/redhat.java-1.56.0@linux-x64.vsix",
                 "origin": "openvsx"
             },
-            "sha256": "9e7a0da7c45fd10932088fa8fe5b8dfc354f165699c69128db54ce1e4774652c",
+            "sha256": "3365249637a81705690ea7e4dc4c8533bfad36b65e754ebb1c839524e208ad41",
             "targetPlatform": "linux-x64",
-            "size": 139029576,
-            "publishedAt": "2026-09-26T08:21:09.389343Z"
+            "size": 132416833,
+            "publishedAt": "2026-09-03T12:27:49.971773Z"
         },
         {
-            "version": "1.57.2026092608",
+            "version": "1.56.0",
             "engines": {
                 "diode": ">=0.5.0",
                 "vscode": "^1.77.0"
             },
             "artifact": {
                 "type": "url",
-                "url": "https://open-vsx.org/api/redhat/java/win32-arm64/1.57.2026092608/file/redhat.java-1.57.2026092608@win32-arm64.vsix",
+                "url": "https://open-vsx.org/api/redhat/java/win32-arm64/1.56.0/file/redhat.java-1.56.0@win32-arm64.vsix",
                 "origin": "openvsx"
             },
-            "sha256": "ec131c6d2d7c038d5c5e5f160677b5850b0d3f612780cf3b058c830d1f3ba018",
+            "sha256": "62d73d0081624318aba25fe6d7db75d172fa48b045c9397c8b8cbfad2d063bbf",
             "targetPlatform": "win32-arm64",
-            "size": 132318477,
-            "publishedAt": "2026-09-26T08:21:17.096490Z"
+            "size": 126162603,
+            "publishedAt": "2026-09-03T12:27:55.058881Z"
         },
         {
-            "version": "1.57.2026092608",
+            "version": "1.56.0",
             "engines": {
                 "diode": ">=0.5.0",
                 "vscode": "^1.77.0"
             },
             "artifact": {
                 "type": "url",
-                "url": "https://open-vsx.org/api/redhat/java/win32-x64/1.57.2026092608/file/redhat.java-1.57.2026092608@win32-x64.vsix",
+                "url": "https://open-vsx.org/api/redhat/java/win32-x64/1.56.0/file/redhat.java-1.56.0@win32-x64.vsix",
                 "origin": "openvsx"
             },
-            "sha256": "291274173334f90f3411fe5e6674943a8bfe7a422f544042aaad2b47e05a4032",
+            "sha256": "ed28f022c053f2bad1e516a81c0c7185a7e3aafa08707acd42b45e53e3a692c4",
             "targetPlatform": "win32-x64",
-            "size": 134933833,
-            "publishedAt": "2026-09-26T08:21:24.731184Z"
+            "size": 128544968,
+            "publishedAt": "2026-09-03T12:28:00.242229Z"
         },
         {
-            "version": "1.57.2026092608",
+            "version": "1.56.0",
             "engines": {
                 "vscode": "^1.77.0"
             },
             "artifact": {
                 "type": "url",
-                "url": "https://open-vsx.org/api/redhat/java/1.57.2026092608/file/redhat.java-1.57.2026092608.vsix",
+                "url": "https://open-vsx.org/api/redhat/java/1.56.0/file/redhat.java-1.56.0.vsix",
                 "origin": "openvsx"
             },
-            "sha256": "33536a4f9ca3d13484fa29160af6b5991ba57d0c65531e2ad0ef1471cd6510e4",
-            "size": 54383296,
-            "publishedAt": "2026-09-26T08:21:29.182307Z"
+            "sha256": "3c6a821d7612eb879fa40280b6c585342eec82d6b1b3e8dcfe4d0395e0624343",
+            "size": 53949678,
+            "publishedAt": "2026-09-03T12:28:03.168873Z"
         }
     ]
 }
