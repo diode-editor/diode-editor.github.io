@@ -53,6 +53,9 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Нужна база пуша (`github.event.before`) — от неё считаются новые версии.
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -60,8 +63,21 @@ jobs:
 
       - run: npm ci
 
-      # Прямые коммиты в main минуют проверку на PR — валидируем ещё раз здесь.
-      - run: node scripts/registry.mjs validate
+      # Прямые коммиты в main минуют проверку на PR — валидируем ещё раз здесь, со
+      # скачиванием версий, новых в этом пуше: без него pre-release (флаг виден
+      # только в манифесте артефакта) прошёл бы мимо PR прямым коммитом. Удаления
+      # здесь разрешены: снятие мейнтейнер решает на PR, а правку опубликованной
+      # версии проверка иммутабельности ловит и так.
+      - name: Validate
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            node scripts/registry.mjs validate --base "$BEFORE" --fetch --allow-removals
+          else
+            # Первый пуш или force-push: базы нет — проверяем все артефакты.
+            node scripts/registry.mjs validate --fetch
+          fi
 
       - run: node scripts/registry.mjs build
 

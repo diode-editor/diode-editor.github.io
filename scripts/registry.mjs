@@ -21,6 +21,7 @@ import * as crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import * as fs from "node:fs";
 import * as path from "node:path";
+import * as zlib from "node:zlib";
 
 import semver from "semver";
 
@@ -327,6 +328,10 @@ function validateVersion(value, index, file, errors) {
 
     if (!isNonEmptyString(value.version) || semver.valid(value.version) === null) {
         errors.push({ file, message: `${where}.version: not a valid semver version: ${JSON.stringify(value.version)}` });
+    } else if (semver.prerelease(value.version) !== null) {
+        // Видимая по номеру половина запрета pre-release; вторая — флаг в манифесте
+        // артефакта (checkVsixManifest), его по номеру не видно.
+        errors.push({ file, message: `${where}.version: pre-release versions are not published: ${value.version}` });
     }
     validateEngines(value.engines, where, file, errors);
     validateArtifact(value.artifact, where, file, errors);
@@ -468,8 +473,13 @@ function gitListSources(ref) {
  * неизвестные поля и замаскировал бы правку. База берётся из git, а не из
  * опубликованного дерева, — в ветке PR оно устаревшее и пропустило бы правку
  * версии, опубликованной после точки ветвления.
+ *
+ * Удалённые версии не отвергаются сразу, а возвращаются: снять pre-release,
+ * просочившийся в реестр, можно и без `--allow-removals`, но это решает
+ * {@link checkRemovals} по байтам артефакта.
  */
 function checkImmutability(base, allowRemovals, errors) {
+    const removed = [];
     for (const file of gitListSources(base)) {
         const baseText = gitShow(base, file);
         if (baseText === undefined) continue;
@@ -499,12 +509,8 @@ function checkImmutability(base, allowRemovals, errors) {
             if (!isRecord(baseVersion) || !isNonEmptyString(baseVersion.version)) continue;
             const head = headByVersion.get(versionKey(baseVersion));
             if (head === undefined) {
-                if (!allowRemovals) {
-                    errors.push({
-                        file,
-                        message: `version ${versionKey(baseVersion)} removed (published versions are immutable)`,
-                    });
-                }
+                // Решение откладывается до скачивания: снятие pre-release разрешено (checkRemovals).
+                if (!allowRemovals) removed.push({ file, version: baseVersion });
                 continue;
             }
             if (canonicalJson(head) !== canonicalJson(baseVersion)) {
@@ -513,6 +519,43 @@ function checkImmutability(base, allowRemovals, errors) {
                     message: `version ${versionKey(baseVersion)} was modified (published versions are immutable; add a new version instead)`,
                 });
             }
+        }
+    }
+    return removed;
+}
+
+/**
+ * Удалённая опубликованная версия допустима без `--allow-removals`, только если
+ * её артефакт — pre-release: такой версии в реестре быть не должно было, и её
+ * снятие — починка, а не нарушение иммутабельности. Слову PR не верим — это
+ * проверяется скачиванием, поэтому без `--fetch` любое удаление фатально.
+ */
+async function checkRemovals(removed, doFetch, errors) {
+    for (const { file, version } of removed) {
+        const key = versionKey(version);
+        const message = `version ${key} removed (published versions are immutable)`;
+        if (!doFetch) {
+            errors.push({ file, message: `${message}; a pre-release build may be removed, which --fetch verifies` });
+            continue;
+        }
+        const where = `removed version ${key}`;
+        const buffer = await downloadArtifact(version, file, where, errors);
+        if (buffer === undefined) continue;
+        if (crypto.createHash("sha256").update(buffer).digest("hex") !== version.sha256) {
+            errors.push({ file, message: `${message}; its artifact no longer matches the pinned sha256` });
+            continue;
+        }
+        let preRelease;
+        try {
+            preRelease = isPreReleaseVsix(buffer);
+        } catch (error) {
+            errors.push({ file, message: `${where}: artifact is not a readable .vsix: ${error.message}` });
+            continue;
+        }
+        if (preRelease) {
+            console.log(`${file}: ${key} removed — a pre-release build, removal allowed`);
+        } else {
+            errors.push({ file, message: `${message} (not a pre-release; use --allow-removals if intentional)` });
         }
     }
 }
@@ -554,7 +597,182 @@ async function fetchArtifact(url, file, where, errors) {
     return buffer;
 }
 
-/** Сверяет sha256 (и `size`, если заявлен) с тем, что реально лежит по URL. */
+// --- манифест артефакта ----------------------------------------------------
+
+/**
+ * Достаёт один файл из zip-архива в памяти; нет такого файла — `undefined`,
+ * битый архив — исключение. Свой минимальный разбор вместо зависимости: нужен
+ * ровно один файл, а реестр держит зависимости на `semver` (см. шапку). Zip64
+ * поддержан: платформенные vsix со вшитым JRE подходят к его границам.
+ */
+function readZipEntry(buffer, name) {
+    const EOCD_SIG = 0x06054b50;
+    const ZIP64_LOCATOR_SIG = 0x07064b50;
+    const ZIP64_EOCD_SIG = 0x06064b50;
+    const CENTRAL_SIG = 0x02014b50;
+    const LOCAL_SIG = 0x04034b50;
+
+    // Конец центрального каталога — в последних 22 + 65535 (комментарий) байтах.
+    let eocd = -1;
+    for (let at = buffer.length - 22; at >= Math.max(0, buffer.length - 22 - 0xffff); at--) {
+        if (buffer.readUInt32LE(at) === EOCD_SIG) {
+            eocd = at;
+            break;
+        }
+    }
+    if (eocd === -1) throw new Error("not a zip archive (no end of central directory)");
+
+    let count = buffer.readUInt16LE(eocd + 10);
+    let offset = buffer.readUInt32LE(eocd + 16);
+    if ((count === 0xffff || offset === 0xffffffff) && eocd >= 20 && buffer.readUInt32LE(eocd - 20) === ZIP64_LOCATOR_SIG) {
+        const zip64 = Number(buffer.readBigUInt64LE(eocd - 20 + 8));
+        if (buffer.readUInt32LE(zip64) !== ZIP64_EOCD_SIG) throw new Error("broken zip64 end of central directory");
+        count = Number(buffer.readBigUInt64LE(zip64 + 32));
+        offset = Number(buffer.readBigUInt64LE(zip64 + 48));
+    }
+
+    for (let i = 0; i < count; i++) {
+        if (buffer.readUInt32LE(offset) !== CENTRAL_SIG) throw new Error("broken zip central directory");
+        const method = buffer.readUInt16LE(offset + 10);
+        let compressedSize = buffer.readUInt32LE(offset + 20);
+        const nameLength = buffer.readUInt16LE(offset + 28);
+        const extraLength = buffer.readUInt16LE(offset + 30);
+        const commentLength = buffer.readUInt16LE(offset + 32);
+        let localOffset = buffer.readUInt32LE(offset + 42);
+        const entryName = buffer.toString("utf8", offset + 46, offset + 46 + nameLength);
+        if (entryName === name) {
+            // Zip64 extra (0x0001): 64-битные поля идут в фиксированном порядке и
+            // присутствуют, только если 32-битное поле забито 0xffffffff.
+            const extraStart = offset + 46 + nameLength;
+            for (let at = extraStart; at + 4 <= extraStart + extraLength; ) {
+                const id = buffer.readUInt16LE(at);
+                const size = buffer.readUInt16LE(at + 2);
+                if (id === 0x0001) {
+                    let field = at + 4;
+                    if (buffer.readUInt32LE(offset + 24) === 0xffffffff) field += 8;
+                    if (compressedSize === 0xffffffff) {
+                        compressedSize = Number(buffer.readBigUInt64LE(field));
+                        field += 8;
+                    }
+                    if (localOffset === 0xffffffff) localOffset = Number(buffer.readBigUInt64LE(field));
+                }
+                at += 4 + size;
+            }
+            if (buffer.readUInt32LE(localOffset) !== LOCAL_SIG) throw new Error(`broken zip local header for ${name}`);
+            const dataStart = localOffset + 30 + buffer.readUInt16LE(localOffset + 26) + buffer.readUInt16LE(localOffset + 28);
+            const data = buffer.subarray(dataStart, dataStart + compressedSize);
+            if (method === 0) return data;
+            if (method === 8) return zlib.inflateRawSync(data);
+            throw new Error(`unsupported zip compression method ${method} for ${name}`);
+        }
+        offset += 46 + nameLength + extraLength + commentLength;
+    }
+    return undefined;
+}
+
+/** Атрибуты первого тега `<tag …>` в XML; тега нет — `undefined`. Порядок атрибутов не важен. */
+function xmlTagAttributes(xml, tag) {
+    const match = new RegExp(`<${tag}\\s([^>]*?)/?>`).exec(xml);
+    if (match === null) return undefined;
+    const attributes = {};
+    for (const [, key, value] of match[1].matchAll(/([\w.:-]+)\s*=\s*"([^"]*)"/g)) attributes[key] = value;
+    return attributes;
+}
+
+/** Значения `<Property Id="…" Value="…"/>` манифеста по Id. */
+function xmlProperties(xml) {
+    const properties = new Map();
+    for (const [tag] of xml.matchAll(/<Property\s[^>]*>/g)) {
+        const attributes = xmlTagAttributes(tag, "Property");
+        if (attributes?.Id !== undefined) properties.set(attributes.Id, attributes.Value);
+    }
+    return properties;
+}
+
+/** Флаг, которым `vsce package --pre-release` помечает сборку; его же читают VS Code и Open VSX. */
+const PRE_RELEASE_PROPERTY = "Microsoft.VisualStudio.Code.PreRelease";
+
+function isPreReleaseManifest(xml) {
+    return xmlProperties(xml).get(PRE_RELEASE_PROPERTY)?.toLowerCase() === "true";
+}
+
+/** Помечен ли vsix как pre-release; битый архив — исключение, нет манифеста — не помечен. */
+function isPreReleaseVsix(buffer) {
+    const xml = readZipEntry(buffer, "extension.vsixmanifest")?.toString("utf8");
+    return xml !== undefined && isPreReleaseManifest(xml);
+}
+
+/**
+ * Сверяет запись реестра с манифестом самого артефакта (`extension.vsixmanifest`).
+ *
+ * Главное здесь — запрет pre-release. Магазин курируемый, в нём только релизы:
+ * pre-release-сборку автор сам не считает готовой, а клиент выберет её как
+ * максимальную по semver и поставит всем. По номеру её не распознать: у
+ * redhat.java pre-release-канал — это `1.57.2026092608`, валидный релизный
+ * semver и больше последнего релиза `1.56.0`. Так эта сборка в магазин и попала.
+ * Надёжный признак один — флаг в манифесте, поэтому проверяем байты, а не номер
+ * или ответ API Open VSX (свои артефакты и GitHub Releases через него не идут).
+ *
+ * Заодно сверяются идентичность, версия и таргет: запись, которая врёт о версии
+ * артефакта, обходит запрет, просто назвав pre-release другим номером. Id и
+ * версия берутся из `extension/package.json` — его и читает Diode при установке.
+ * Из vsixmanifest берутся только флаг и таргет: наш упаковщик синтетических
+ * расширений пишет туда пустой `<Identity>`.
+ */
+function checkVsixManifest(buffer, meta, version, file, where, errors) {
+    let xml;
+    let packageJson;
+    try {
+        xml = readZipEntry(buffer, "extension.vsixmanifest")?.toString("utf8");
+        packageJson = readZipEntry(buffer, "extension/package.json")?.toString("utf8");
+    } catch (error) {
+        errors.push({ file, message: `${where}: artifact is not a readable .vsix: ${error.message}` });
+        return;
+    }
+    if (xml === undefined || packageJson === undefined) {
+        errors.push({ file, message: `${where}: artifact has no extension.vsixmanifest or extension/package.json` });
+        return;
+    }
+    let pkg;
+    try {
+        pkg = JSON.parse(packageJson.charCodeAt(0) === 0xfeff ? packageJson.slice(1) : packageJson);
+    } catch (error) {
+        errors.push({ file, message: `${where}: artifact extension/package.json is malformed: ${error.message}` });
+        return;
+    }
+    const packageId = `${pkg.publisher}.${pkg.name}`;
+    if (packageId !== meta.id) {
+        errors.push({ file, message: `${where}: artifact is ${packageId}, not ${meta.id}` });
+    }
+    if (pkg.version !== version.version) {
+        errors.push({ file, message: `${where}: artifact version is ${pkg.version}, not ${version.version}` });
+    }
+    // Universal-артефакт таргета в манифесте не несёт (или несёт "universal").
+    const identity = xmlTagAttributes(xml, "Identity") ?? {};
+    const manifestTarget = identity.TargetPlatform === "universal" ? undefined : identity.TargetPlatform;
+    if (manifestTarget !== version.targetPlatform) {
+        errors.push({
+            file,
+            message: `${where}: artifact targetPlatform is ${manifestTarget ?? "universal"}, not ${version.targetPlatform ?? "universal"}`,
+        });
+    }
+    if (isPreReleaseManifest(xml)) {
+        errors.push({
+            file,
+            message: `${where}: artifact is a pre-release build (${PRE_RELEASE_PROPERTY}); the registry publishes releases only`,
+        });
+    }
+}
+
+/** Байты артефакта записи версии: свой — из рабочего дерева, чужой — по сети. */
+async function downloadArtifact(version, file, where, errors) {
+    const url = new URL(version.artifact.url);
+    return url.host === SELF_HOST
+        ? readSelfArtifact(url, file, where, errors)
+        : await fetchArtifact(version.artifact.url, file, where, errors);
+}
+
+/** Сверяет sha256 (и `size`, если заявлен) с тем, что реально лежит по URL, и манифест артефакта с записью. */
 async function checkArtifacts(metas, publishedVersions, errors) {
     for (const meta of metas) {
         for (const [index, version] of meta.versions.entries()) {
@@ -562,11 +780,7 @@ async function checkArtifacts(metas, publishedVersions, errors) {
             if (publishedVersions.has(key)) continue;
             const where = `versions[${index}] (${versionKey(version)})`;
             const file = path.posix.join(SRC_DIR, `${meta.id}.json`);
-            const url = new URL(version.artifact.url);
-            const buffer =
-                url.host === SELF_HOST
-                    ? readSelfArtifact(url, file, where, errors)
-                    : await fetchArtifact(version.artifact.url, file, where, errors);
+            const buffer = await downloadArtifact(version, file, where, errors);
             if (buffer === undefined) continue;
             const actual = crypto.createHash("sha256").update(buffer).digest("hex");
             if (actual !== version.sha256) {
@@ -575,6 +789,7 @@ async function checkArtifacts(metas, publishedVersions, errors) {
             if (version.size !== undefined && version.size !== buffer.byteLength) {
                 errors.push({ file, message: `${where}: size mismatch — declared ${version.size}, actual ${buffer.byteLength}` });
             }
+            checkVsixManifest(buffer, meta, version, file, where, errors);
         }
     }
 }
@@ -603,9 +818,11 @@ function publishedVersionsAt(base) {
 // --- сборка ----------------------------------------------------------------
 
 /**
- * Максимум по semver, prerelease включительно — ровно та же политика, что в
- * `resolveCompatibleVersion.ts` у клиента. Расхождение политик между индексом и
- * тем, что реально поставится, хуже, чем prerelease в списке.
+ * Максимум по semver — ровно та же политика, что в `resolveCompatibleVersion.ts`
+ * у клиента. Расхождение политик между индексом и тем, что реально поставится,
+ * хуже любой фильтрации здесь; pre-release в реестр не пускает валидация
+ * (`validateVersion` по номеру, `checkVsixManifest` по артефакту), поэтому
+ * выбирать между релизом и pre-release не приходится.
  */
 function pickLatest(versions) {
     let best = versions[0];
@@ -700,12 +917,13 @@ async function runValidate(base, doFetch, allowRemovals) {
     const errors = [];
     const metas = loadAll(errors);
 
-    if (base !== undefined) {
-        checkImmutability(base, allowRemovals, errors);
-    }
-    if (doFetch && errors.length === 0) {
+    const removed = base === undefined ? [] : checkImmutability(base, allowRemovals, errors);
+    if (!doFetch) {
+        await checkRemovals(removed, false, errors);
+    } else if (errors.length === 0) {
         const published = base === undefined ? new Set() : publishedVersionsAt(base);
         await checkArtifacts(metas, published, errors);
+        await checkRemovals(removed, true, errors);
     }
 
     if (errors.length > 0) {
