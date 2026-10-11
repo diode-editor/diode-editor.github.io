@@ -130,6 +130,33 @@
             }
         },
         {
+            "id": "hashicorp.terraform",
+            "publisher": "hashicorp",
+            "name": "terraform",
+            "displayName": "HashiCorp Terraform",
+            "description": "Syntax highlighting and autocompletion for Terraform",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Syntax highlighting for Terraform, tfvars, Terraform Stacks and test files",
+                    "Hover, completion with provider schemas, go to definition (F12) and diagnostics in Problems from the bundled terraform-ls"
+                ],
+                "limits": [
+                    "HCP Terraform, Providers and Module Calls views do not render yet: Diode has no extension tree views so far",
+                    "Sign-in to HCP Terraform is not supported yet",
+                    "Formatting and the init/validate/plan commands need the terraform CLI on PATH, as in VS Code"
+                ]
+            },
+            "latest": {
+                "version": "2.40.0",
+                "engines": {
+                    "diode": ">=0.7.3",
+                    "vscode": "^1.92.2"
+                }
+            }
+        },
+        {
             "id": "maptz.regionfolder",
             "publisher": "maptz",
             "name": "regionfolder",

@@ -1,0 +1,123 @@
+{
+    "schemaVersion": 1,
+    "id": "hashicorp.terraform",
+    "publisher": "hashicorp",
+    "name": "terraform",
+    "displayName": "HashiCorp Terraform",
+    "description": "Syntax highlighting and autocompletion for Terraform",
+    "kind": "proxy-openvsx",
+    "support": {
+        "level": "partial",
+        "works": [
+            "Syntax highlighting for Terraform, tfvars, Terraform Stacks and test files",
+            "Hover, completion with provider schemas, go to definition (F12) and diagnostics in Problems from the bundled terraform-ls"
+        ],
+        "limits": [
+            "HCP Terraform, Providers and Module Calls views do not render yet: Diode has no extension tree views so far",
+            "Sign-in to HCP Terraform is not supported yet",
+            "Formatting and the init/validate/plan commands need the terraform CLI on PATH, as in VS Code"
+        ]
+    },
+    "repository": "https://github.com/hashicorp/vscode-terraform",
+    "license": "MPL-2.0",
+    "homepage": "https://github.com/hashicorp/vscode-terraform#readme",
+    "readme": "# HashiCorp Terraform\n\nTerraform language support powered by the bundled `terraform-ls` language server: syntax highlighting, hover, completion with provider schemas, go to definition and diagnostics for `.tf` and `.tfvars` files.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode. The extension ships platform-specific builds with the native `terraform-ls` binary inside; the registry entry carries one artifact per platform.\n",
+    "versions": [
+        {
+            "version": "2.40.0",
+            "engines": {
+                "diode": ">=0.7.3",
+                "vscode": "^1.92.2"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/hashicorp/terraform/linux-x64/2.40.0/file/hashicorp.terraform-2.40.0@linux-x64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "5da5c61b919724b94fedaa74caaefa9bb74d73558c8952ced62b895569f89ca2",
+            "targetPlatform": "linux-x64",
+            "size": 31502897,
+            "publishedAt": "2026-07-23T11:46:35.867Z"
+        },
+        {
+            "version": "2.40.0",
+            "engines": {
+                "diode": ">=0.7.3",
+                "vscode": "^1.92.2"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/hashicorp/terraform/linux-arm64/2.40.0/file/hashicorp.terraform-2.40.0@linux-arm64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "1a901c70e6dae919867f78dd754457688d279c36d15e7703e1a4129a6856e679",
+            "targetPlatform": "linux-arm64",
+            "size": 30802426,
+            "publishedAt": "2026-07-23T11:46:34.779Z"
+        },
+        {
+            "version": "2.40.0",
+            "engines": {
+                "diode": ">=0.7.3",
+                "vscode": "^1.92.2"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/hashicorp/terraform/darwin-x64/2.40.0/file/hashicorp.terraform-2.40.0@darwin-x64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "c3af1f8b8c6d43dce63330af5e6cfa0c329e479cf68130ed104707e0d96e9a13",
+            "targetPlatform": "darwin-x64",
+            "size": 31959891,
+            "publishedAt": "2026-07-23T11:46:35.410Z"
+        },
+        {
+            "version": "2.40.0",
+            "engines": {
+                "diode": ">=0.7.3",
+                "vscode": "^1.92.2"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/hashicorp/terraform/darwin-arm64/2.40.0/file/hashicorp.terraform-2.40.0@darwin-arm64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "52cc8a3bbcd3483a2fa6ba0f51a2167ea989c488d97cd4f085a42e1f6c48cf21",
+            "targetPlatform": "darwin-arm64",
+            "size": 31240622,
+            "publishedAt": "2026-07-23T11:46:36.120Z"
+        },
+        {
+            "version": "2.40.0",
+            "engines": {
+                "diode": ">=0.7.3",
+                "vscode": "^1.92.2"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/hashicorp/terraform/win32-x64/2.40.0/file/hashicorp.terraform-2.40.0@win32-x64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "3e54fc280cf23f4a3c14f6463ef77b2fa1d71494ed2f500d16c71358ad79cabf",
+            "targetPlatform": "win32-x64",
+            "size": 31708797,
+            "publishedAt": "2026-07-23T11:46:35.039Z"
+        },
+        {
+            "version": "2.40.0",
+            "engines": {
+                "diode": ">=0.7.3",
+                "vscode": "^1.92.2"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/hashicorp/terraform/win32-arm64/2.40.0/file/hashicorp.terraform-2.40.0@win32-arm64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "09d4e8bed73f161bcd9323502da07fa6e213fa36b08ed6e75510c2f6a654b83e",
+            "targetPlatform": "win32-arm64",
+            "size": 30900226,
+            "publishedAt": "2026-07-23T11:46:35.038Z"
+        }
+    ]
+}
