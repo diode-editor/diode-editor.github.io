@@ -1,0 +1,43 @@
+{
+    "schemaVersion": 1,
+    "id": "bufbuild.vscode-buf",
+    "publisher": "bufbuild",
+    "name": "vscode-buf",
+    "displayName": "Buf",
+    "description": "Visual Studio Code support for Buf",
+    "kind": "proxy-openvsx",
+    "support": {
+        "level": "partial",
+        "works": [
+            "Protocol Buffers syntax highlighting for .proto files and buf.yaml / buf.gen.yaml",
+            "Diagnostics in Problems, hover with doc comments, go to definition (F12), completion and formatting from the Buf language server",
+            "Well-known types (google/protobuf/*.proto) resolve without extra setup",
+            "The buf binary is downloaded automatically on first start when it is not on PATH; status bar shows the Buf version",
+            "Buf: Init, Buf: Build and Start/Stop Buf Language Server from the command palette; logs in Output → Buf"
+        ],
+        "limits": [
+            "Buf: List available lint rules and List available breaking change detection rules fail: they open the list as a new untitled document, which Diode cannot create from an extension yet"
+        ]
+    },
+    "repository": "https://github.com/bufbuild/vscode-buf",
+    "license": "Apache-2.0",
+    "homepage": "https://buf.build",
+    "readme": "# Buf\n\nProtocol Buffers support powered by [Buf](https://buf.build) and its language server: syntax highlighting, diagnostics, hover, go to definition, completion and formatting for `.proto` files, plus `buf` commands from the command palette.\n\nThe extension needs the `buf` CLI. When it is not on your `PATH`, the extension downloads the matching release from GitHub into its own storage on first start, so it works with no setup. To use a specific install, set `buf.commandLine.path`.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n\n## What works in Diode\n\nThe language server end to end: problems as you type, hover with the message's doc comment, F12 to the declaration, completion and Format Document. Imports of the well-known types (`google/protobuf/timestamp.proto` and friends) resolve out of the box. The status bar shows the Buf version, and `Buf: Show Buf Output` shows what the extension did.\n\nCommands verified in Diode: `Buf: Init`, `Buf: Build`, `Buf: Start/Stop Buf Language Server`.\n\n## What does not\n\n`Buf: List available lint rules` and `Buf: List available breaking change detection rules` show their output in a new untitled document. Diode cannot create such a document from an extension yet, so both commands only log an error to Output → Buf. Run `buf config ls-lint-rules` / `buf config ls-breaking-rules` in the terminal instead.\n",
+    "versions": [
+        {
+            "version": "0.8.19",
+            "engines": {
+                "diode": ">=0.8.2",
+                "vscode": "^1.95.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/bufbuild/vscode-buf/0.8.19/file/bufbuild.vscode-buf-0.8.19.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "4a55ad43ee2add37d727ac9d476fe6dfd99a67ff0a29b81749812c58e2f27a70",
+            "size": 3435887,
+            "publishedAt": "2026-05-26T15:42:04.779Z"
+        }
+    ]
+}
