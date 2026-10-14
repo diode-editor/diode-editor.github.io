@@ -58,6 +58,34 @@
             }
         },
         {
+            "id": "bufbuild.vscode-buf",
+            "publisher": "bufbuild",
+            "name": "vscode-buf",
+            "displayName": "Buf",
+            "description": "Visual Studio Code support for Buf",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Protocol Buffers syntax highlighting for .proto files and buf.yaml / buf.gen.yaml",
+                    "Diagnostics in Problems, hover with doc comments, go to definition (F12), completion and formatting from the Buf language server",
+                    "Well-known types (google/protobuf/*.proto) resolve without extra setup",
+                    "The buf binary is downloaded automatically on first start when it is not on PATH; status bar shows the Buf version",
+                    "Buf: Init, Buf: Build and Start/Stop Buf Language Server from the command palette; logs in Output → Buf"
+                ],
+                "limits": [
+                    "Buf: List available lint rules and List available breaking change detection rules fail: they open the list as a new untitled document, which Diode cannot create from an extension yet"
+                ]
+            },
+            "latest": {
+                "version": "0.8.19",
+                "engines": {
+                    "diode": ">=0.8.2",
+                    "vscode": "^1.95.0"
+                }
+            }
+        },
+        {
             "id": "charliermarsh.ruff",
             "publisher": "charliermarsh",
             "name": "ruff",
