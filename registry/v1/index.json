@@ -15,12 +15,12 @@
                     "claude connects to Diode (/ide): it sees the selected text and the file you are in",
                     "Ctrl+Alt+K inserts an @-mention of the current file and selected lines into the claude prompt",
                     "claude reads the editor's diagnostics: errors and warnings from your language servers",
-                    "claude started by hand in any Diode terminal connects too: the extension sets CLAUDE_CODE_SSE_PORT in every terminal"
+                    "claude started by hand in any Diode terminal connects too: the extension sets CLAUDE_CODE_SSE_PORT in every terminal",
+                    "Proposed edits open as a diff tab: accept with ✓ (or edit the proposal and save), reject with ↺ or by closing the tab"
                 ],
                 "limits": [
                     "Needs the claude CLI on your PATH and your own Claude account: in terminal mode the extension runs claude from PATH, and you sign in inside claude",
                     "The chat panel does not open: it is a webview, and Diode has none by design. Commands that need it do nothing: Open in New Tab, Open in New Window, Open in Side Bar, and Alt+K (use Ctrl+Alt+K)",
-                    "Proposed edits are not shown as a diff tab to accept or reject: answer the permission prompt inside claude instead",
                     "Ctrl+Esc works only in terminals with the kitty keyboard protocol; elsewhere use the status bar item or the command palette"
                 ]
             },
