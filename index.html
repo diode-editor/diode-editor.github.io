@@ -343,7 +343,8 @@
     <div class="footer-meta">
       <a href="https://github.com/diode-editor/diode/blob/main/LICENSE">GPL-3.0</a>
       <a href="https://github.com/diode-editor">github</a>
-      <a class="version" href="https://github.com/diode-editor/diode/releases/latest">releases</a>
+      <!-- версию вписывает релиз diode (job site в release.yml через scripts/set-diode-version.mjs), руками не правится -->
+      <a class="version" href="https://github.com/diode-editor/diode/releases/latest">0.9.6</a>
     </div>
   </div>
 </footer>
@@ -360,29 +361,6 @@
   };
   toggle.addEventListener("click", () => apply(modes[(modes.indexOf(current()) + 1) % modes.length]));
   toggle.textContent = "theme: " + current();
-
-  /* версия в футере — последний релиз diode из GitHub API, руками не вписывается.
-     Без токена API даёт 60 запросов в час на IP, поэтому ответ живёт час в localStorage.
-     Не ответил и кэша нет — остаётся нейтральное «releases», ссылка ведёт туда же */
-  (async () => {
-    const link = document.querySelector(".site-footer .version");
-    const KEY = "latest-release";
-    const TTL = 60 * 60 * 1000;
-    let cached = null;
-    try { cached = JSON.parse(localStorage.getItem(KEY)); } catch {}
-    if (cached?.tag) link.textContent = cached.tag;
-    if (cached?.tag && Date.now() - cached.at < TTL) return;
-    try {
-      const res = await fetch("https://api.github.com/repos/diode-editor/diode/releases/latest",
-        { headers: { Accept: "application/vnd.github+json" } });
-      if (!res.ok) return;
-      const { tag_name: name } = await res.json();
-      if (typeof name !== "string" || !name) return;
-      const tag = name.replace(/^v/, "");
-      link.textContent = tag;
-      try { localStorage.setItem(KEY, JSON.stringify({ tag, at: Date.now() })); } catch {}
-    } catch {}
-  })();
 </script>
 </body>
 </html>
