@@ -3,13 +3,14 @@
 Сайт Diode и **курируемый реестр расширений**, который раздаётся отсюда же через GitHub Pages.
 
 ```
-index.html                          сайт
+index.html                          сайт; версию diode в футере вписывает релиз diode
 benchmarks/index.html               страница бенчмарков: читает ветку bench-data репозитория diode
 extensions/<publisher>.<name>.json  ИСТОЧНИК ПРАВДЫ реестра — PR-ы сюда
 artifacts/<id>-<version>.vsix       байты ТОЛЬКО наших собственных расширений
 registry/v1/index.json              СГЕНЕРИРОВАНО — руками не трогать
 registry/v1/meta/<id>.json          СГЕНЕРИРОВАНО — руками не трогать
 scripts/registry.mjs                валидатор и сборщик
+scripts/set-diode-version.mjs       версия diode в футере index.html (зовёт job site в release.yml diode)
 ```
 
 Публичные адреса:
