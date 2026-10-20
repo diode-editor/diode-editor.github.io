@@ -1,0 +1,127 @@
+{
+    "schemaVersion": 1,
+    "id": "Anthropic.claude-code",
+    "publisher": "Anthropic",
+    "name": "claude-code",
+    "displayName": "Claude Code for VS Code",
+    "description": "Claude Code for VS Code: Harness the power of Claude Code without leaving your IDE",
+    "kind": "proxy-openvsx",
+    "support": {
+        "level": "partial",
+        "works": [
+            "Claude Code in the terminal: the ✻ Claude Code status bar item and Claude Code: Open in Terminal start claude in a terminal tab to the right of the editor",
+            "claude connects to Diode (/ide): it sees the selected text and the file you are in",
+            "Ctrl+Alt+K inserts an @-mention of the current file and selected lines into the claude prompt",
+            "claude reads the editor's diagnostics: errors and warnings from your language servers",
+            "claude started by hand in any Diode terminal connects too: the extension sets CLAUDE_CODE_SSE_PORT in every terminal"
+        ],
+        "limits": [
+            "Needs the claude CLI on your PATH and your own Claude account: in terminal mode the extension runs claude from PATH, and you sign in inside claude",
+            "The chat panel does not open: it is a webview, and Diode has none by design. Commands that need it do nothing: Open in New Tab, Open in New Window, Open in Side Bar, and Alt+K (use Ctrl+Alt+K)",
+            "Proposed edits are not shown as a diff tab to accept or reject: answer the permission prompt inside claude instead",
+            "Ctrl+Esc works only in terminals with the kitty keyboard protocol; elsewhere use the status bar item or the command palette"
+        ]
+    },
+    "repository": "https://github.com/anthropics/claude-code",
+    "license": "© Anthropic PBC. All rights reserved. Use is subject to the Legal Agreements outlined here: https://code.claude.com/docs/en/legal-and-compliance.",
+    "homepage": "https://code.claude.com/docs/en/vs-code",
+    "readme": "# Claude Code\n\nAnthropic's Claude Code, connected to your editor. In Diode the extension runs in terminal mode: `claude` opens in a terminal tab next to your code, and the extension hosts the IDE connection that `claude` uses to see what you are looking at.\n\nYou need the `claude` CLI installed and on your `PATH` (see https://code.claude.com/docs/en/setup) and your own Claude account — you sign in inside `claude`. Diode neither resells nor proxies the service.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n\n## What works in Diode\n\nClick **✻ Claude Code** in the status bar, or run `Claude Code: Open in Terminal`, and `claude` starts in a terminal tab to the right of the editor. `/ide` in `claude` shows Diode as connected. From then on `claude` knows the file you are in and the text you select, `Ctrl+Alt+K` inserts an @-mention of the file and the selected lines into the prompt, and `claude` can read the editor's diagnostics — the errors and warnings your language servers report. A `claude` you start by hand in any Diode terminal connects the same way.\n\n## What does not\n\nThe chat panel is a webview, and Diode does not implement webviews: `Open in New Tab`, `Open in New Window`, `Open in Side Bar` and `Alt+K` do nothing — use the terminal and `Ctrl+Alt+K`. Proposed edits are not opened as a diff tab to accept or reject yet; answer the permission prompt inside `claude`. `Ctrl+Esc` reaches Diode only in terminals that speak the kitty keyboard protocol; elsewhere use the status bar item or the command palette.\n",
+    "versions": [
+        {
+            "version": "2.1.304",
+            "engines": {
+                "diode": ">=0.9.5",
+                "vscode": "^1.94.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/Anthropic/claude-code/darwin-arm64/2.1.304/file/Anthropic.claude-code-2.1.304@darwin-arm64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "5786f03ae731f42e6dfa756188a7c9b56ea64cfe3a992e25e35289f8cde537a9",
+            "targetPlatform": "darwin-arm64",
+            "size": 125077706,
+            "publishedAt": "2026-10-19T21:37:15.959065Z"
+        },
+        {
+            "version": "2.1.304",
+            "engines": {
+                "diode": ">=0.9.5",
+                "vscode": "^1.94.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/Anthropic/claude-code/darwin-x64/2.1.304/file/Anthropic.claude-code-2.1.304@darwin-x64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "d4a7d1998c20d5175cd4cff3bab1ec13762b3df59bc4c8981a4409803727a640",
+            "targetPlatform": "darwin-x64",
+            "size": 130192471,
+            "publishedAt": "2026-10-19T21:37:24.002656Z"
+        },
+        {
+            "version": "2.1.304",
+            "engines": {
+                "diode": ">=0.9.5",
+                "vscode": "^1.94.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/Anthropic/claude-code/linux-arm64/2.1.304/file/Anthropic.claude-code-2.1.304@linux-arm64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "7b469362d6f8537aaf946f748c46e22c3e921a8bb0f13e78c14ae5a7795878ed",
+            "targetPlatform": "linux-arm64",
+            "size": 135515575,
+            "publishedAt": "2026-10-19T21:37:32.120783Z"
+        },
+        {
+            "version": "2.1.304",
+            "engines": {
+                "diode": ">=0.9.5",
+                "vscode": "^1.94.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/Anthropic/claude-code/linux-x64/2.1.304/file/Anthropic.claude-code-2.1.304@linux-x64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "24c4ff0ccb0e59ed47d13637459fb8e92d98cbc30b1769ff250a732e0449323d",
+            "targetPlatform": "linux-x64",
+            "size": 134978589,
+            "publishedAt": "2026-10-19T21:37:40.683639Z"
+        },
+        {
+            "version": "2.1.304",
+            "engines": {
+                "diode": ">=0.9.5",
+                "vscode": "^1.94.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/Anthropic/claude-code/win32-arm64/2.1.304/file/Anthropic.claude-code-2.1.304@win32-arm64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "46a213e59b81112a26d5a0f875c867537b710b41c6990eaff6819a4f6248a13e",
+            "targetPlatform": "win32-arm64",
+            "size": 133495102,
+            "publishedAt": "2026-10-19T21:37:48.821573Z"
+        },
+        {
+            "version": "2.1.304",
+            "engines": {
+                "diode": ">=0.9.5",
+                "vscode": "^1.94.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/Anthropic/claude-code/win32-x64/2.1.304/file/Anthropic.claude-code-2.1.304@win32-x64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "6a3e2147d34f8edacffc7a1567619f337f9294f0cf03e90c4bf8f332967fc5d5",
+            "targetPlatform": "win32-x64",
+            "size": 138489481,
+            "publishedAt": "2026-10-19T21:37:57.609011Z"
+        }
+    ]
+}
