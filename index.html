@@ -222,7 +222,7 @@
     color: var(--text-body); font-size: 13px; line-height: 1.7;
     text-wrap: pretty;
   }
-  /* статус-строка: альфа + ссылки на публичную доку */
+  /* статус-строка: ссылки на публичную доку */
   .status {
     display: flex; align-items: center; gap: 26px; flex-wrap: wrap;
     padding: 22px 34px;
@@ -231,10 +231,14 @@
   }
   .status a { color: inherit; }
   .status a:hover { color: var(--text-strong); }
-  .status .badge {
+  /* альфа — рядом с логотипом, ссылкой на страницу Status */
+  .lockup .badge {
+    align-self: flex-start; margin-top: 10px;
     color: var(--accent); border: 1px solid var(--accent);
-    padding: 2px 10px; font-size: 11px; letter-spacing: .12em;
+    padding: 2px 10px; font-size: 11px; line-height: 1.6; letter-spacing: .12em;
   }
+  .lockup .badge:hover { background: var(--accent); color: var(--surface-inset); }
+  .install-alt .soon { color: var(--accent); }
 
   @media (max-width: 720px) {
     .hero { padding: 64px 24px 32px; }
@@ -273,6 +277,7 @@
         <rect class="blink" x="88" y="6" width="12" height="108" fill="var(--accent)"/>
       </svg>
       <h1>diode</h1>
+      <a class="badge" href="/docs/project/status/" title="Usable every day, with gaps: see what is missing">alpha</a>
     </div>
 
     <nav class="legend" aria-label="Primary links">
@@ -290,7 +295,7 @@
     <p class="tagline">A full-featured editor where all you have is a terminal. Non-modal, with familiar keybindings and language support — no environment to install or configure.</p>
 
     <div class="install"><span class="prompt">$</span> curl -fsSL https://diode-editor.github.io/install.sh | sh</div>
-    <p class="install-alt">Linux and macOS, no root. Also <a href="/docs/getting-started/install/">apt, Homebrew, npm</a>, <s title="coming soon: awaiting review">winget</s>.</p>
+    <p class="install-alt">Linux and macOS, no root. Also <a href="/docs/getting-started/install/">apt, Homebrew, npm</a>, <s>winget</s> <span class="soon">soon</span>.</p>
   </section>
 
   <figure class="shot">
@@ -324,7 +329,6 @@
   </section>
 
   <section class="status" aria-label="Project status">
-    <span class="badge">alpha</span>
     <a href="/docs/project/status/">status</a>
     <a href="/docs/extensions/api-coverage/">api coverage</a>
     <a href="/benchmarks/">benchmarks</a>
