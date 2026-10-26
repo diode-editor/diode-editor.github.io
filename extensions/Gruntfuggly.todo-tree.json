@@ -1,0 +1,46 @@
+{
+    "schemaVersion": 1,
+    "id": "Gruntfuggly.todo-tree",
+    "publisher": "Gruntfuggly",
+    "name": "todo-tree",
+    "displayName": "Todo Tree",
+    "description": "Show TODO, FIXME, etc. comment tags in a tree view",
+    "kind": "proxy-openvsx",
+    "support": {
+        "level": "partial",
+        "works": [
+            "The TODOS view in the sidebar: tags (TODO, FIXME, BUG, HACK, XXX, [ ], [x]) across the workspace and open files, as a tree of folders, files and tag lines, or flat, tags only and grouped by tag",
+            "Enter or a click on a tag line opens the file at that line",
+            "The tree updates as you edit an open file and when you open or save a file with a tag; Todo Tree: Refresh rescans the workspace",
+            "Filters and views from the node context menu and the command palette: Filter Tree, Hide This File, Only Show This Folder, Reset All Filters, Expand Tree, Collapse Tree",
+            "The tag count in the status bar (todo-tree.general.statusBar) and in tree labels (todo-tree.tree.showCountsInTree)"
+        ],
+        "limits": [
+            "Tags are not highlighted in the editor text (todo-tree.highlights): Diode draws extension decorations only in the gutter and the overview ruler",
+            "The container has no icon in the sidebar switcher, it is labeled with text; tree nodes have no tooltips",
+            "Badges (todo-tree.tree.showBadges) show file icons, but no Git or Problems decorations on file nodes",
+            "The command palette shows all Todo Tree commands, including the ones the extension hides from it"
+        ]
+    },
+    "repository": "https://github.com/Gruntfuggly/todo-tree.git",
+    "license": "MIT",
+    "homepage": "https://github.com/Gruntfuggly/todo-tree#readme",
+    "readme": "# Todo Tree\n\nFinds comment tags such as `TODO` and `FIXME` across the workspace and shows them in the TODOS view of the sidebar, as a tree of folders, files and tag lines. Clicking a line opens the file at that line.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode. It searches with the ripgrep binary that Diode ships, so nothing else needs to be installed.\n\n## What works in Diode\n\nThe TODOS view appears once the first scan finds a tag (it stays hidden in a workspace without tags, as in VS Code). The tree follows your edits of open files and picks up a file with a tag when you open or save it; `Todo Tree: Refresh` rescans the workspace, and `todo-tree.general.enableFileWatcher` turns on watching files changed outside the editor. The flat, tags only and grouped views, `Filter Tree`, `Hide This File`, `Only Show This Folder` and `Reset All Filters` work from the node context menu and the command palette. The status bar shows the tag count with `todo-tree.general.statusBar` set to `total`.\n\n## What does not\n\nTags are not highlighted in the editor text: Diode draws extension decorations only in the gutter and the overview ruler. The container in the sidebar switcher is labeled with text instead of its icon, tree nodes have no tooltips, and file nodes show no Git or Problems badges. The command palette lists all Todo Tree commands, including the ones the extension hides from it in VS Code.\n",
+    "versions": [
+        {
+            "version": "0.0.215",
+            "engines": {
+                "diode": ">=0.12.0",
+                "vscode": "^1.46.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/Gruntfuggly/todo-tree/0.0.215/file/Gruntfuggly.todo-tree-0.0.215.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "326d84bd6372fceb8b40087b4d80be1046e47a4d116f2129e3f3d018b903df00",
+            "size": 576886,
+            "publishedAt": "2022-02-08T20:35:50.821Z"
+        }
+    ]
+}
