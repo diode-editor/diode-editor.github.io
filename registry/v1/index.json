@@ -79,6 +79,7 @@
                 "limits": [
                     "Tags are not highlighted in the editor text (todo-tree.highlights): Diode draws extension decorations only in the gutter and the overview ruler",
                     "The container has no icon in the sidebar switcher, it is labeled with text; tree nodes have no tooltips",
+                    "Tag lines have no icon by default: the extension draws its tag icons as SVG files. A codicon set as the tag's icon (todo-tree.highlights.customHighlight, e.g. \"$(flame)\") is shown",
                     "Badges (todo-tree.tree.showBadges) show file icons, but no Git or Problems decorations on file nodes",
                     "The command palette shows all Todo Tree commands, including the ones the extension hides from it"
                 ]
