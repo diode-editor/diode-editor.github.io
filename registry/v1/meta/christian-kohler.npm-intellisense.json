@@ -1,0 +1,38 @@
+{
+    "schemaVersion": 1,
+    "id": "christian-kohler.npm-intellisense",
+    "publisher": "christian-kohler",
+    "name": "npm-intellisense",
+    "displayName": "npm Intellisense",
+    "description": "Visual Studio Code plugin that autocompletes npm modules in import statements",
+    "kind": "proxy-openvsx",
+    "support": {
+        "level": "full",
+        "works": [
+            "Module names from package.json in require and import completions, next to the built-in TypeScript ones",
+            "The Import module command: a quick pick of modules, the statement goes in at the cursor",
+            "devDependencies through npm-intellisense.scanDevDependencies; an empty list without a package.json"
+        ]
+    },
+    "repository": "https://github.com/ChristianKohler/NpmIntellisense.git",
+    "license": "MIT",
+    "homepage": "https://github.com/ChristianKohler/NpmIntellisense",
+    "readme": "# npm Intellisense\n\nCompletes module names from your package.json inside `require(\"` and `import ... from \"`. The Import module command picks a module from a list and inserts an import statement at the cursor. Set `npm-intellisense.scanDevDependencies` to include devDependencies. The extension starts only when a folder is open, the same as in VS Code.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "1.4.5",
+            "engines": {
+                "diode": ">=0.12.5",
+                "vscode": "^1.0.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/christian-kohler/npm-intellisense/1.4.5/file/christian-kohler.npm-intellisense-1.4.5.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "962b851a7cafbd51f34afeb4a0b91e985caff3947e46218a12b448533d8f60ab",
+            "size": 1221856,
+            "publishedAt": "2023-10-07T18:22:30.515236Z"
+        }
+    ]
+}

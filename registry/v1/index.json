@@ -190,6 +190,29 @@
             }
         },
         {
+            "id": "christian-kohler.npm-intellisense",
+            "publisher": "christian-kohler",
+            "name": "npm-intellisense",
+            "displayName": "npm Intellisense",
+            "description": "Visual Studio Code plugin that autocompletes npm modules in import statements",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "full",
+                "works": [
+                    "Module names from package.json in require and import completions, next to the built-in TypeScript ones",
+                    "The Import module command: a quick pick of modules, the statement goes in at the cursor",
+                    "devDependencies through npm-intellisense.scanDevDependencies; an empty list without a package.json"
+                ]
+            },
+            "latest": {
+                "version": "1.4.5",
+                "engines": {
+                    "diode": ">=0.12.5",
+                    "vscode": "^1.0.0"
+                }
+            }
+        },
+        {
             "id": "dbaeumer.vscode-eslint",
             "publisher": "dbaeumer",
             "name": "vscode-eslint",
