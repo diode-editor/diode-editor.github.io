@@ -47,6 +47,32 @@
             }
         },
         {
+            "id": "DavidAnson.vscode-markdownlint",
+            "publisher": "DavidAnson",
+            "name": "vscode-markdownlint",
+            "displayName": "markdownlint",
+            "description": "Markdown linting and style checking for Visual Studio Code",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Diagnostics in Problems and in the editor, while typing",
+                    "Quick fixes, Format Document, fix on save and the fix all command",
+                    "Lint Workspace task, focus mode, toggling linting and live reload of the config file"
+                ],
+                "limits": [
+                    "The markdownlint-disable comment snippets are not offered: Diode has no extension snippets so far"
+                ]
+            },
+            "latest": {
+                "version": "0.62.1",
+                "engines": {
+                    "diode": ">=0.12.5",
+                    "vscode": "^1.97.0"
+                }
+            }
+        },
+        {
             "id": "EditorConfig.EditorConfig",
             "publisher": "EditorConfig",
             "name": "EditorConfig",
