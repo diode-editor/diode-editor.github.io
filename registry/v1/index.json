@@ -366,6 +366,31 @@
             }
         },
         {
+            "id": "shardulm94.trailing-spaces",
+            "publisher": "shardulm94",
+            "name": "trailing-spaces",
+            "displayName": "Trailing Spaces",
+            "description": "Highlight trailing spaces and delete them in a flash!",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Trailing Spaces: Delete and Delete - Modified Lines Only",
+                    "Trimming on save with trailing-spaces.trimOnSave, undo brings the spaces back"
+                ],
+                "limits": [
+                    "Trailing spaces are not highlighted in the text: Diode does not paint text decorations from extensions yet, so the Highlight command and the backgroundColor and borderColor settings have no visible effect"
+                ]
+            },
+            "latest": {
+                "version": "0.4.4",
+                "engines": {
+                    "diode": ">=0.12.5",
+                    "vscode": "^1.68.0"
+                }
+            }
+        },
+        {
             "id": "test.sample-lang",
             "publisher": "test",
             "name": "sample-lang",
