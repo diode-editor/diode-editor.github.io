@@ -1,0 +1,29 @@
+{
+    "schemaVersion": 1,
+    "id": "formulahendry.auto-close-tag",
+    "publisher": "formulahendry",
+    "name": "auto-close-tag",
+    "displayName": "Auto Close Tag",
+    "description": "Automatically add HTML/XML close tag, same as Visual Studio IDE or Sublime Text",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/formulahendry/vscode-auto-close-tag",
+    "license": "MIT",
+    "readme": "# Auto Close Tag\n\nAutomatically adds the closing tag when you type the `>` of an opening tag, and `Alt+.` closes the last open tag by hand.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "0.5.15",
+            "engines": {
+                "diode": ">=0.12.4",
+                "vscode": "^1.49.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/formulahendry/auto-close-tag/0.5.15/file/formulahendry.auto-close-tag-0.5.15.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "eee18c2bc3512e4755f596f98d104fcc5003f1d46e4c3cd3c70cbe7583e6bc2f",
+            "size": 791527,
+            "publishedAt": "2023-12-20T03:23:08.147Z"
+        }
+    ]
+}

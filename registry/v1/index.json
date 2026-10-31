@@ -221,6 +221,21 @@
             }
         },
         {
+            "id": "formulahendry.auto-close-tag",
+            "publisher": "formulahendry",
+            "name": "auto-close-tag",
+            "displayName": "Auto Close Tag",
+            "description": "Automatically add HTML/XML close tag, same as Visual Studio IDE or Sublime Text",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "0.5.15",
+                "engines": {
+                    "diode": ">=0.12.4",
+                    "vscode": "^1.49.0"
+                }
+            }
+        },
+        {
             "id": "golang.go",
             "publisher": "golang",
             "name": "go",
