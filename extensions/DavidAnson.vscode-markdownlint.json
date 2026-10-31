@@ -1,0 +1,41 @@
+{
+    "schemaVersion": 1,
+    "id": "DavidAnson.vscode-markdownlint",
+    "publisher": "DavidAnson",
+    "name": "vscode-markdownlint",
+    "displayName": "markdownlint",
+    "description": "Markdown linting and style checking for Visual Studio Code",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/DavidAnson/vscode-markdownlint",
+    "license": "MIT",
+    "homepage": "https://github.com/DavidAnson/vscode-markdownlint",
+    "readme": "# markdownlint\n\nMarkdown linting and style checking: violations in Problems and as you type, quick fixes, fix on save and a task that lints the whole workspace. The linter is bundled, nothing else to install.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "support": {
+        "level": "partial",
+        "works": [
+            "Diagnostics in Problems and in the editor, while typing",
+            "Quick fixes, Format Document, fix on save and the fix all command",
+            "Lint Workspace task, focus mode, toggling linting and live reload of the config file"
+        ],
+        "limits": [
+            "The markdownlint-disable comment snippets are not offered: Diode has no extension snippets so far"
+        ]
+    },
+    "versions": [
+        {
+            "version": "0.62.1",
+            "engines": {
+                "vscode": "^1.97.0",
+                "diode": ">=0.12.5"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/DavidAnson/vscode-markdownlint/0.62.1/file/DavidAnson.vscode-markdownlint-0.62.1.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "b6baf90037c903aa21b9c525972910561a903b82e12fe8d67220740ec15b1aa0",
+            "size": 352061,
+            "publishedAt": "2026-08-04T04:13:28.848Z"
+        }
+    ]
+}
