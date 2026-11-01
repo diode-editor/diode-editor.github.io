@@ -174,6 +174,33 @@
             }
         },
         {
+            "id": "biomejs.biome",
+            "publisher": "biomejs",
+            "name": "biome",
+            "displayName": "Biome",
+            "description": "Toolchain of the web",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Diagnostics while typing and on save, with or without a biome.json",
+                    "Format Document, Format Selection and format on type",
+                    "Quick fixes and suppressions, source.fixAll.biome and source.organizeImports.biome on save",
+                    "biome.restart, and a changed biome.json is picked up"
+                ],
+                "limits": [
+                    "Choose Biome over another formatter with the editor.defaultFormatter setting: Diode has no Format Document With picker, and without the setting the first formatter runs instead of asking"
+                ]
+            },
+            "latest": {
+                "version": "3.8.1",
+                "engines": {
+                    "diode": ">=0.12.8",
+                    "vscode": "^1.91.0"
+                }
+            }
+        },
+        {
             "id": "bufbuild.vscode-buf",
             "publisher": "bufbuild",
             "name": "vscode-buf",
