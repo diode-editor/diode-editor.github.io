@@ -1,0 +1,45 @@
+{
+    "schemaVersion": 1,
+    "id": "vscjava.vscode-maven",
+    "publisher": "vscjava",
+    "name": "vscode-maven",
+    "displayName": "Maven for Java",
+    "description": "Manage Maven projects, execute goals, generate project from archetype, improve user experience for Java developers.",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/Microsoft/vscode-maven.git",
+    "license": "MIT",
+    "homepage": "https://github.com/Microsoft/vscode-maven/",
+    "readme": "# Maven for Java\n\nThe MAVEN section in the Explorer: projects, lifecycle goals, plugins and dependencies. Goals run in the terminal. Completion, hover and Go to Definition in `pom.xml`, Effective POM, and New Project from an archetype. Needs `mvn` in PATH or in `maven.executable.path`; a JDK for Maven itself.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "support": {
+        "level": "partial",
+        "works": [
+            "The MAVEN tree: multi-module projects, Lifecycle, Plugins, Dependencies, Favorites, refresh",
+            "Goals from the tree menu and from Execute Commands: terminal, history, favorites, custom goals",
+            "pom.xml: completion from Maven Central, hover, Go to Definition, Add a dependency quick fix",
+            "Effective POM, and New Project and New Module from an archetype, with Back between the steps",
+            "Together with redhat.java"
+        ],
+        "limits": [
+            "Debug in the plugin goal menu does not start a debugger: Diode has none",
+            "Inserted pom.xml snippets have no tab stops and keep the indentation of the snippet itself: Diode has no snippet session",
+            "The Maven entry of the Java Projects view is not shown: that menu belongs to another extension"
+        ]
+    },
+    "versions": [
+        {
+            "version": "0.45.3",
+            "engines": {
+                "vscode": "^1.75.0",
+                "diode": ">=0.12.6"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/vscjava/vscode-maven/0.45.3/file/vscjava.vscode-maven-0.45.3.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "2d7b30676793604e0c140ab0e5cc5a649d6af2fd9e0b2797911f86a9164654b0",
+            "size": 11010465,
+            "publishedAt": "2026-04-27T04:37:34.044171Z"
+        }
+    ]
+}
