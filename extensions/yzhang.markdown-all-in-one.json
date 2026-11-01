@@ -23,7 +23,7 @@
             "No preview contributions: Diode has no Markdown preview, so preview styles and math in the preview do nothing",
             "Syntax decorations are only partly visible: strikethrough shows, a code span has no background of its own",
             "Snippet paths go in without a snippet session: the caret lands on the first stop and Tab does not walk the rest",
-            "Ctrl+I needs a terminal with extended keys: elsewhere it is the same byte as Tab; run Toggle Italic from the Command Palette"
+            "Ctrl+I and Ctrl+M need a terminal with extended keys: elsewhere they are the same bytes as Tab and Enter; run Toggle Italic and Toggle math environment from the Command Palette"
         ]
     },
     "versions": [
