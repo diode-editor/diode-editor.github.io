@@ -497,6 +497,36 @@
                     "vscode": "^1.80.0"
                 }
             }
+        },
+        {
+            "id": "vscjava.vscode-maven",
+            "publisher": "vscjava",
+            "name": "vscode-maven",
+            "displayName": "Maven for Java",
+            "description": "Manage Maven projects, execute goals, generate project from archetype, improve user experience for Java developers.",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "partial",
+                "works": [
+                    "The MAVEN tree: multi-module projects, Lifecycle, Plugins, Dependencies, Favorites, refresh",
+                    "Goals from the tree menu and from Execute Commands: terminal, history, favorites, custom goals",
+                    "pom.xml: completion from Maven Central, hover, Go to Definition, Add a dependency quick fix",
+                    "Effective POM, and New Project and New Module from an archetype, with Back between the steps",
+                    "Together with redhat.java"
+                ],
+                "limits": [
+                    "Debug in the plugin goal menu does not start a debugger: Diode has none",
+                    "Inserted pom.xml snippets have no tab stops and keep the indentation of the snippet itself: Diode has no snippet session",
+                    "The Maven entry of the Java Projects view is not shown: that menu belongs to another extension"
+                ]
+            },
+            "latest": {
+                "version": "0.45.3",
+                "engines": {
+                    "diode": ">=0.12.6",
+                    "vscode": "^1.75.0"
+                }
+            }
         }
     ]
 }
