@@ -1,0 +1,43 @@
+{
+    "schemaVersion": 1,
+    "id": "vscode.merge-conflict",
+    "publisher": "vscode",
+    "name": "merge-conflict",
+    "displayName": "Merge Conflict (built-in)",
+    "description": "Highlighting and commands for inline merge conflicts.",
+    "kind": "proxy-openvsx",
+    "support": {
+        "level": "partial",
+        "works": [
+            "Accept Current, Accept Incoming, Accept Both and Compare lenses above each conflict",
+            "Next and Previous Conflict with scrolling, wrapping around the file",
+            "Accept commands, including Accept All from the palette, one undo reverts each",
+            "Compare in a diff tab",
+            "Staging a resolved file in Source Control"
+        ],
+        "limits": [
+            "The current and incoming blocks are not colored: Diode does not paint text decorations from extensions yet, so the decorator settings have no visible effect"
+        ]
+    },
+    "repository": "https://github.com/eclipse-theia/vscode-builtin-extensions.git",
+    "license": "SEE LICENSE IN LICENSE-vscode.txt",
+    "homepage": "https://github.com/eclipse-theia/vscode-builtin-extensions#readme",
+    "readme": "# Merge Conflict\n\nResolve merge conflicts right in the editor: code lenses above every `<<<<<<<` marker accept the current change, the incoming change or both, or compare the two sides.\n\nThis is the unmodified build of the VS Code built-in extension by Eclipse Theia, published on Open VSX and pinned to a specific version.\n\n## Commands\n\n- **Merge Conflict: Next Conflict** and **Previous Conflict**: move between conflicts, wrapping around the file.\n- **Merge Conflict: Accept Current**, **Accept Incoming**, **Accept Both** and **Accept Selection**: resolve the conflict under the cursor.\n- **Merge Conflict: Accept All Current**, **Accept All Incoming** and **Accept All Both**: resolve the whole file.\n- **Merge Conflict: Compare Current Conflict**: opens the two sides in a diff.\n\nAfter resolving and saving, stage the file in Source Control. Set `merge-conflict.codeLens.enabled` to `false` to hide the lenses.\n\n## Not in Diode yet\n\nThe current and incoming blocks are not colored: Diode does not paint text decorations from extensions yet.\n",
+    "versions": [
+        {
+            "version": "1.95.3",
+            "engines": {
+                "diode": ">=0.12.6",
+                "vscode": "^1.5.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/vscode/merge-conflict/1.95.3/file/vscode.merge-conflict-1.95.3.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "304899edcfa2d9f434e3e74af5a12291c4ffdfa4e0eb69f2ddc9b5df20106b8c",
+            "size": 916029,
+            "publishedAt": "2024-12-10T11:10:09.026489Z"
+        }
+    ]
+}
