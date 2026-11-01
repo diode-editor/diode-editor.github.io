@@ -1,0 +1,46 @@
+{
+    "schemaVersion": 1,
+    "id": "yzhang.markdown-all-in-one",
+    "publisher": "yzhang",
+    "name": "markdown-all-in-one",
+    "displayName": "Markdown All in One",
+    "description": "All you need to write Markdown (keyboard shortcuts, table of contents, auto preview and more)",
+    "kind": "proxy-openvsx",
+    "support": {
+        "level": "partial",
+        "works": [
+            "Enter continues and ends lists, task lists and quotes; Tab and Shift+Tab change the list level",
+            "Bold, italic, strikethrough and heading level shortcuts, on a selection and on a word",
+            "Table of contents with section numbers, updated on save, and its status code lens",
+            "Format Document aligns tables; completions for links to files and headings (markdown.extension.completion.enabled)",
+            "Print to HTML next to the file; pasting a link over a selection turns it into a Markdown link"
+        ],
+        "limits": [
+            "No preview contributions: Diode has no Markdown preview, so preview styles and math in the preview do nothing",
+            "Syntax decorations are only partly visible: strikethrough shows, a code span has no background of its own",
+            "Snippet paths go in without a snippet session: the caret lands on the first stop and Tab does not walk the rest",
+            "Ctrl+I needs a terminal with extended keys: elsewhere it is the same byte as Tab; run Toggle Italic from the Command Palette"
+        ]
+    },
+    "repository": "https://github.com/yzhang-gh/vscode-markdown.git",
+    "license": "MIT",
+    "homepage": "https://github.com/yzhang-gh/vscode-markdown#readme",
+    "readme": "# Markdown All in One\n\nKeyboard shortcuts, list editing, table of contents, table formatting, completions and export to HTML for Markdown files.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "3.6.2",
+            "engines": {
+                "diode": ">=0.12.6",
+                "vscode": "^1.77.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/yzhang/markdown-all-in-one/3.6.2/file/yzhang.markdown-all-in-one-3.6.2.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "75037cc2e0f940ead6cb2db25c5e6f139031885f7dc07d56abe1e0bc0781dd1a",
+            "size": 1092129,
+            "publishedAt": "2024-01-16T04:14:26.180747Z"
+        }
+    ]
+}
