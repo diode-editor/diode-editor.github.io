@@ -1,0 +1,44 @@
+{
+    "schemaVersion": 1,
+    "id": "bradlc.vscode-tailwindcss",
+    "publisher": "bradlc",
+    "name": "vscode-tailwindcss",
+    "displayName": "Tailwind CSS IntelliSense",
+    "description": "Intelligent Tailwind CSS tooling for VS Code",
+    "kind": "proxy-openvsx",
+    "support": {
+        "level": "partial",
+        "works": [
+            "Class completion in class attributes and JSX className, with a color square for color classes",
+            "CSS of a class on hover",
+            "Conflict and other diagnostics with quick fixes",
+            "Tailwind CSS: Sort Selection",
+            "Lenses and @source links in v4 CSS files",
+            "tailwindCSS.includeLanguages and tailwindCSS.experimental.classRegex"
+        ],
+        "limits": [
+            "No color square before a named color class such as bg-red-500 in the text: the extension draws it as a text decoration, which Diode does not render yet. Arbitrary colors such as bg-[#ff0000] get a square"
+        ]
+    },
+    "repository": "https://github.com/tailwindlabs/tailwindcss-intellisense.git",
+    "license": "MIT",
+    "homepage": "https://github.com/tailwindlabs/tailwindcss-intellisense",
+    "readme": "# Tailwind CSS IntelliSense\n\nClass completion, CSS on hover, conflict diagnostics with quick fixes and class sorting for Tailwind CSS v3 and v4 projects. The language server loads `tailwindcss` from the project and starts only when the workspace has a Tailwind config or a CSS file that imports Tailwind; elsewhere the extension stays quiet.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "0.16.0",
+            "engines": {
+                "diode": ">=0.12.8",
+                "vscode": "^1.67.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/bradlc/vscode-tailwindcss/0.16.0/file/bradlc.vscode-tailwindcss-0.16.0.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "3fd7ceb8b20a88d1df01c3c95f240e7b3db14fd66b8f003c1d686790608d1942",
+            "size": 1762070,
+            "publishedAt": "2026-07-20T04:27:46.453538Z"
+        }
+    ]
+}

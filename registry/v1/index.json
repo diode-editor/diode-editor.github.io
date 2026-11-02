@@ -201,6 +201,35 @@
             }
         },
         {
+            "id": "bradlc.vscode-tailwindcss",
+            "publisher": "bradlc",
+            "name": "vscode-tailwindcss",
+            "displayName": "Tailwind CSS IntelliSense",
+            "description": "Intelligent Tailwind CSS tooling for VS Code",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Class completion in class attributes and JSX className, with a color square for color classes",
+                    "CSS of a class on hover",
+                    "Conflict and other diagnostics with quick fixes",
+                    "Tailwind CSS: Sort Selection",
+                    "Lenses and @source links in v4 CSS files",
+                    "tailwindCSS.includeLanguages and tailwindCSS.experimental.classRegex"
+                ],
+                "limits": [
+                    "No color square before a named color class such as bg-red-500 in the text: the extension draws it as a text decoration, which Diode does not render yet. Arbitrary colors such as bg-[#ff0000] get a square"
+                ]
+            },
+            "latest": {
+                "version": "0.16.0",
+                "engines": {
+                    "diode": ">=0.12.8",
+                    "vscode": "^1.67.0"
+                }
+            }
+        },
+        {
             "id": "bufbuild.vscode-buf",
             "publisher": "bufbuild",
             "name": "vscode-buf",
