@@ -468,6 +468,34 @@
             }
         },
         {
+            "id": "tamasfe.even-better-toml",
+            "publisher": "tamasfe",
+            "name": "even-better-toml",
+            "displayName": "Even Better TOML",
+            "description": "Fully-featured TOML support",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Syntax and duplicate key diagnostics while typing",
+                    "Format Document with the evenBetterToml.formatter settings",
+                    "Go to Symbol in Editor, rename of a key, folding and semantic highlighting",
+                    "Completion, hover and links from a schema set by a #:schema comment or evenBetterToml.schema.associations",
+                    "TOML: Select Schema, Copy as JSON, Copy as TOML, Paste as JSON and Paste as TOML"
+                ],
+                "limits": [
+                    "Schemas are not picked up from the schemastore catalog: version 0.21.2 rejects the catalog's current format, the same in VS Code, so Cargo.toml and others need a #:schema comment or evenBetterToml.schema.associations"
+                ]
+            },
+            "latest": {
+                "version": "0.21.2",
+                "engines": {
+                    "diode": ">=0.12.8",
+                    "vscode": "^1.90.0"
+                }
+            }
+        },
+        {
             "id": "test.sample-lang",
             "publisher": "test",
             "name": "sample-lang",

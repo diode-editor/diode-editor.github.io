@@ -1,0 +1,43 @@
+{
+    "schemaVersion": 1,
+    "id": "tamasfe.even-better-toml",
+    "publisher": "tamasfe",
+    "name": "even-better-toml",
+    "displayName": "Even Better TOML",
+    "description": "Fully-featured TOML support",
+    "kind": "proxy-openvsx",
+    "support": {
+        "level": "partial",
+        "works": [
+            "Syntax and duplicate key diagnostics while typing",
+            "Format Document with the evenBetterToml.formatter settings",
+            "Go to Symbol in Editor, rename of a key, folding and semantic highlighting",
+            "Completion, hover and links from a schema set by a #:schema comment or evenBetterToml.schema.associations",
+            "TOML: Select Schema, Copy as JSON, Copy as TOML, Paste as JSON and Paste as TOML"
+        ],
+        "limits": [
+            "Schemas are not picked up from the schemastore catalog: version 0.21.2 rejects the catalog's current format, the same in VS Code, so Cargo.toml and others need a #:schema comment or evenBetterToml.schema.associations"
+        ]
+    },
+    "repository": "https://github.com/tamasfe/taplo.git",
+    "license": "SEE LICENSE IN LICENSE.md",
+    "homepage": "https://github.com/tamasfe/taplo#readme",
+    "readme": "# Even Better TOML\n\nTOML support from the taplo language server: diagnostics, formatting, symbols, and completion and hover from JSON schemas. The server is bundled, nothing else to install.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "0.21.2",
+            "engines": {
+                "diode": ">=0.12.8",
+                "vscode": "^1.90.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/tamasfe/even-better-toml/0.21.2/file/tamasfe.even-better-toml-0.21.2.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "f3dc44f1c551edef397a79f0f8c5db4066c6a547e210b5c3cec4400bf173b008",
+            "size": 21008128,
+            "publishedAt": "2024-12-20T17:44:02.273987Z"
+        }
+    ]
+}
