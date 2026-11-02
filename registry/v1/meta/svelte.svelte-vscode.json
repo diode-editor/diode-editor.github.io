@@ -1,0 +1,44 @@
+{
+    "schemaVersion": 1,
+    "id": "svelte.svelte-vscode",
+    "publisher": "svelte",
+    "name": "svelte-vscode",
+    "displayName": "Svelte for VS Code",
+    "description": "Svelte language support for VS Code",
+    "kind": "proxy-openvsx",
+    "support": {
+        "level": "partial",
+        "works": [
+            "Highlighting, and diagnostics of the script and the markup from the Svelte compiler and TypeScript",
+            "Completion of components, their props and events, with the import of the component; hover",
+            "Go to definition, implementation and type definition, references and rename across .svelte and .ts files",
+            "Inlay hints and the references code lens by the TypeScript settings, outline and workspace symbols, occurrences, call hierarchy and linked editing of a paired tag",
+            "Show Compiled Code, Extract Component and Restart Language Server from the command palette"
+        ],
+        "limits": [
+            "The TypeScript plugin is not loaded: .ts and .js files do not see the props of the Svelte components they import. Enable in the extension's question only saves the setting",
+            "The extension's snippets are not offered: Diode has no extension snippets so far"
+        ]
+    },
+    "repository": "https://github.com/sveltejs/language-tools.git",
+    "license": "MIT",
+    "homepage": "https://github.com/sveltejs/language-tools#readme",
+    "readme": "# Svelte for VS Code\n\nSvelte language support from the Svelte team, powered by the Svelte language server: highlighting, diagnostics of the script and the markup, completion of components, their props and events, navigation and rename across `.svelte` and `.ts` files. The language server, the Svelte compiler and TypeScript are bundled, nothing else to install.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n\n## What works in Diode\n\nEverything the language server drives in `.svelte` files: problems from the Svelte compiler and TypeScript, completion with the import of the component, hover, F12, Go to Implementation and Type Definition, references and rename, outline and workspace symbols, occurrences, call hierarchy and linked editing of a paired tag (`editor.linkedEditing`). Inlay hints and the references code lens follow the TypeScript settings, as in VS Code: `typescript.inlayHints.*` and `typescript.referencesCodeLens.enabled`. The commands Show Compiled Code, Extract Component and Restart Language Server work from the command palette.\n\n## What does not\n\nThe TypeScript plugin of the extension is not loaded: `.ts` and `.js` files do not see the props of a Svelte component they import. The extension asks to enable it; any answer is safe, and the built-in TypeScript keeps working. The snippets of the extension are not offered: Diode has no extension snippets so far.\n",
+    "versions": [
+        {
+            "version": "110.3.2",
+            "engines": {
+                "diode": ">=0.12.8",
+                "vscode": "^1.82.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/svelte/svelte-vscode/110.3.2/file/svelte.svelte-vscode-110.3.2.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "13c569eb535d0ba9eb9ab74d7fc75d1a1981b2a719d66a1d1a46c850e429524e",
+            "size": 11445039,
+            "publishedAt": "2026-10-16T13:28:37.067890Z"
+        }
+    ]
+}
