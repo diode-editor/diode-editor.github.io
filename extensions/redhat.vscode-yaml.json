@@ -1,0 +1,46 @@
+{
+    "schemaVersion": 1,
+    "id": "redhat.vscode-yaml",
+    "publisher": "redhat",
+    "name": "vscode-yaml",
+    "displayName": "YAML",
+    "description": "YAML Language Support by Red Hat, with built-in Kubernetes syntax support",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/redhat-developer/vscode-yaml.git",
+    "license": "MIT",
+    "homepage": "https://github.com/redhat-developer/vscode-yaml#readme",
+    "readme": "# YAML\n\nYAML language support from Red Hat's yaml-language-server: validation, completion and hover from JSON Schema, formatting, outline and navigation. Schemas come from a `# yaml-language-server: $schema=...` modeline, the `yaml.schemas` setting or the schemastore.org catalog (GitHub workflows, Docker Compose, Kubernetes and more).\n\nThe extension asks about Red Hat telemetry on start; turn it off with `\"redhat.telemetry.enabled\": false`.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "support": {
+        "level": "partial",
+        "works": [
+            "Diagnostics while typing, including JSON Schema validation",
+            "Completion and hover from a modeline schema, yaml.schemas or the schemastore.org catalog",
+            "The schema in the status bar, a schema picker on click, and a lens that opens the schema",
+            "Format Document and format on type (editor.formatOnType)",
+            "Go to Symbol in Editor, Go to Definition and rename of anchors and aliases, $ref links",
+            "Quick fixes such as Delete unused anchor",
+            "Without the network, schemas from URLs are skipped and the document is still checked as YAML"
+        ],
+        "limits": [
+            "Hover shows schema descriptions as plain text: Diode has no Markdown renderer",
+            "The status bar item is cut at 24 cells, so a schema set by URL shows only the start of the URL"
+        ]
+    },
+    "versions": [
+        {
+            "version": "2.0.0",
+            "engines": {
+                "vscode": "^1.91.0",
+                "diode": ">=0.12.8"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/redhat/vscode-yaml/2.0.0/file/redhat.vscode-yaml-2.0.0.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "4bba62ccda962b720dcb0829e85cf4109c94e86653dcd39fd7500c3687ad8c60",
+            "size": 1104200,
+            "publishedAt": "2026-10-16T01:46:39.843678Z"
+        }
+    ]
+}
