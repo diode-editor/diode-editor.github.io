@@ -526,6 +526,34 @@
             }
         },
         {
+            "id": "timonwong.shellcheck",
+            "publisher": "timonwong",
+            "name": "shellcheck",
+            "displayName": "ShellCheck",
+            "description": "Integrates ShellCheck into VS Code, a linter for Shell scripts.",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Diagnostics with the rule code in Problems and in the editor, while typing",
+                    "Quick fixes: apply the fix, disable the rule for a line, show the rule wiki",
+                    "Links to the wiki in shellcheck directives, the native and WebAssembly runtimes"
+                ],
+                "limits": [
+                    "The shell snippets are not offered: Diode has no extension snippets so far",
+                    "The What's New walkthrough does not open: Diode has no walkthroughs, the toast's button does nothing",
+                    "shellcheck.markdownDiagnostics shows raw HTML in the hover: leave it off, the plain hover has the same text"
+                ]
+            },
+            "latest": {
+                "version": "0.48.4",
+                "engines": {
+                    "diode": ">=0.12.8",
+                    "vscode": "^1.101.0"
+                }
+            }
+        },
+        {
             "id": "vscjava.vscode-maven",
             "publisher": "vscjava",
             "name": "vscode-maven",
