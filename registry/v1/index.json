@@ -443,6 +443,37 @@
             }
         },
         {
+            "id": "redhat.vscode-yaml",
+            "publisher": "redhat",
+            "name": "vscode-yaml",
+            "displayName": "YAML",
+            "description": "YAML Language Support by Red Hat, with built-in Kubernetes syntax support",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Diagnostics while typing, including JSON Schema validation",
+                    "Completion and hover from a modeline schema, yaml.schemas or the schemastore.org catalog",
+                    "The schema in the status bar, a schema picker on click, and a lens that opens the schema",
+                    "Format Document and format on type (editor.formatOnType)",
+                    "Go to Symbol in Editor, Go to Definition and rename of anchors and aliases, $ref links",
+                    "Quick fixes such as Delete unused anchor",
+                    "Without the network, schemas from URLs are skipped and the document is still checked as YAML"
+                ],
+                "limits": [
+                    "Hover shows schema descriptions as plain text: Diode has no Markdown renderer",
+                    "The status bar item is cut at 24 cells, so a schema set by URL shows only the start of the URL"
+                ]
+            },
+            "latest": {
+                "version": "2.0.0",
+                "engines": {
+                    "diode": ">=0.12.8",
+                    "vscode": "^1.91.0"
+                }
+            }
+        },
+        {
             "id": "shardulm94.trailing-spaces",
             "publisher": "shardulm94",
             "name": "trailing-spaces",
