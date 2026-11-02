@@ -426,6 +426,35 @@
             }
         },
         {
+            "id": "llvm-vs-code-extensions.vscode-clangd",
+            "publisher": "llvm-vs-code-extensions",
+            "name": "vscode-clangd",
+            "displayName": "clangd",
+            "description": "C/C++ completion, navigation, and insights",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Diagnostics from clangd in the editor and the Problems panel, completion, hover and signature help",
+                    "Go to Definition, Declaration, Type Definition and Implementations, Find All References, rename, call hierarchy",
+                    "Inlay hints, highlighted occurrences, @ and # symbols, Ctrl+click on #include",
+                    "Switch Between Source/Header (Alt+O), the type hierarchy tree (Shift+Alt+T), Show AST and Show memory usage",
+                    "compile_commands.json, clangd.path, clangd.arguments, clangd: Restart language server, and the clangd download when it is missing"
+                ],
+                "limits": [
+                    "Requires clangd. The extension downloads it on Linux x64, macOS and Windows; on Linux arm64 install it from your distribution and set clangd.path if it is not on PATH",
+                    "Code inside inactive preprocessor branches is not dimmed: the text decorations clangd uses for it are not drawn yet"
+                ]
+            },
+            "latest": {
+                "version": "0.6.0",
+                "engines": {
+                    "diode": ">=0.12.8",
+                    "vscode": "^1.75.0"
+                }
+            }
+        },
+        {
             "id": "maptz.regionfolder",
             "publisher": "maptz",
             "name": "regionfolder",

@@ -1,0 +1,44 @@
+{
+    "schemaVersion": 1,
+    "id": "llvm-vs-code-extensions.vscode-clangd",
+    "publisher": "llvm-vs-code-extensions",
+    "name": "vscode-clangd",
+    "displayName": "clangd",
+    "description": "C/C++ completion, navigation, and insights",
+    "kind": "proxy-openvsx",
+    "support": {
+        "level": "partial",
+        "works": [
+            "Diagnostics from clangd in the editor and the Problems panel, completion, hover and signature help",
+            "Go to Definition, Declaration, Type Definition and Implementations, Find All References, rename, call hierarchy",
+            "Inlay hints, highlighted occurrences, @ and # symbols, Ctrl+click on #include",
+            "Switch Between Source/Header (Alt+O), the type hierarchy tree (Shift+Alt+T), Show AST and Show memory usage",
+            "compile_commands.json, clangd.path, clangd.arguments, clangd: Restart language server, and the clangd download when it is missing"
+        ],
+        "limits": [
+            "Requires clangd. The extension downloads it on Linux x64, macOS and Windows; on Linux arm64 install it from your distribution and set clangd.path if it is not on PATH",
+            "Code inside inactive preprocessor branches is not dimmed: the text decorations clangd uses for it are not drawn yet"
+        ]
+    },
+    "repository": "https://github.com/clangd/vscode-clangd.git",
+    "license": "MIT",
+    "homepage": "https://clangd.llvm.org/",
+    "readme": "# clangd\n\nC and C++ language support from the LLVM project, powered by the clangd language server: diagnostics, completion, hover, navigation, inlay hints, call and type hierarchies, and a header/source switch.\n\nThe extension needs clangd: on your `PATH`, or set `clangd.path`. When it is not found, the extension offers to download it; the download works on Linux x64, macOS and Windows (there is no published clangd for Linux arm64 — install it from your distribution, e.g. `apt install clangd`). clangd reads your build flags from `compile_commands.json` in the project; without one it uses default flags (`clangd.fallbackFlags`).\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n\n## What works in Diode\n\nProblems in the editor and the Problems panel, completion, hover, signature help, F12 and Go to Declaration, Type Definition and Implementations, Find All References and rename. Inlay hints show parameter names and deduced types; occurrences are highlighted; `@` and `#` list the symbols of the file and of the project; Ctrl+click on an `#include` opens the header. Alt+O switches between a header and its source, Shift+Alt+T opens the type hierarchy as a tree in Explorer, and `clangd: Show AST` and `clangd: Show memory usage` fill their own Explorer sections. `clangd.arguments` passes flags to the server, and `clangd: Restart language server` picks up changed settings.\n\n## What does not\n\nCode skipped by the preprocessor (`#if 0`, a branch of `#ifdef`) is not dimmed: Diode does not draw that kind of text decoration yet.\n",
+    "versions": [
+        {
+            "version": "0.6.0",
+            "engines": {
+                "diode": ">=0.12.8",
+                "vscode": "^1.75.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/llvm-vs-code-extensions/vscode-clangd/0.6.0/file/llvm-vs-code-extensions.vscode-clangd-0.6.0.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "32030694fa6c0ef438f4e4219f84677cd32f603c7faa4c71a283efc1f5b51751",
+            "size": 638869,
+            "publishedAt": "2026-05-21T20:14:26.944129Z"
+        }
+    ]
+}
