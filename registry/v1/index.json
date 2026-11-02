@@ -568,12 +568,12 @@
                 "works": [
                     "Highlighting, and diagnostics of the script and the markup from the Svelte compiler and TypeScript",
                     "Completion of components, their props and events, with the import of the component; hover",
-                    "Go to definition, implementation and type definition, references and rename across .svelte and .ts files",
+                    "Go to definition, implementation and type definition and references across .svelte and .ts files; rename of props across .svelte files",
                     "Inlay hints and the references code lens by the TypeScript settings, outline and workspace symbols, occurrences, call hierarchy and linked editing of a paired tag",
                     "Show Compiled Code, Extract Component and Restart Language Server from the command palette"
                 ],
                 "limits": [
-                    "The TypeScript plugin is not loaded: .ts and .js files do not see the props of the Svelte components they import. Enable in the extension's question only saves the setting",
+                    "The TypeScript plugin is not loaded: .ts and .js files do not see the props of the Svelte components they import, and a rename in a .ts file does not reach .svelte files. Enable in the extension's question only saves the setting",
                     "The extension's snippets are not offered: Diode has no extension snippets so far"
                 ]
             },
