@@ -687,8 +687,7 @@
                 ],
                 "limits": [
                     "The shell snippets are not offered: Diode has no extension snippets so far",
-                    "The What's New walkthrough does not open: Diode has no walkthroughs, the toast's button does nothing",
-                    "shellcheck.markdownDiagnostics shows raw HTML in the hover: leave it off, the plain hover has the same text"
+                    "The What's New walkthrough does not open: Diode has no walkthroughs, the toast's button does nothing"
                 ]
             },
             "latest": {
