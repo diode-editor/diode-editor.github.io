@@ -17,8 +17,7 @@
         ],
         "limits": [
             "Debug in the plugin goal menu does not start a debugger: Diode has none",
-            "Inserted pom.xml snippets have no tab stops and keep the indentation of the snippet itself: Diode has no snippet session",
-            "The Maven entry of the Java Projects view is not shown: that menu belongs to another extension"
+            "Inserted pom.xml snippets have no tab stops yet"
         ]
     },
     "repository": "https://github.com/Microsoft/vscode-maven.git",

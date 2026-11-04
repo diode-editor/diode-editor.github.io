@@ -14,7 +14,7 @@
             "Lint Workspace task, focus mode, toggling linting and live reload of the config file"
         ],
         "limits": [
-            "The markdownlint-disable comment snippets are not offered: Diode has no extension snippets so far"
+            "The extension's snippets (markdownlint-disable comments) are not offered: Diode does not load extension snippets yet"
         ]
     },
     "repository": "https://github.com/DavidAnson/vscode-markdownlint",

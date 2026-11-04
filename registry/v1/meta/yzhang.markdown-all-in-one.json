@@ -16,10 +16,8 @@
             "Print to HTML next to the file; pasting a link over a selection turns it into a Markdown link"
         ],
         "limits": [
-            "No preview contributions: Diode has no Markdown preview, so preview styles and math in the preview do nothing",
-            "Syntax decorations are only partly visible: strikethrough shows, a code span has no background of its own",
-            "Snippet paths go in without a snippet session: the caret lands on the first stop and Tab does not walk the rest",
-            "Ctrl+I and Ctrl+M need a terminal with extended keys: elsewhere they are the same bytes as Tab and Enter; run Toggle Italic and Toggle math environment from the Command Palette"
+            "No Markdown preview: Diode has none, so preview styles and math in the preview do nothing",
+            "Ctrl+I and Ctrl+M need extended keys (set terminal.tier to kitty or csi-u in settings.json): without them they arrive as Tab and Enter; run Toggle Italic and Toggle math environment from the Command Palette"
         ]
     },
     "repository": "https://github.com/yzhang-gh/vscode-markdown.git",

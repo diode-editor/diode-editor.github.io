@@ -13,9 +13,7 @@
             "Hover, completion with provider schemas, go to definition (F12) and diagnostics in Problems from the bundled terraform-ls"
         ],
         "limits": [
-            "HCP Terraform, Providers and Module Calls views do not render yet: Diode has no extension tree views so far",
-            "Sign-in to HCP Terraform is not supported yet",
-            "Formatting and the init/validate/plan commands need the terraform CLI on PATH, as in VS Code"
+            "Sign-in to HCP Terraform is not supported yet"
         ]
     },
     "repository": "https://github.com/hashicorp/vscode-terraform",

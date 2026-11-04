@@ -19,9 +19,8 @@
                     "Proposed edits open as a diff tab: accept with ✓ (or edit the proposal and save), reject with ↺ or by closing the tab"
                 ],
                 "limits": [
-                    "Needs the claude CLI on your PATH and your own Claude account: in terminal mode the extension runs claude from PATH, and you sign in inside claude",
-                    "The chat panel does not open: it is a webview, and Diode has none by design. Commands that need it do nothing: Open in New Tab, Open in New Window, Open in Side Bar, and Alt+K (use Ctrl+Alt+K)",
-                    "Ctrl+Esc works only in terminals with the kitty keyboard protocol; elsewhere use the status bar item or the command palette"
+                    "The chat panel does not open: Diode has no webviews. Open in New Tab, Open in New Window, Open in Side Bar and Alt+K do nothing; use the terminal and Ctrl+Alt+K",
+                    "Ctrl+Esc needs extended keys (set terminal.tier to kitty or csi-u in settings.json); without them use the status bar item or the command palette"
                 ]
             },
             "latest": {
@@ -61,7 +60,7 @@
                     "Lint Workspace task, focus mode, toggling linting and live reload of the config file"
                 ],
                 "limits": [
-                    "The markdownlint-disable comment snippets are not offered: Diode has no extension snippets so far"
+                    "The extension's snippets (markdownlint-disable comments) are not offered: Diode does not load extension snippets yet"
                 ]
             },
             "latest": {
@@ -94,20 +93,14 @@
             "description": "Show TODO, FIXME, etc. comment tags in a tree view",
             "kind": "proxy-openvsx",
             "support": {
-                "level": "partial",
+                "level": "full",
                 "works": [
                     "The TODOS view in the sidebar: tags (TODO, FIXME, BUG, HACK, XXX, [ ], [x]) across the workspace and open files, as a tree of folders, files and tag lines, or flat, tags only and grouped by tag",
                     "Enter or a click on a tag line opens the file at that line",
                     "The tree updates as you edit an open file and when you open or save a file with a tag; Todo Tree: Refresh rescans the workspace",
                     "Filters and views from the node context menu and the command palette: Filter Tree, Hide This File, Only Show This Folder, Reset All Filters, Expand Tree, Collapse Tree",
-                    "The tag count in the status bar (todo-tree.general.statusBar) and in tree labels (todo-tree.tree.showCountsInTree)"
-                ],
-                "limits": [
-                    "Tags are not highlighted in the editor text (todo-tree.highlights): Diode draws extension decorations only in the gutter and the overview ruler",
-                    "The container has no icon in the sidebar switcher, it is labeled with text; tree nodes have no tooltips",
-                    "Tag lines have no icon by default: the extension draws its tag icons as SVG files. A codicon set as the tag's icon (todo-tree.highlights.customHighlight, e.g. \"$(flame)\") is shown",
-                    "Badges (todo-tree.tree.showBadges) show file icons, but no Git or Problems decorations on file nodes",
-                    "The command palette shows all Todo Tree commands, including the ones the extension hides from it"
+                    "The tag count in the status bar (todo-tree.general.statusBar) and in tree labels (todo-tree.tree.showCountsInTree)",
+                    "Tags are highlighted in the editor text (Diode 0.14.1 or newer)"
                 ]
             },
             "latest": {
@@ -126,15 +119,12 @@
             "description": "Correct Python indentation",
             "kind": "proxy-openvsx",
             "support": {
-                "level": "partial",
+                "level": "full",
                 "works": [
                     "Enter indents after a colon, aligns inside brackets, hangs after an opening bracket and dedents after return, pass and break",
                     "Comments continue when split, and Enter inside a multi-line string keeps the text intact",
                     "pythonIndent.keepHangingBracketOnLine and pythonIndent.trimLinesWithOnlyWhitespace",
                     "An open suggestion popup keeps Enter, and one undo removes the line break with its indent"
-                ],
-                "limits": [
-                    "pythonIndent.useTabOnHangingIndent: Tab does not jump past the closing bracket, Diode has no snippet sessions yet. It inserts indentation as usual"
                 ]
             },
             "latest": {
@@ -161,9 +151,7 @@
                     "Sign-in to the free tier: the prompt asks for your email in a quick input"
                 ],
                 "limits": [
-                    "Chat panel does not open: it is a webview, and Diode has none by design",
-                    "Commands that need that panel do nothing: New Chat, History, Settings, Select Model, Add to Chat, Edit with Supermaven, Fix with Supermaven",
-                    "Pro sign-in goes through a browser, which a remote or headless terminal may not have"
+                    "The chat panel does not open: Diode has no webviews. New Chat, History, Settings, Select Model, Add to Chat, Edit with Supermaven and Fix with Supermaven do nothing"
                 ]
             },
             "latest": {
@@ -181,15 +169,12 @@
             "description": "Toolchain of the web",
             "kind": "proxy-openvsx",
             "support": {
-                "level": "partial",
+                "level": "full",
                 "works": [
                     "Diagnostics while typing and on save, with or without a biome.json",
                     "Format Document, Format Selection and format on type",
                     "Quick fixes and suppressions, source.fixAll.biome and source.organizeImports.biome on save",
                     "biome.restart, and a changed biome.json is picked up"
-                ],
-                "limits": [
-                    "Choose Biome over another formatter with the editor.defaultFormatter setting: Diode has no Format Document With picker, and without the setting the first formatter runs instead of asking"
                 ]
             },
             "latest": {
@@ -208,17 +193,15 @@
             "description": "Intelligent Tailwind CSS tooling for VS Code",
             "kind": "proxy-openvsx",
             "support": {
-                "level": "partial",
+                "level": "full",
                 "works": [
                     "Class completion in class attributes and JSX className, with a color square for color classes",
                     "CSS of a class on hover",
                     "Conflict and other diagnostics with quick fixes",
                     "Tailwind CSS: Sort Selection",
                     "Lenses and @source links in v4 CSS files",
-                    "tailwindCSS.includeLanguages and tailwindCSS.experimental.classRegex"
-                ],
-                "limits": [
-                    "No color square before a named color class such as bg-red-500 in the text: the extension draws it as a text decoration, which Diode does not render yet. Arbitrary colors such as bg-[#ff0000] get a square"
+                    "tailwindCSS.includeLanguages and tailwindCSS.experimental.classRegex",
+                    "A color square before a color class in the text (Diode 0.14.1 or newer)"
                 ]
             },
             "latest": {
@@ -237,16 +220,14 @@
             "description": "Visual Studio Code support for Buf",
             "kind": "proxy-openvsx",
             "support": {
-                "level": "partial",
+                "level": "full",
                 "works": [
                     "Protocol Buffers syntax highlighting for .proto files and buf.yaml / buf.gen.yaml",
                     "Diagnostics in Problems, hover with doc comments, go to definition (F12), completion and formatting from the Buf language server",
                     "Well-known types (google/protobuf/*.proto) resolve without extra setup",
                     "The buf binary is downloaded automatically on first start when it is not on PATH; status bar shows the Buf version",
-                    "Buf: Init, Buf: Build and Start/Stop Buf Language Server from the command palette; logs in Output → Buf"
-                ],
-                "limits": [
-                    "Buf: List available lint rules and List available breaking change detection rules fail: they open the list as a new untitled document, which Diode cannot create from an extension yet"
+                    "Buf: Init, Buf: Build and Start/Stop Buf Language Server from the command palette; logs in Output → Buf",
+                    "Buf: List available lint rules and List available breaking change detection rules open the list in a new tab"
                 ]
             },
             "latest": {
@@ -331,18 +312,15 @@
             "description": "Code formatter using prettier",
             "kind": "proxy-openvsx",
             "support": {
-                "level": "partial",
+                "level": "full",
                 "works": [
                     "Format Document (Ctrl+K Ctrl+E) and Format Selection (Ctrl+K Ctrl+F) on every language Prettier supports",
                     "Markdown, JSON, YAML, CSS/LESS/SCSS and HTML — languages no language server formats in Diode",
                     "Format on save via editor.formatOnSave",
                     "Bundled Prettier, or the prettier from your project's node_modules when there is one",
                     ".prettierrc / .editorconfig are read, and re-read when you edit them",
-                    "Status bar entry with the formatter state; its log is in Output → Prettier"
-                ],
-                "limits": [
-                    "Prettier: Create Configuration File does nothing — it opens a folder picker, which Diode does not have yet",
-                    "No way to choose between formatters: Diode has no editor.defaultFormatter, and on TypeScript/JavaScript Prettier wins over the built-in TypeScript formatter"
+                    "Status bar entry with the formatter state; its log is in Output → Prettier",
+                    "Pick Prettier over another formatter with editor.defaultFormatter"
                 ]
             },
             "latest": {
@@ -384,10 +362,9 @@
                     "Go commands from the command palette, such as Go: Toggle Test File and Go: Locate Configured Go Tools; logs in Output → Go"
                 ],
                 "limits": [
-                    "Requires the Go toolchain: the go binary on your PATH (or go.goroot). Without it the extension shows \"Failed to find the go binary\" with a link to the download page and does not start",
-                    "Debugging does not work: Diode has no debugger",
-                    "Tests are not shown in a Testing view and there are no run test / debug test code lenses yet — run go test in the terminal",
-                    "The Go welcome page and the pprof profile viewer are webviews, and do nothing"
+                    "No debugging: Diode has no debugger",
+                    "Tests are not shown in a Testing view: run go test in the terminal",
+                    "The Go welcome page and the pprof profile viewer do not open: Diode has no webviews"
                 ]
             },
             "latest": {
@@ -412,9 +389,7 @@
                     "Hover, completion with provider schemas, go to definition (F12) and diagnostics in Problems from the bundled terraform-ls"
                 ],
                 "limits": [
-                    "HCP Terraform, Providers and Module Calls views do not render yet: Diode has no extension tree views so far",
-                    "Sign-in to HCP Terraform is not supported yet",
-                    "Formatting and the init/validate/plan commands need the terraform CLI on PATH, as in VS Code"
+                    "Sign-in to HCP Terraform is not supported yet"
                 ]
             },
             "latest": {
@@ -442,8 +417,7 @@
                     "compile_commands.json, clangd.path, clangd.arguments, clangd: Restart language server, and the clangd download when it is missing"
                 ],
                 "limits": [
-                    "Requires clangd. The extension downloads it on Linux x64, macOS and Windows; on Linux arm64 install it from your distribution and set clangd.path if it is not on PATH",
-                    "Code inside inactive preprocessor branches is not dimmed: the text decorations clangd uses for it are not drawn yet"
+                    "Code inside inactive preprocessor branches (#if 0, a branch of #ifdef) is not dimmed yet"
                 ]
             },
             "latest": {
@@ -486,10 +460,8 @@
                     "Maven and Gradle projects are imported by the server; its state shows in the status bar"
                 ],
                 "limits": [
-                    "The formatter settings editor does not open: it is a custom editor (a webview), and Diode has none by design — edit java.format.* in settings.json instead",
-                    "Documentation previews and the Change Signature dialog are webviews too, and do nothing",
-                    "Debugging, test running and the Java Projects view are not in this extension: they need the rest of the Extension Pack for Java, which Diode does not support",
-                    "The universal build needs JDK 21 or newer on your PATH or in JAVA_HOME; the platform builds bundle a JRE and need nothing"
+                    "The formatter settings editor, documentation previews and the Change Signature dialog do not open: Diode has no webviews. Edit java.format.* in settings.json instead",
+                    "No debugging and no test running: Diode has no debugger and no Testing view"
                 ]
             },
             "latest": {
@@ -508,7 +480,7 @@
             "description": "YAML Language Support by Red Hat, with built-in Kubernetes syntax support",
             "kind": "proxy-openvsx",
             "support": {
-                "level": "partial",
+                "level": "full",
                 "works": [
                     "Diagnostics while typing, including JSON Schema validation",
                     "Completion and hover from a modeline schema, yaml.schemas or the schemastore.org catalog",
@@ -517,10 +489,6 @@
                     "Go to Symbol in Editor, Go to Definition and rename of anchors and aliases, $ref links",
                     "Quick fixes such as Delete unused anchor",
                     "Without the network, schemas from URLs are skipped and the document is still checked as YAML"
-                ],
-                "limits": [
-                    "Hover shows schema descriptions as plain text: Diode has no Markdown renderer",
-                    "The status bar item is cut at 24 cells, so a schema set by URL shows only the start of the URL"
                 ]
             },
             "latest": {
@@ -539,13 +507,11 @@
             "description": "Highlight trailing spaces and delete them in a flash!",
             "kind": "proxy-openvsx",
             "support": {
-                "level": "partial",
+                "level": "full",
                 "works": [
                     "Trailing Spaces: Delete and Delete - Modified Lines Only",
-                    "Trimming on save with trailing-spaces.trimOnSave, undo brings the spaces back"
-                ],
-                "limits": [
-                    "Trailing spaces are not highlighted in the text: Diode does not paint text decorations from extensions yet, so the Highlight command and the backgroundColor and borderColor settings have no visible effect"
+                    "Trimming on save with trailing-spaces.trimOnSave, undo brings the spaces back",
+                    "Trailing spaces are highlighted in the text (Diode 0.14.1 or newer)"
                 ]
             },
             "latest": {
@@ -573,8 +539,8 @@
                     "Show Compiled Code, Extract Component and Restart Language Server from the command palette"
                 ],
                 "limits": [
-                    "The TypeScript plugin is not loaded: .ts and .js files do not see the props of the Svelte components they import, and a rename in a .ts file does not reach .svelte files. Enable in the extension's question only saves the setting",
-                    "The extension's snippets are not offered: Diode has no extension snippets so far"
+                    "The TypeScript plugin is not loaded: .ts and .js files do not see the props of the Svelte components they import, and a rename in a .ts file does not reach .svelte files",
+                    "The extension's snippets are not offered: Diode does not load extension snippets yet"
                 ]
             },
             "latest": {
@@ -593,16 +559,13 @@
             "description": "Fully-featured TOML support",
             "kind": "proxy-openvsx",
             "support": {
-                "level": "partial",
+                "level": "full",
                 "works": [
                     "Syntax and duplicate key diagnostics while typing",
                     "Format Document with the evenBetterToml.formatter settings",
                     "Go to Symbol in Editor, rename of a key, folding and semantic highlighting",
                     "Completion, hover and links from a schema set by a #:schema comment or evenBetterToml.schema.associations",
                     "TOML: Select Schema, Copy as JSON, Copy as TOML, Paste as JSON and Paste as TOML"
-                ],
-                "limits": [
-                    "Schemas are not picked up from the schemastore catalog: version 0.21.2 rejects the catalog's current format, the same in VS Code, so Cargo.toml and others need a #:schema comment or evenBetterToml.schema.associations"
                 ]
             },
             "latest": {
@@ -649,18 +612,14 @@
             "description": "Bazel support for Java Linting, Intellisense, formatting, refactoring and more... Fork of sfdc.bazel-vscode-java with Bazel 9 / bzlmod fixes.",
             "kind": "proxy-openvsx",
             "support": {
-                "level": "partial",
+                "level": "full",
                 "works": [
                     "Bazel workspaces are imported by the Java language server: classpath between targets, diagnostics, completion and navigation across //packages",
                     "Synchronize Projects with Bazel, Refresh Bazel Projects (after branch switch / pull), Update Classpath — from the command palette",
                     "The Bazel Build Status terminal with the synchronization log (Java: Show Bazel Build Status)",
                     "Language Support for Java by Red Hat is installed automatically as a dependency",
-                    ".bazelproject project views, BUILD / Starlark syntax highlighting, buildifier formatting"
-                ],
-                "limits": [
-                    "The Bazel Targets tree view is not shown: Diode does not render extension tree views yet",
-                    "Run targets from IntelliJ run configurations are not executed: there is no task runner (tasks.executeTask)",
-                    "Needs bazel (or bazelisk) on PATH and a Bazel 9 workspace with WORKSPACE or WORKSPACE.bazel present"
+                    ".bazelproject project views, BUILD / Starlark syntax highlighting, buildifier formatting",
+                    "The Bazel Targets tree view, and run targets from IntelliJ run configurations as tasks"
                 ]
             },
             "latest": {
@@ -686,8 +645,7 @@
                     "Links to the wiki in shellcheck directives, the native and WebAssembly runtimes"
                 ],
                 "limits": [
-                    "The shell snippets are not offered: Diode has no extension snippets so far",
-                    "The What's New walkthrough does not open: Diode has no walkthroughs, the toast's button does nothing"
+                    "The shell snippets are not offered: Diode does not load extension snippets yet"
                 ]
             },
             "latest": {
@@ -716,8 +674,7 @@
                 ],
                 "limits": [
                     "Debug in the plugin goal menu does not start a debugger: Diode has none",
-                    "Inserted pom.xml snippets have no tab stops and keep the indentation of the snippet itself: Diode has no snippet session",
-                    "The Maven entry of the Java Projects view is not shown: that menu belongs to another extension"
+                    "Inserted pom.xml snippets have no tab stops yet"
                 ]
             },
             "latest": {
@@ -745,10 +702,8 @@
                     "Print to HTML next to the file; pasting a link over a selection turns it into a Markdown link"
                 ],
                 "limits": [
-                    "No preview contributions: Diode has no Markdown preview, so preview styles and math in the preview do nothing",
-                    "Syntax decorations are only partly visible: strikethrough shows, a code span has no background of its own",
-                    "Snippet paths go in without a snippet session: the caret lands on the first stop and Tab does not walk the rest",
-                    "Ctrl+I and Ctrl+M need a terminal with extended keys: elsewhere they are the same bytes as Tab and Enter; run Toggle Italic and Toggle math environment from the Command Palette"
+                    "No Markdown preview: Diode has none, so preview styles and math in the preview do nothing",
+                    "Ctrl+I and Ctrl+M need extended keys (set terminal.tier to kitty or csi-u in settings.json): without them they arrive as Tab and Enter; run Toggle Italic and Toggle math environment from the Command Palette"
                 ]
             },
             "latest": {

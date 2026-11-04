@@ -14,8 +14,7 @@
             "Links to the wiki in shellcheck directives, the native and WebAssembly runtimes"
         ],
         "limits": [
-            "The shell snippets are not offered: Diode has no extension snippets so far",
-            "The What's New walkthrough does not open: Diode has no walkthroughs, the toast's button does nothing"
+            "The shell snippets are not offered: Diode does not load extension snippets yet"
         ]
     },
     "repository": "https://github.com/vscode-shellcheck/vscode-shellcheck.git",
