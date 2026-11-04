@@ -11,15 +11,12 @@
     "homepage": "https://github.com/kbrose/vsc-python-indent#readme",
     "readme": "# Python Indent\n\nCorrect Python indentation on Enter: one level after a colon, aligned inside brackets, hanging indents, and one level less after return, pass or break.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
     "support": {
-        "level": "partial",
+        "level": "full",
         "works": [
             "Enter indents after a colon, aligns inside brackets, hangs after an opening bracket and dedents after return, pass and break",
             "Comments continue when split, and Enter inside a multi-line string keeps the text intact",
             "pythonIndent.keepHangingBracketOnLine and pythonIndent.trimLinesWithOnlyWhitespace",
             "An open suggestion popup keeps Enter, and one undo removes the line break with its indent"
-        ],
-        "limits": [
-            "pythonIndent.useTabOnHangingIndent: Tab does not jump past the closing bracket, Diode has no snippet sessions yet. It inserts indentation as usual"
         ]
     },
     "versions": [

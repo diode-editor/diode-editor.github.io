@@ -11,17 +11,15 @@
     "homepage": "https://github.com/tailwindlabs/tailwindcss-intellisense",
     "readme": "# Tailwind CSS IntelliSense\n\nClass completion, CSS on hover, conflict diagnostics with quick fixes and class sorting for Tailwind CSS v3 and v4 projects. The language server loads `tailwindcss` from the project and starts only when the workspace has a Tailwind config or a CSS file that imports Tailwind; elsewhere the extension stays quiet.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
     "support": {
-        "level": "partial",
+        "level": "full",
         "works": [
             "Class completion in class attributes and JSX className, with a color square for color classes",
             "CSS of a class on hover",
             "Conflict and other diagnostics with quick fixes",
             "Tailwind CSS: Sort Selection",
             "Lenses and @source links in v4 CSS files",
-            "tailwindCSS.includeLanguages and tailwindCSS.experimental.classRegex"
-        ],
-        "limits": [
-            "No color square before a named color class such as bg-red-500 in the text: the extension draws it as a text decoration, which Diode does not render yet. Arbitrary colors such as bg-[#ff0000] get a square"
+            "tailwindCSS.includeLanguages and tailwindCSS.experimental.classRegex",
+            "A color square before a color class in the text (Diode 0.14.1 or newer)"
         ]
     },
     "versions": [

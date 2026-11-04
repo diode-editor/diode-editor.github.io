@@ -7,24 +7,20 @@
     "description": "Bazel support for Java Linting, Intellisense, formatting, refactoring and more... Fork of sfdc.bazel-vscode-java with Bazel 9 / bzlmod fixes.",
     "kind": "proxy-openvsx",
     "support": {
-        "level": "partial",
+        "level": "full",
         "works": [
             "Bazel workspaces are imported by the Java language server: classpath between targets, diagnostics, completion and navigation across //packages",
             "Synchronize Projects with Bazel, Refresh Bazel Projects (after branch switch / pull), Update Classpath — from the command palette",
             "The Bazel Build Status terminal with the synchronization log (Java: Show Bazel Build Status)",
             "Language Support for Java by Red Hat is installed automatically as a dependency",
-            ".bazelproject project views, BUILD / Starlark syntax highlighting, buildifier formatting"
-        ],
-        "limits": [
-            "The Bazel Targets tree view is not shown: Diode does not render extension tree views yet",
-            "Run targets from IntelliJ run configurations are not executed: there is no task runner (tasks.executeTask)",
-            "Needs bazel (or bazelisk) on PATH and a Bazel 9 workspace with WORKSPACE or WORKSPACE.bazel present"
+            ".bazelproject project views, BUILD / Starlark syntax highlighting, buildifier formatting",
+            "The Bazel Targets tree view, and run targets from IntelliJ run configurations as tasks"
         ]
     },
     "repository": "https://github.com/tihonove/bazel-vscode-java",
     "license": "BSD-3-Clause",
     "homepage": "https://github.com/tihonove/bazel-vscode-java#readme",
-    "readme": "# Bazel for Java (community fork, Bazel 9)\n\nAdds Bazel support to Language Support for Java by Red Hat (`redhat.java`, installed automatically as a dependency): the Eclipse JDT language server imports your Bazel workspace, computes the classpath from `BUILD` files and gives you diagnostics, completion and navigation across targets. The fork bundles a language-server build patched for Bazel 9 / bzlmod and current `redhat.java` releases.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n\n## What works in Diode\n\nWorkspace import and synchronization (Java: Synchronize Projects with Bazel, Refresh Bazel Projects, Update Classpath), the `.bazelproject` project view, the Bazel Build Status terminal with the synchronization log, BUILD / Starlark highlighting and buildifier formatting.\n\n## What does not\n\nThe Bazel Targets tree view is not rendered (Diode has no extension tree views yet), and run targets imported from IntelliJ run configurations cannot be executed (there is no task runner). You need `bazel` or `bazelisk` on PATH; the language server identifies a workspace by a `WORKSPACE` or `WORKSPACE.bazel` file, so keep an (empty) one even under bzlmod.\n",
+    "readme": "# Bazel for Java (community fork, Bazel 9)\n\nAdds Bazel support to Language Support for Java by Red Hat (`redhat.java`, installed automatically as a dependency): the Eclipse JDT language server imports your Bazel workspace, computes the classpath from `BUILD` files and gives you diagnostics, completion and navigation across targets. The fork bundles a language-server build patched for Bazel 9 / bzlmod and current `redhat.java` releases.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n\n## What works in Diode\n\nWorkspace import and synchronization (Java: Synchronize Projects with Bazel, Refresh Bazel Projects, Update Classpath), the `.bazelproject` project view, the Bazel Build Status terminal with the synchronization log, BUILD / Starlark highlighting and buildifier formatting.\n\n## Requirements\n\nYou need `bazel` or `bazelisk` on PATH; the language server identifies a workspace by a `WORKSPACE` or `WORKSPACE.bazel` file, so keep an (empty) one even under bzlmod.\n",
     "versions": [
         {
             "version": "1.4.6",
