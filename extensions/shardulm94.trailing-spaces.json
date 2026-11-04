@@ -9,15 +9,13 @@
     "repository": "https://github.com/shardulm94/vscode-trailingspaces.git",
     "license": "MIT",
     "homepage": "https://github.com/shardulm94/vscode-trailingspaces#readme",
-    "readme": "# Trailing Spaces\n\nDelete trailing spaces from the whole file or only from the lines you changed since the last save, by command or automatically on save.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version.\n\n## Commands\n\n- **Trailing Spaces: Delete**: removes trailing spaces from the whole file.\n- **Trailing Spaces: Delete - Modified Lines Only**: touches only the lines that differ from the file on disk. The comparison does not use git, so it works the same inside and outside a repository.\n\nSet `trailing-spaces.trimOnSave` to clean the file on every save.\n\n## Not in Diode yet\n\nTrailing spaces are not highlighted in the text: Diode does not paint text decorations from extensions yet.\n",
+    "readme": "# Trailing Spaces\n\nDelete trailing spaces from the whole file or only from the lines you changed since the last save, by command or automatically on save.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version.\n\n## Commands\n\n- **Trailing Spaces: Delete**: removes trailing spaces from the whole file.\n- **Trailing Spaces: Delete - Modified Lines Only**: touches only the lines that differ from the file on disk. The comparison does not use git, so it works the same inside and outside a repository.\n\nSet `trailing-spaces.trimOnSave` to clean the file on every save.\n",
     "support": {
-        "level": "partial",
+        "level": "full",
         "works": [
             "Trailing Spaces: Delete and Delete - Modified Lines Only",
-            "Trimming on save with trailing-spaces.trimOnSave, undo brings the spaces back"
-        ],
-        "limits": [
-            "Trailing spaces are not highlighted in the text: Diode does not paint text decorations from extensions yet, so the Highlight command and the backgroundColor and borderColor settings have no visible effect"
+            "Trimming on save with trailing-spaces.trimOnSave, undo brings the spaces back",
+            "Trailing spaces are highlighted in the text (Diode 0.14.1 or newer)"
         ]
     },
     "versions": [

@@ -11,15 +11,12 @@
     "homepage": "https://github.com/biomejs/biome-vscode#readme",
     "readme": "# Biome\n\nLinting and formatting for JavaScript, TypeScript, JSON, CSS and more, from the `@biomejs/biome` package of your project. The extension has no binary of its own: install the package in the project, otherwise it stays quiet.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
     "support": {
-        "level": "partial",
+        "level": "full",
         "works": [
             "Diagnostics while typing and on save, with or without a biome.json",
             "Format Document, Format Selection and format on type",
             "Quick fixes and suppressions, source.fixAll.biome and source.organizeImports.biome on save",
             "biome.restart, and a changed biome.json is picked up"
-        ],
-        "limits": [
-            "Choose Biome over another formatter with the editor.defaultFormatter setting: Diode has no Format Document With picker, and without the setting the first formatter runs instead of asking"
         ]
     },
     "versions": [
