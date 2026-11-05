@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "vitest.explorer",
+  "publisher": "vitest",
+  "name": "explorer",
+  "displayName": "Vitest",
+  "description": "A Vite-native testing framework. It's fast!",
+  "kind": "proxy-openvsx",
+  "support": {
+    "level": "partial",
+    "works": [
+      "Activates in a workspace with a Vitest config or vitest in node_modules and starts Vitest from the project",
+      "Test: Refresh Tests (Ctrl+; Ctrl+R) reloads the Vitest configs, Test: Cancel Test Refresh stops it"
+    ],
+    "limits": [
+      "There is no Testing view yet: test files, suites and tests are not shown",
+      "Tests cannot be run from the editor yet; run them in the terminal",
+      "No debugging: Diode has no debugger",
+      "No coverage: coverage is not shown"
+    ]
+  },
+  "repository": "https://github.com/vitest-dev/vscode.git",
+  "license": "MIT",
+  "homepage": "https://github.com/vitest-dev/vscode#readme",
+  "readme": "# Vitest\n\nThe official Vitest extension: discovers the tests of a Vitest project so the editor can show and run them.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version.\n\nIn Diode the test tree reaches the editor, but the Testing view and test runs are not there yet. The extension needs Vitest installed in the project (`node_modules`).",
+  "versions": [
+    {
+      "version": "1.52.2",
+      "engines": {
+        "diode": ">=0.15.0",
+        "vscode": "^1.88.0"
+      },
+      "artifact": {
+        "type": "url",
+        "url": "https://open-vsx.org/api/vitest/explorer/1.52.2/file/vitest.explorer-1.52.2.vsix",
+        "origin": "openvsx"
+      },
+      "sha256": "fcae41a6f584b7b0b19b84e52235082f8af12acfe8589930687161733003d331",
+      "size": 1326249,
+      "publishedAt": "2026-09-30T12:36:56.201Z"
+    }
+  ]
+}
