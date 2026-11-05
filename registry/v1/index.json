@@ -657,6 +657,34 @@
             }
         },
         {
+            "id": "vitest.explorer",
+            "publisher": "vitest",
+            "name": "explorer",
+            "displayName": "Vitest",
+            "description": "A Vite-native testing framework. It's fast!",
+            "kind": "proxy-openvsx",
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Activates in a workspace with a Vitest config or vitest in node_modules and starts Vitest from the project",
+                    "Test: Refresh Tests (Ctrl+; Ctrl+R) reloads the Vitest configs, Test: Cancel Test Refresh stops it"
+                ],
+                "limits": [
+                    "There is no Testing view yet: test files, suites and tests are not shown",
+                    "Tests cannot be run from the editor yet; run them in the terminal",
+                    "No debugging: Diode has no debugger",
+                    "No coverage: coverage is not shown"
+                ]
+            },
+            "latest": {
+                "version": "1.52.2",
+                "engines": {
+                    "diode": ">=0.15.0",
+                    "vscode": "^1.88.0"
+                }
+            }
+        },
+        {
             "id": "vscjava.vscode-maven",
             "publisher": "vscjava",
             "name": "vscode-maven",
