@@ -13,10 +13,11 @@
       "Test Explorer tree: the Testing view in the sidebar shows folders, test files, suites and tests; a file's tests load when it is expanded",
       "Filter the tree by text, !exclude or @vitest:tag; Enter or Go to Test (Alt+Enter) opens the test in the editor",
       "Update Snapshot in a test's context menu runs Vitest with snapshot updates for that test",
-      "Test: Refresh Tests (Ctrl+; Ctrl+R) reloads the Vitest configs, Test: Cancel Test Refresh stops it"
+      "Test: Refresh Tests (Ctrl+; Ctrl+R) reloads the Vitest configs, Test: Cancel Test Refresh stops it",
+      "Run Tests in the Testing view, Run Test on a row, reruns and Cancel Test Run: passed, failed and skipped tests with durations, the results summary",
+      "Test Results panel with output: opens on a run with the run's tree and failure messages, and Vitest's colored output of the run or of the chosen test"
     ],
     "limits": [
-      "Tests cannot be run from the Testing view yet: there are no Run buttons and no results; run them in the terminal",
       "No debugging: Diode has no debugger",
       "No coverage: coverage is not shown"
     ]
@@ -24,7 +25,7 @@
   "repository": "https://github.com/vitest-dev/vscode.git",
   "license": "MIT",
   "homepage": "https://github.com/vitest-dev/vscode#readme",
-  "readme": "# Vitest\n\nThe official Vitest extension: discovers the tests of a Vitest project so the editor can show and run them.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version.\n\nIn Diode the Testing view shows the test tree, but tests are not run from it yet. The extension needs Vitest installed in the project (`node_modules`).",
+  "readme": "# Vitest\n\nThe official Vitest extension: discovers the tests of a Vitest project so the editor can show and run them.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version.\n\nIn Diode the Testing view shows and runs the tests, and the Test Results panel shows their output. The extension needs Vitest installed in the project (`node_modules`).",
   "versions": [
     {
       "version": "1.52.2",
