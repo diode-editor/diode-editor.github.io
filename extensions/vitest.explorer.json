@@ -11,12 +11,14 @@
     "works": [
       "Activates in a workspace with a Vitest config or vitest in node_modules and starts Vitest from the project",
       "Test Explorer tree: the Testing view in the sidebar shows folders, test files, suites and tests; a file's tests load when it is expanded",
-      "Filter the tree by text, !exclude or @vitest:tag; Enter or Go to Test (Alt+Enter) opens the test in the editor",
+      "Running tests, results in the tree: Run Tests in the Testing view's title, Run Test on a row, Test: Run All Tests (Ctrl+; A); passed, failed and skipped tests with durations and a summary above the tree",
+      "Rerun Failed Tests (Ctrl+; E), Rerun Last Run (Ctrl+; L) and Test: Cancel Test Run (Ctrl+; Ctrl+X)",
+      "Filter the tree by text, !exclude, @vitest:tag or @failed; Enter or Go to Test (Alt+Enter) opens the test in the editor",
       "Update Snapshot in a test's context menu runs Vitest with snapshot updates for that test",
       "Test: Refresh Tests (Ctrl+; Ctrl+R) reloads the Vitest configs, Test: Cancel Test Refresh stops it"
     ],
     "limits": [
-      "Tests cannot be run from the Testing view yet: there are no Run buttons and no results; run them in the terminal",
+      "Test output and failure messages (expected / actual) are not shown yet: there is no TEST RESULTS view",
       "No debugging: Diode has no debugger",
       "No coverage: coverage is not shown"
     ]
@@ -24,7 +26,7 @@
   "repository": "https://github.com/vitest-dev/vscode.git",
   "license": "MIT",
   "homepage": "https://github.com/vitest-dev/vscode#readme",
-  "readme": "# Vitest\n\nThe official Vitest extension: discovers the tests of a Vitest project so the editor can show and run them.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version.\n\nIn Diode the Testing view shows the test tree, but tests are not run from it yet. The extension needs Vitest installed in the project (`node_modules`).",
+  "readme": "# Vitest\n\nThe official Vitest extension: discovers the tests of a Vitest project so the editor can show and run them.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version.\n\nIn Diode the Testing view shows the test tree and runs the tests; their output and failure messages are not shown yet. The extension needs Vitest installed in the project (`node_modules`).",
   "versions": [
     {
       "version": "1.52.2",
