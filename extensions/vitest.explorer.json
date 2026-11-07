@@ -15,7 +15,8 @@
       "Update Snapshot in a test's context menu runs Vitest with snapshot updates for that test",
       "Test: Refresh Tests (Ctrl+; Ctrl+R) reloads the Vitest configs, Test: Cancel Test Refresh stops it",
       "Run Tests in the Testing view, Run Test on a row, reruns and Cancel Test Run: passed, failed and skipped tests with durations, the results summary",
-      "Test Results panel with output: opens on a run with the run's tree and failure messages, and Vitest's colored output of the run or of the chosen test"
+      "Test Results panel with output: opens on a run with the run's tree and failure messages, and Vitest's colored output of the run or of the chosen test",
+      "Failure messages with an expected/actual diff in the Test Results panel, the stack frames under them (a click opens the file at the line), Go to Error and Copy Error"
     ],
     "limits": [
       "No debugging: Diode has no debugger",
