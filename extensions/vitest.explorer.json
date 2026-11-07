@@ -16,11 +16,16 @@
       "Test: Refresh Tests (Ctrl+; Ctrl+R) reloads the Vitest configs, Test: Cancel Test Refresh stops it",
       "Run Tests in the Testing view, Run Test on a row, reruns and Cancel Test Run: passed, failed and skipped tests with durations, the results summary",
       "Test Results panel with output: opens on a run with the run's tree and failure messages, and Vitest's colored output of the run or of the chosen test",
-      "Failure messages with an expected/actual diff in the Test Results panel, the stack frames under them (a click opens the file at the line), Go to Error and Copy Error"
+      "Failure messages with an expected/actual diff in the Test Results panel, the stack frames under them (a click opens the file at the line), Go to Error and Copy Error",
+      "Editor gutter: a run glyph on each test's line, the test's state after a run, a click runs the test, a right click opens its menu",
+      "Inline failure messages: a failed assertion's message after its line in the editor, a click opens it in the Test Results panel",
+      "Run at cursor: Test: Run Test at Cursor (Ctrl+; C), Run Tests in Current File (Ctrl+; F), Go to Next/Previous Test Failure (Alt+F8/Shift+Alt+F8)"
     ],
     "limits": [
       "No debugging: Diode has no debugger",
-      "No coverage: coverage is not shown"
+      "No coverage: coverage is not shown",
+      "No continuous run: Vitest's watch mode is not offered",
+      "No peek view: failure messages open in the Test Results panel"
     ]
   },
   "repository": "https://github.com/vitest-dev/vscode.git",
