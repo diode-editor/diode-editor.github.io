@@ -1,0 +1,28 @@
+{
+    "schemaVersion": 1,
+    "id": "mvllow.rose-pine",
+    "publisher": "mvllow",
+    "name": "rose-pine",
+    "displayName": "Rosé Pine",
+    "description": "All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/rose-pine/vscode",
+    "license": "MIT",
+    "readme": "# Rosé Pine\n\nAll natural pine, faux fur and a bit of soho vibes: **Rosé Pine**, Rosé Pine Moon (dark) and Rosé Pine Dawn (light), each also without italics. After installing, reload the window and pick a theme with `Preferences: Color Theme` (Ctrl+K Ctrl+T), or set `\"workbench.colorTheme\": \"Rosé Pine\"` in settings.json.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "2.15.2",
+            "engines": {
+                "vscode": "^1.57.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/mvllow/rose-pine/2.15.2/file/mvllow.rose-pine-2.15.2.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "cd0b96b878258a0ec49aefb67a55e6a3d1b9304355b91582c0c73b3d9c4478ae",
+            "size": 43977,
+            "publishedAt": "2026-05-09T02:18:08.718Z"
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "schemaVersion": 1,
+    "id": "enkia.tokyo-night",
+    "publisher": "enkia",
+    "name": "tokyo-night",
+    "displayName": "Tokyo Night",
+    "description": "A clean Visual Studio Code theme that celebrates the lights of Downtown Tokyo at night.",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/tokyo-night/tokyo-night-vscode-theme",
+    "license": "MIT",
+    "readme": "# Tokyo Night\n\nColor themes inspired by the lights of Downtown Tokyo at night: **Tokyo Night**, Tokyo Night Storm and Tokyo Night Light. After installing, reload the window and pick a theme with `Preferences: Color Theme` (Ctrl+K Ctrl+T), or set `\"workbench.colorTheme\": \"Tokyo Night\"` in settings.json.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "1.1.2",
+            "engines": {
+                "vscode": "^1.17.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/enkia/tokyo-night/1.1.2/file/enkia.tokyo-night-1.1.2.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "79aaf590d5ad65ef1aac809b0e1981aa72e4992bf6a4e54bf9087e70f8aad264",
+            "size": 45912,
+            "publishedAt": "2025-02-06T03:16:56.010Z"
+        }
+    ]
+}
