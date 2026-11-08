@@ -1,0 +1,28 @@
+{
+    "schemaVersion": 1,
+    "id": "vscode.theme-solarized-dark",
+    "publisher": "vscode",
+    "name": "theme-solarized-dark",
+    "displayName": "Solarized Dark Theme",
+    "description": "Solarized dark theme for Visual Studio Code",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/microsoft/vscode/tree/main/extensions/theme-solarized-dark",
+    "license": "MIT",
+    "readme": "# Solarized Dark Theme\n\nThe **Solarized Dark** color theme that ships with VS Code. After installing, reload the window and pick a theme with `Preferences: Color Theme` (Ctrl+K Ctrl+T), or set `\"workbench.colorTheme\": \"Solarized Dark\"` in settings.json.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "1.95.3",
+            "engines": {
+                "vscode": "*"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/vscode/theme-solarized-dark/1.95.3/file/vscode.theme-solarized-dark-1.95.3.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "0dc33529a7dceb5b971a582e671f6285008483fb3283a197461714e43ac3b68a",
+            "size": 5800,
+            "publishedAt": "2024-12-10T11:10:15.835Z"
+        }
+    ]
+}

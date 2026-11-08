@@ -1,0 +1,28 @@
+{
+    "schemaVersion": 1,
+    "id": "dracula-theme.theme-dracula",
+    "publisher": "dracula-theme",
+    "name": "theme-dracula",
+    "displayName": "Dracula Theme Official",
+    "description": "The official Dracula Theme: a dark theme for many editors, shells, and more. 🦇",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/dracula/visual-studio-code",
+    "license": "MIT",
+    "readme": "# Dracula Theme Official\n\nThe official Dracula dark color theme: **Dracula Theme** and Dracula Theme Soft. After installing, reload the window and pick a theme with `Preferences: Color Theme` (Ctrl+K Ctrl+T), or set `\"workbench.colorTheme\": \"Dracula Theme\"` in settings.json.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "2.25.1",
+            "engines": {
+                "vscode": "^1.13.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/dracula-theme/theme-dracula/2.25.1/file/dracula-theme.theme-dracula-2.25.1.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "f4d8c28fc64874b1b959cc90dbd39c84d5d35c9cf203e32b7a758dc9abf5b1cb",
+            "size": 483084,
+            "publishedAt": "2024-09-06T03:29:53.212Z"
+        }
+    ]
+}
