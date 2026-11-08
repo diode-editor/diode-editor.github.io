@@ -6,6 +6,8 @@
     "displayName": "Python Indent",
     "description": "Correct Python indentation",
     "kind": "proxy-openvsx",
+    "categories": ["Formatters", "Keymaps", "Programming Languages"],
+    "tags": ["python", "indent", "dedent", "indentation", "whitespace"],
     "repository": "https://github.com/kbrose/vsc-python-indent.git",
     "license": "MIT",
     "homepage": "https://github.com/kbrose/vsc-python-indent#readme",

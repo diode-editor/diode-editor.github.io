@@ -6,6 +6,8 @@
     "displayName": "Maven for Java",
     "description": "Manage Maven projects, execute goals, generate project from archetype, improve user experience for Java developers.",
     "kind": "proxy-openvsx",
+    "categories": ["Programming Languages", "Other"],
+    "tags": ["Maven", "Java"],
     "repository": "https://github.com/Microsoft/vscode-maven.git",
     "license": "MIT",
     "homepage": "https://github.com/Microsoft/vscode-maven/",

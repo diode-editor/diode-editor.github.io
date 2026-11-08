@@ -6,6 +6,8 @@
     "displayName": "Tab Setter",
     "description": "Sample registry entry: a tiny Diode test extension that sets tabSize=7 on activation",
     "kind": "native",
+    "categories": [],
+    "tags": [],
     "repository": "https://github.com/diode-editor/diode",
     "readme": "# Tab Setter\n\nA sample entry that exists so the registry has a `native` extension end to end: source file, published card, hosted artifact.\n\nOn activation it sets `tabSize=7` and `insertSpaces=false` on the active editor — deliberately unusual values, so a full-cycle test can tell at a glance whether the extension really got installed and activated.\n\nIt is a placeholder and will be replaced once Diode has a real first-party extension.\n",
     "versions": [

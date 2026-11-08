@@ -6,6 +6,8 @@
     "displayName": "BasedPyright",
     "description": "VS Code static type checking for Python (but based)",
     "kind": "proxy-openvsx",
+    "categories": ["Programming Languages"],
+    "tags": ["python"],
     "repository": "https://github.com/detachhead/basedpyright",
     "license": "MIT",
     "homepage": "https://docs.basedpyright.com/",

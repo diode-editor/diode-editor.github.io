@@ -6,6 +6,8 @@
     "displayName": "Svelte for VS Code",
     "description": "Svelte language support for VS Code",
     "kind": "proxy-openvsx",
+    "categories": ["Programming Languages", "Formatters"],
+    "tags": ["svelte", "vscode"],
     "repository": "https://github.com/sveltejs/language-tools.git",
     "license": "MIT",
     "homepage": "https://github.com/sveltejs/language-tools#readme",

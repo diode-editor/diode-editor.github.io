@@ -6,6 +6,8 @@
     "displayName": "Catppuccin for VSCode",
     "description": "🦌 Soothing pastel theme for VSCode",
     "kind": "proxy-openvsx",
+    "categories": ["Themes"],
+    "tags": [],
     "repository": "https://github.com/catppuccin/vscode",
     "license": "MIT",
     "homepage": "https://github.com/catppuccin/vscode/tree/main/packages/catppuccin-vsc#readme",

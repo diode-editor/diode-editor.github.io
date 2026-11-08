@@ -6,6 +6,8 @@
     "displayName": "npm Intellisense",
     "description": "Visual Studio Code plugin that autocompletes npm modules in import statements",
     "kind": "proxy-openvsx",
+    "categories": ["Other"],
+    "tags": [],
     "repository": "https://github.com/ChristianKohler/NpmIntellisense.git",
     "license": "MIT",
     "homepage": "https://github.com/ChristianKohler/NpmIntellisense",

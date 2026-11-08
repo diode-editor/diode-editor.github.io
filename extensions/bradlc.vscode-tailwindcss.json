@@ -6,6 +6,8 @@
     "displayName": "Tailwind CSS IntelliSense",
     "description": "Intelligent Tailwind CSS tooling for VS Code",
     "kind": "proxy-openvsx",
+    "categories": ["Linters", "Other"],
+    "tags": ["tailwind", "tailwindcss", "css", "intellisense", "autocomplete", "vscode"],
     "repository": "https://github.com/tailwindlabs/tailwindcss-intellisense.git",
     "license": "MIT",
     "homepage": "https://github.com/tailwindlabs/tailwindcss-intellisense",

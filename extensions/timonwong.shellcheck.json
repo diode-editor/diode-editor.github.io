@@ -6,6 +6,8 @@
     "displayName": "ShellCheck",
     "description": "Integrates ShellCheck into VS Code, a linter for Shell scripts.",
     "kind": "proxy-openvsx",
+    "categories": ["Linters", "Programming Languages"],
+    "tags": ["shell", "shellscript", "linter", "lint", "sh", "bash", "dash", "ksh", "posix", "bats"],
     "repository": "https://github.com/vscode-shellcheck/vscode-shellcheck.git",
     "license": "MIT",
     "homepage": "https://github.com/vscode-shellcheck/vscode-shellcheck#readme",

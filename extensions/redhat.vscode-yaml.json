@@ -6,6 +6,8 @@
     "displayName": "YAML",
     "description": "YAML Language Support by Red Hat, with built-in Kubernetes syntax support",
     "kind": "proxy-openvsx",
+    "categories": ["Programming Languages", "Linters", "Snippets", "Formatters"],
+    "tags": ["kubernetes", "yaml", "autocompletion", "validation"],
     "repository": "https://github.com/redhat-developer/vscode-yaml.git",
     "license": "MIT",
     "homepage": "https://github.com/redhat-developer/vscode-yaml#readme",

@@ -4,6 +4,7 @@
  *
  *   node scripts/registry.mjs validate [--base <ref>] [--fetch] [--allow-removals]
  *   node scripts/registry.mjs build [--check]
+ *   node scripts/registry.mjs sync-manifest [<id>...]
  *
  * Источник правды — `extensions/<publisher>.<name>.json`, по файлу на расширение;
  * PR-ы правят только их. `build` собирает из них публикуемый вид `registry/v1/`
@@ -90,6 +91,8 @@ const SELF_HOST = "diode-editor.github.io";
  */
 const MAX_ARTIFACT_BYTES = 256 * 1024 * 1024;
 const FETCH_TIMEOUT_MS = 60_000;
+/** `sync-manifest` тянет последние версии всех расширений разом, включая платформенные сборки в сотню мегабайт. */
+const SYNC_FETCH_TIMEOUT_MS = 600_000;
 
 const SHA256_RE = /^[0-9a-f]{64}$/;
 /** Форма id; регистр НЕ нормализуем: `installFromRegistry` сверяет id с манифестом побайтно. */
@@ -98,8 +101,15 @@ const ID_RE = /^[a-z0-9][a-z0-9_-]*\.[a-z0-9][a-z0-9_-]*$/i;
 const META_REQUIRED = ["schemaVersion", "id", "publisher", "name", "displayName", "description", "kind", "versions"];
 /** Опциональные поля-строки: проверяются одним циклом «непустая строка». */
 const META_OPTIONAL_STRINGS = ["repository", "license", "homepage", "readme"];
+/**
+ * Поля из манифеста расширения (`categories`, `keywords` → `tags`) для фильтров
+ * поиска `@category:` / `@tag:` в Diode. Руками их не пишут: `sync-manifest`
+ * переносит их из `extension/package.json` последней версии, `validate --fetch`
+ * сверяет при добавлении версии.
+ */
+const META_OPTIONAL_LISTS = ["categories", "tags"];
 /** Все опциональные поля меты; `support` — объект, у него своя проверка. */
-const META_OPTIONAL = [...META_OPTIONAL_STRINGS, "support"];
+const META_OPTIONAL = [...META_OPTIONAL_STRINGS, ...META_OPTIONAL_LISTS, "support"];
 const SUPPORT_LEVELS = new Set(["full", "partial"]);
 const VERSION_REQUIRED = ["version", "engines", "artifact", "sha256"];
 const VERSION_OPTIONAL = ["targetPlatform", "size", "publishedAt"];
@@ -168,6 +178,11 @@ function canonicalSupport(support) {
     return out;
 }
 
+/** Пустой список в исходнике значит «сверено, в манифесте пусто»; в публикуемое он не едет. */
+function nonEmptyList(list) {
+    return list === undefined || list.length === 0 ? undefined : list;
+}
+
 function canonicalMeta(meta) {
     const out = {
         schemaVersion: SCHEMA_VERSION,
@@ -178,6 +193,8 @@ function canonicalMeta(meta) {
         description: meta.description,
         kind: meta.kind,
     };
+    put(out, "categories", nonEmptyList(meta.categories));
+    put(out, "tags", nonEmptyList(meta.tags));
     put(out, "support", canonicalSupport(meta.support));
     put(out, "repository", meta.repository);
     put(out, "license", meta.license);
@@ -388,6 +405,13 @@ function validateMeta(raw, file, errors) {
             errors.push({ file, message: `${key}: expected a non-empty string` });
         }
     }
+    for (const key of META_OPTIONAL_LISTS) {
+        const value = raw[key];
+        // Клиент отбрасывает целиком запись индекса с пустой строкой в `categories`.
+        if (value !== undefined && (!Array.isArray(value) || !value.every(isNonEmptyString))) {
+            errors.push({ file, message: `${key}: expected an array of non-empty strings` });
+        }
+    }
     validateSupport(raw.support, file, errors);
     if (isNonEmptyString(raw.publisher) && isNonEmptyString(raw.name)) {
         const expected = `${raw.publisher}.${raw.name}`;
@@ -572,10 +596,10 @@ function readSelfArtifact(url, file, where, errors) {
     return fs.readFileSync(local);
 }
 
-async function fetchArtifact(url, file, where, errors) {
+async function fetchArtifact(url, file, where, errors, timeoutMs = FETCH_TIMEOUT_MS) {
     let response;
     try {
-        response = await fetch(url, { redirect: "follow", signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) });
+        response = await fetch(url, { redirect: "follow", signal: AbortSignal.timeout(timeoutMs) });
     } catch (error) {
         throw new Error(`${where}: cannot download ${url}: ${error.message}`);
     }
@@ -589,7 +613,12 @@ async function fetchArtifact(url, file, where, errors) {
         errors.push({ file, message: `${where}: redirected to disallowed host "${finalHost}"` });
         return undefined;
     }
-    const buffer = Buffer.from(await response.arrayBuffer());
+    let buffer;
+    try {
+        buffer = Buffer.from(await response.arrayBuffer());
+    } catch (error) {
+        throw new Error(`${where}: cannot download ${url}: ${error.message}`);
+    }
     if (buffer.byteLength > MAX_ARTIFACT_BYTES) {
         errors.push({ file, message: `${where}: artifact is larger than ${MAX_ARTIFACT_BYTES} bytes` });
         return undefined;
@@ -719,6 +748,21 @@ function isPreReleaseVsix(buffer) {
  * Из vsixmanifest берутся только флаг и таргет: наш упаковщик синтетических
  * расширений пишет туда пустой `<Identity>`.
  */
+/** Поля поиска из `extension/package.json`; мусорные элементы отбрасываются, порядок и регистр — как у автора. */
+function manifestSearchFields(pkg) {
+    const list = (value) => (Array.isArray(value) ? [...new Set(value.filter(isNonEmptyString))] : []);
+    return { categories: list(pkg.categories), tags: list(pkg.keywords) };
+}
+
+function sameList(a, b) {
+    return a !== undefined && a.length === b.length && a.every((item, i) => item === b[i]);
+}
+
+/** Версия, с которой берутся поля поиска, — последняя по semver, как `latest` индекса. */
+function isLatestVersion(meta, version) {
+    return version.version === pickLatest(meta.versions).version;
+}
+
 function checkVsixManifest(buffer, meta, version, file, where, errors) {
     let xml;
     let packageJson;
@@ -756,6 +800,17 @@ function checkVsixManifest(buffer, meta, version, file, where, errors) {
             message: `${where}: artifact targetPlatform is ${manifestTarget ?? "universal"}, not ${version.targetPlatform ?? "universal"}`,
         });
     }
+    if (isLatestVersion(meta, version)) {
+        const fields = manifestSearchFields(pkg);
+        for (const key of META_OPTIONAL_LISTS) {
+            if (!sameList(meta[key], fields[key])) {
+                errors.push({
+                    file,
+                    message: `${where}: ${key} must be ${JSON.stringify(fields[key])} (from the artifact's package.json), got ${JSON.stringify(meta[key])}; run: node scripts/registry.mjs sync-manifest ${meta.id}`,
+                });
+            }
+        }
+    }
     if (isPreReleaseManifest(xml)) {
         errors.push({
             file,
@@ -765,11 +820,11 @@ function checkVsixManifest(buffer, meta, version, file, where, errors) {
 }
 
 /** Байты артефакта записи версии: свой — из рабочего дерева, чужой — по сети. */
-async function downloadArtifact(version, file, where, errors) {
+async function downloadArtifact(version, file, where, errors, timeoutMs) {
     const url = new URL(version.artifact.url);
     return url.host === SELF_HOST
         ? readSelfArtifact(url, file, where, errors)
-        : await fetchArtifact(version.artifact.url, file, where, errors);
+        : await fetchArtifact(version.artifact.url, file, where, errors, timeoutMs);
 }
 
 /** Сверяет sha256 (и `size`, если заявлен) с тем, что реально лежит по URL, и манифест артефакта с записью. */
@@ -844,6 +899,9 @@ function buildOutputs(metas) {
             displayName: meta.displayName,
             description: meta.description,
             kind: meta.kind,
+            // Индекс — всё, по чему Diode фильтрует список, без чтения мет.
+            ...put({}, "categories", nonEmptyList(meta.categories)),
+            ...put({}, "tags", nonEmptyList(meta.tags)),
             // Пометка едет и в индекс: бейдж списка обязан быть виден до того,
             // как человек откроет страницу расширения.
             ...(meta.support === undefined ? {} : { support: canonicalSupport(meta.support) }),
@@ -935,6 +993,95 @@ async function runValidate(base, doFetch, allowRemovals) {
     return 0;
 }
 
+// --- sync-manifest ---------------------------------------------------------
+
+/**
+ * Вписывает поля поиска в исходник точечно, не переформатируя файл: строки
+ * `categories`/`tags` встают сразу после `kind` (их место в канонической форме)
+ * с тем же отступом — исходники бывают и на 4, и на 2 пробела.
+ */
+function writeSearchFields(file, fields) {
+    let text = fs.readFileSync(file, "utf8");
+    for (const key of META_OPTIONAL_LISTS) {
+        text = text.replace(new RegExp(`^[ \\t]*"${key}": \\[[^\\n]*\\],\\n`, "m"), "");
+    }
+    const kindLine = /^([ \t]*)"kind": "[^"\n]*",\n/m;
+    if (!kindLine.test(text)) throw new Error(`${file}: cannot find the "kind" line to insert after`);
+    text = text.replace(
+        kindLine,
+        (line, indent) =>
+            line + META_OPTIONAL_LISTS.map((key) => `${indent}"${key}": ${inlineList(fields[key])},\n`).join(""),
+    );
+    const raw = JSON.parse(text);
+    for (const key of META_OPTIONAL_LISTS) {
+        if (!sameList(raw[key], fields[key])) throw new Error(`${file}: ${key} was not rewritten (hand-formatted?)`);
+    }
+    fs.writeFileSync(file, text);
+}
+
+/** Однострочный список в стиле остального исходника: `["a", "b"]`. */
+function inlineList(list) {
+    return `[${list.map((item) => JSON.stringify(item)).join(", ")}]`;
+}
+
+/** Берёт поля поиска из артефакта последней версии; `ids` пусто — все расширения. */
+async function runSyncManifest(ids) {
+    const errors = [];
+    const metas = loadAll(errors);
+    if (errors.length > 0) {
+        reportErrors(errors);
+        console.error(`\n${errors.length} error(s); nothing was written.`);
+        return 1;
+    }
+    const known = new Set(metas.map((meta) => meta.id));
+    const unknown = ids.filter((id) => !known.has(id));
+    if (unknown.length > 0) throw new Error(`unknown extension id(s): ${unknown.join(", ")}`);
+    let changed = 0;
+    for (const meta of metas) {
+        if (ids.length > 0 && !ids.includes(meta.id)) continue;
+        const file = path.posix.join(SRC_DIR, `${meta.id}.json`);
+        // Платформенные записи одной версии собраны из одного package.json — хватает любой.
+        const version = pickLatest(meta.versions);
+        const where = `versions (${versionKey(version)})`;
+        let buffer;
+        try {
+            buffer = await downloadArtifact(version, file, where, errors, SYNC_FETCH_TIMEOUT_MS);
+        } catch (error) {
+            // Сеть подвела на одном — остальные всё равно синхронизируем, повтор возьмёт только его.
+            errors.push({ file, message: error.message });
+            continue;
+        }
+        if (buffer === undefined) continue;
+        const actual = crypto.createHash("sha256").update(buffer).digest("hex");
+        if (actual !== version.sha256) {
+            errors.push({ file, message: `${where}: sha256 mismatch — declared ${version.sha256}, actual ${actual}` });
+            continue;
+        }
+        const packageJson = readZipEntry(buffer, "extension/package.json")?.toString("utf8");
+        if (packageJson === undefined) {
+            errors.push({ file, message: `${where}: artifact has no extension/package.json` });
+            continue;
+        }
+        const fields = manifestSearchFields(JSON.parse(packageJson.replace(/^\uFEFF/, "")));
+        if (META_OPTIONAL_LISTS.every((key) => sameList(meta[key], fields[key]))) continue;
+        try {
+            writeSearchFields(file, fields);
+        } catch (error) {
+            errors.push({ file, message: error.message });
+            continue;
+        }
+        changed++;
+        console.log(`${meta.id}: categories ${JSON.stringify(fields.categories)}, tags ${fields.tags.length}`);
+    }
+    if (errors.length > 0) {
+        reportErrors(errors);
+        console.error(`\n${errors.length} error(s).`);
+        return 1;
+    }
+    console.log(`Synced: ${changed} file(s) changed.`);
+    return 0;
+}
+
 // --- CLI -------------------------------------------------------------------
 
 function optionValue(argv, name) {
@@ -957,7 +1104,12 @@ async function main() {
     if (command === "build") {
         return runBuild(argv.includes("--check"));
     }
-    console.error("usage: registry.mjs validate [--base <ref>] [--fetch] [--allow-removals] | build [--check]");
+    if (command === "sync-manifest") {
+        return await runSyncManifest(argv.slice(1));
+    }
+    console.error(
+        "usage: registry.mjs validate [--base <ref>] [--fetch] [--allow-removals] | build [--check] | sync-manifest [<id>...]",
+    );
     return 2;
 }
 

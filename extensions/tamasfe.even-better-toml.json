@@ -6,6 +6,8 @@
     "displayName": "Even Better TOML",
     "description": "Fully-featured TOML support",
     "kind": "proxy-openvsx",
+    "categories": ["Programming Languages", "Linters", "Formatters", "Other"],
+    "tags": ["toml", "syntax", "rust", "formatter", "config"],
     "repository": "https://github.com/tamasfe/taplo.git",
     "license": "SEE LICENSE IN LICENSE.md",
     "homepage": "https://github.com/tamasfe/taplo#readme",

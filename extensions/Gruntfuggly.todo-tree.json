@@ -6,6 +6,8 @@
     "displayName": "Todo Tree",
     "description": "Show TODO, FIXME, etc. comment tags in a tree view",
     "kind": "proxy-openvsx",
+    "categories": ["Other"],
+    "tags": ["todo", "task", "tasklist", "multi-root ready"],
     "support": {
         "level": "full",
         "works": [
