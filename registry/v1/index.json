@@ -162,6 +162,20 @@
             }
         },
         {
+            "id": "arcticicestudio.nord-visual-studio-code",
+            "publisher": "arcticicestudio",
+            "name": "nord-visual-studio-code",
+            "displayName": "Nord",
+            "description": "An arctic, north-bluish clean and elegant Visual Studio Code theme.",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "0.19.0",
+                "engines": {
+                    "vscode": "^1.12.0"
+                }
+            }
+        },
+        {
             "id": "biomejs.biome",
             "publisher": "biomejs",
             "name": "biome",
@@ -305,6 +319,34 @@
             }
         },
         {
+            "id": "dracula-theme.theme-dracula",
+            "publisher": "dracula-theme",
+            "name": "theme-dracula",
+            "displayName": "Dracula Theme Official",
+            "description": "The official Dracula Theme: a dark theme for many editors, shells, and more. 🦇",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "2.25.1",
+                "engines": {
+                    "vscode": "^1.13.0"
+                }
+            }
+        },
+        {
+            "id": "enkia.tokyo-night",
+            "publisher": "enkia",
+            "name": "tokyo-night",
+            "displayName": "Tokyo Night",
+            "description": "A clean Visual Studio Code theme that celebrates the lights of Downtown Tokyo at night.",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "1.1.2",
+                "engines": {
+                    "vscode": "^1.17.0"
+                }
+            }
+        },
+        {
             "id": "esbenp.prettier-vscode",
             "publisher": "esbenp",
             "name": "prettier-vscode",
@@ -401,6 +443,20 @@
             }
         },
         {
+            "id": "jdinhlife.gruvbox",
+            "publisher": "jdinhlife",
+            "name": "gruvbox",
+            "displayName": "Gruvbox Theme",
+            "description": "Gruvbox Theme",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "1.29.2",
+                "engines": {
+                    "vscode": "^1.67.2"
+                }
+            }
+        },
+        {
             "id": "llvm-vs-code-extensions.vscode-clangd",
             "publisher": "llvm-vs-code-extensions",
             "name": "vscode-clangd",
@@ -439,6 +495,34 @@
                 "version": "1.0.22",
                 "engines": {
                     "vscode": "^1.76.0"
+                }
+            }
+        },
+        {
+            "id": "metaphore.kanagawa-vscode-color-theme",
+            "publisher": "metaphore",
+            "name": "kanagawa-vscode-color-theme",
+            "displayName": "Kanagawa Flavors",
+            "description": "A port of the Kanagawa Neovim color theme for Visual Studio Code, including all three flavors Wave, Dragon and Lotus.",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "0.5.0",
+                "engines": {
+                    "vscode": "^1.77.0"
+                }
+            }
+        },
+        {
+            "id": "mvllow.rose-pine",
+            "publisher": "mvllow",
+            "name": "rose-pine",
+            "displayName": "Rosé Pine",
+            "description": "All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "2.15.2",
+                "engines": {
+                    "vscode": "^1.57.0"
                 }
             }
         },
@@ -496,6 +580,20 @@
                 "engines": {
                     "diode": ">=0.12.8",
                     "vscode": "^1.91.0"
+                }
+            }
+        },
+        {
+            "id": "sainnhe.everforest",
+            "publisher": "sainnhe",
+            "name": "everforest",
+            "displayName": "Everforest",
+            "description": "Comfortable & Pleasant Color Scheme for Visual Studio Code",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "0.3.0",
+                "engines": {
+                    "vscode": "^1.55.0"
                 }
             }
         },
@@ -718,6 +816,34 @@
             }
         },
         {
+            "id": "vscode.theme-solarized-dark",
+            "publisher": "vscode",
+            "name": "theme-solarized-dark",
+            "displayName": "Solarized Dark Theme",
+            "description": "Solarized dark theme for Visual Studio Code",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "1.95.3",
+                "engines": {
+                    "vscode": "*"
+                }
+            }
+        },
+        {
+            "id": "vscode.theme-solarized-light",
+            "publisher": "vscode",
+            "name": "theme-solarized-light",
+            "displayName": "Solarized Light Theme",
+            "description": "Solarized light theme for Visual Studio Code",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "1.95.3",
+                "engines": {
+                    "vscode": "*"
+                }
+            }
+        },
+        {
             "id": "yzhang.markdown-all-in-one",
             "publisher": "yzhang",
             "name": "markdown-all-in-one",
@@ -743,6 +869,20 @@
                 "engines": {
                     "diode": ">=0.12.6",
                     "vscode": "^1.77.0"
+                }
+            }
+        },
+        {
+            "id": "zhuangtongfa.material-theme",
+            "publisher": "zhuangtongfa",
+            "name": "material-theme",
+            "displayName": "One Dark Pro",
+            "description": "Atom's iconic One Dark theme for Visual Studio Code",
+            "kind": "proxy-openvsx",
+            "latest": {
+                "version": "3.20.6",
+                "engines": {
+                    "vscode": "^1.76.0"
                 }
             }
         }

@@ -1,0 +1,28 @@
+{
+    "schemaVersion": 1,
+    "id": "vscode.theme-solarized-light",
+    "publisher": "vscode",
+    "name": "theme-solarized-light",
+    "displayName": "Solarized Light Theme",
+    "description": "Solarized light theme for Visual Studio Code",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/microsoft/vscode/tree/main/extensions/theme-solarized-light",
+    "license": "MIT",
+    "readme": "# Solarized Light Theme\n\nThe **Solarized Light** color theme that ships with VS Code. After installing, reload the window and pick a theme with `Preferences: Color Theme` (Ctrl+K Ctrl+T), or set `\"workbench.colorTheme\": \"Solarized Light\"` in settings.json.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "1.95.3",
+            "engines": {
+                "vscode": "*"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/vscode/theme-solarized-light/1.95.3/file/vscode.theme-solarized-light-1.95.3.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "77ab803b50be8f85adf176b1e21cdb2410485658b4d7e040de517bc59cf94ecd",
+            "size": 5738,
+            "publishedAt": "2024-12-10T11:10:16.025Z"
+        }
+    ]
+}

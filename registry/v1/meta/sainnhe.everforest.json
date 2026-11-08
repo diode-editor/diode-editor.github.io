@@ -1,0 +1,28 @@
+{
+    "schemaVersion": 1,
+    "id": "sainnhe.everforest",
+    "publisher": "sainnhe",
+    "name": "everforest",
+    "displayName": "Everforest",
+    "description": "Comfortable & Pleasant Color Scheme for Visual Studio Code",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/sainnhe/everforest-vscode",
+    "license": "MIT",
+    "readme": "# Everforest\n\nA green based, warm and soft color scheme: **Everforest Dark** and Everforest Light. After installing, reload the window and pick a theme with `Preferences: Color Theme` (Ctrl+K Ctrl+T), or set `\"workbench.colorTheme\": \"Everforest Dark\"` in settings.json.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode. The themes are verified with their default options; the extension options that regenerate the theme files were not checked in Diode.\n",
+    "versions": [
+        {
+            "version": "0.3.0",
+            "engines": {
+                "vscode": "^1.55.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/sainnhe/everforest/0.3.0/file/sainnhe.everforest-0.3.0.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "5f5bdab54200099d42e53450baf10a78b19d887e37d3d50c710c2d411216a338",
+            "size": 89653,
+            "publishedAt": "2022-12-13T08:48:00.562Z"
+        }
+    ]
+}

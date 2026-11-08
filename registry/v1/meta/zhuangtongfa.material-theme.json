@@ -1,0 +1,28 @@
+{
+    "schemaVersion": 1,
+    "id": "zhuangtongfa.material-theme",
+    "publisher": "zhuangtongfa",
+    "name": "material-theme",
+    "displayName": "One Dark Pro",
+    "description": "Atom's iconic One Dark theme for Visual Studio Code",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/Binaryify/OneDark-Pro",
+    "license": "MIT",
+    "readme": "# One Dark Pro\n\nAtom's iconic One Dark color theme: **One Dark Pro**, Flat, Darker, Mix and Night Flat. After installing, reload the window and pick a theme with `Preferences: Color Theme` (Ctrl+K Ctrl+T), or set `\"workbench.colorTheme\": \"One Dark Pro\"` in settings.json.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode. The themes are verified with their default options; the extension options that regenerate the theme files were not checked in Diode.\n",
+    "versions": [
+        {
+            "version": "3.20.6",
+            "engines": {
+                "vscode": "^1.76.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/zhuangtongfa/material-theme/3.20.6/file/zhuangtongfa.material-theme-3.20.6.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "69551844e1d36eb94db9a5b6daabf01e9f7ec956e7bb8e8594767c6d4ff1dd47",
+            "size": 343700,
+            "publishedAt": "2026-10-30T03:44:50.357Z"
+        }
+    ]
+}

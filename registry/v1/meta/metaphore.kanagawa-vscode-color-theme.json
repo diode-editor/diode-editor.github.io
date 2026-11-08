@@ -1,0 +1,28 @@
+{
+    "schemaVersion": 1,
+    "id": "metaphore.kanagawa-vscode-color-theme",
+    "publisher": "metaphore",
+    "name": "kanagawa-vscode-color-theme",
+    "displayName": "Kanagawa Flavors",
+    "description": "A port of the Kanagawa Neovim color theme for Visual Studio Code, including all three flavors Wave, Dragon and Lotus.",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/metapho-re/kanagawa-vscode-theme",
+    "license": "MIT",
+    "readme": "# Kanagawa Flavors\n\nA port of the Kanagawa Neovim color scheme: **Kanagawa Wave**, Kanagawa Dragon (dark) and Kanagawa Lotus (light). After installing, reload the window and pick a theme with `Preferences: Color Theme` (Ctrl+K Ctrl+T), or set `\"workbench.colorTheme\": \"Kanagawa Wave\"` in settings.json.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "0.5.0",
+            "engines": {
+                "vscode": "^1.77.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/metaphore/kanagawa-vscode-color-theme/0.5.0/file/metaphore.kanagawa-vscode-color-theme-0.5.0.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "bd443ef53aea77f72009ac30bfb8deb82a9ca69b66bf5689ab7fd917cbe8fdd4",
+            "size": 1606925,
+            "publishedAt": "2025-01-06T20:49:50.341Z"
+        }
+    ]
+}

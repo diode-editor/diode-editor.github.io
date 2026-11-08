@@ -1,0 +1,28 @@
+{
+    "schemaVersion": 1,
+    "id": "jdinhlife.gruvbox",
+    "publisher": "jdinhlife",
+    "name": "gruvbox",
+    "displayName": "Gruvbox Theme",
+    "description": "Gruvbox Theme",
+    "kind": "proxy-openvsx",
+    "repository": "https://github.com/jdinhify/vscode-theme-gruvbox",
+    "license": "MIT",
+    "readme": "# Gruvbox Theme\n\nRetro groove color themes: **Gruvbox Dark** and **Gruvbox Light**, each in Medium, Hard and Soft contrast. After installing, reload the window and pick a theme with `Preferences: Color Theme` (Ctrl+K Ctrl+T), or set `\"workbench.colorTheme\": \"Gruvbox Dark Medium\"` in settings.json.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "1.29.2",
+            "engines": {
+                "vscode": "^1.67.2"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/jdinhlife/gruvbox/1.29.2/file/jdinhlife.gruvbox-1.29.2.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "9961716a5636b6f4c5725bd9c01873dded8c2f667ccb2227e8d11e12dc964d7b",
+            "size": 995354,
+            "publishedAt": "2026-11-05T12:54:18.204Z"
+        }
+    ]
+}
