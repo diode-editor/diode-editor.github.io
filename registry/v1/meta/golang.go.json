@@ -6,6 +6,19 @@
     "displayName": "Go",
     "description": "Rich Go language support for Visual Studio Code",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Programming Languages",
+        "Snippets",
+        "Linters",
+        "Debuggers",
+        "Formatters",
+        "Testing"
+    ],
+    "tags": [
+        "multi-root ready",
+        "golang",
+        "gopls"
+    ],
     "support": {
         "level": "partial",
         "works": [

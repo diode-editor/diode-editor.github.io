@@ -8,6 +8,17 @@
             "displayName": "Claude Code for VS Code",
             "description": "Claude Code for VS Code: Harness the power of Claude Code without leaving your IDE",
             "kind": "proxy-openvsx",
+            "categories": [
+                "AI",
+                "Chat"
+            ],
+            "tags": [
+                "claude",
+                "sonnet",
+                "ai",
+                "mcp",
+                "agent"
+            ],
             "support": {
                 "level": "partial",
                 "works": [
@@ -38,6 +49,9 @@
             "displayName": "Catppuccin for VSCode",
             "description": "🦌 Soothing pastel theme for VSCode",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Themes"
+            ],
             "latest": {
                 "version": "3.19.0",
                 "engines": {
@@ -52,6 +66,17 @@
             "displayName": "markdownlint",
             "description": "Markdown linting and style checking for Visual Studio Code",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Linters",
+                "Formatters"
+            ],
+            "tags": [
+                "markdown",
+                "lint",
+                "commonmark",
+                "md",
+                "multi-root ready"
+            ],
             "support": {
                 "level": "partial",
                 "works": [
@@ -78,6 +103,14 @@
             "displayName": "EditorConfig",
             "description": "EditorConfig Support for Visual Studio Code",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Other"
+            ],
+            "tags": [
+                "editor",
+                "config",
+                "multi-root ready"
+            ],
             "latest": {
                 "version": "0.18.2",
                 "engines": {
@@ -92,6 +125,15 @@
             "displayName": "Todo Tree",
             "description": "Show TODO, FIXME, etc. comment tags in a tree view",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Other"
+            ],
+            "tags": [
+                "todo",
+                "task",
+                "tasklist",
+                "multi-root ready"
+            ],
             "support": {
                 "level": "full",
                 "works": [
@@ -118,6 +160,18 @@
             "displayName": "Python Indent",
             "description": "Correct Python indentation",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Formatters",
+                "Keymaps",
+                "Programming Languages"
+            ],
+            "tags": [
+                "python",
+                "indent",
+                "dedent",
+                "indentation",
+                "whitespace"
+            ],
             "support": {
                 "level": "full",
                 "works": [
@@ -142,6 +196,54 @@
             "displayName": "Supermaven",
             "description": "The fastest copilot.",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Machine Learning",
+                "Programming Languages",
+                "Snippets",
+                "AI",
+                "Chat"
+            ],
+            "tags": [
+                "ai",
+                "anthropic",
+                "autocomplete",
+                "intellicode",
+                "intellisense",
+                "code completion",
+                "bash",
+                "c",
+                "claude",
+                "chat",
+                "chatgpt",
+                "cpp",
+                "csharp",
+                "css",
+                "dart",
+                "elixir",
+                "erlang",
+                "go",
+                "java",
+                "javascript",
+                "json",
+                "kotlin",
+                "lua",
+                "markdown",
+                "openai",
+                "php",
+                "python",
+                "ruby",
+                "rust",
+                "scala",
+                "sonnet",
+                "shell",
+                "sql",
+                "swift",
+                "typescript",
+                "yaml",
+                "super",
+                "maven",
+                "copilot"
+            ],
             "support": {
                 "level": "partial",
                 "works": [
@@ -168,6 +270,16 @@
             "displayName": "Nord",
             "description": "An arctic, north-bluish clean and elegant Visual Studio Code theme.",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Themes"
+            ],
+            "tags": [
+                "arctic",
+                "north",
+                "bluish",
+                "clean",
+                "elegant"
+            ],
             "latest": {
                 "version": "0.19.0",
                 "engines": {
@@ -182,6 +294,10 @@
             "displayName": "Biome",
             "description": "Toolchain of the web",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Formatters",
+                "Linters"
+            ],
             "support": {
                 "level": "full",
                 "works": [
@@ -206,6 +322,18 @@
             "displayName": "Tailwind CSS IntelliSense",
             "description": "Intelligent Tailwind CSS tooling for VS Code",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Linters",
+                "Other"
+            ],
+            "tags": [
+                "tailwind",
+                "tailwindcss",
+                "css",
+                "intellisense",
+                "autocomplete",
+                "vscode"
+            ],
             "support": {
                 "level": "full",
                 "works": [
@@ -233,6 +361,21 @@
             "displayName": "Buf",
             "description": "Visual Studio Code support for Buf",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Programming Languages",
+                "Formatters",
+                "Linters"
+            ],
+            "tags": [
+                "buf",
+                "bufbuild",
+                "format",
+                "lint",
+                "proto",
+                "proto3",
+                "protobuf",
+                "protocol buffers"
+            ],
             "support": {
                 "level": "full",
                 "works": [
@@ -259,6 +402,17 @@
             "displayName": "Ruff",
             "description": "A Visual Studio Code extension with support for the Ruff linter and formatter for Python.",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Programming Languages",
+                "Linters",
+                "Formatters"
+            ],
+            "tags": [
+                "python",
+                "linting",
+                "formatting",
+                "ruff"
+            ],
             "latest": {
                 "version": "2026.80.0",
                 "engines": {
@@ -274,6 +428,9 @@
             "displayName": "npm Intellisense",
             "description": "Visual Studio Code plugin that autocompletes npm modules in import statements",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Other"
+            ],
             "support": {
                 "level": "full",
                 "works": [
@@ -297,6 +454,13 @@
             "displayName": "ESLint",
             "description": "Integrates ESLint JavaScript into VS Code.",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Programming Languages",
+                "Linters"
+            ],
+            "tags": [
+                "multi-root ready"
+            ],
             "latest": {
                 "version": "3.0.34",
                 "engines": {
@@ -311,6 +475,12 @@
             "displayName": "BasedPyright",
             "description": "VS Code static type checking for Python (but based)",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Programming Languages"
+            ],
+            "tags": [
+                "python"
+            ],
             "latest": {
                 "version": "1.40.0",
                 "engines": {
@@ -325,6 +495,15 @@
             "displayName": "Dracula Theme Official",
             "description": "The official Dracula Theme: a dark theme for many editors, shells, and more. 🦇",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Themes"
+            ],
+            "tags": [
+                "dracula",
+                "dark",
+                "theme",
+                "color-theme"
+            ],
             "latest": {
                 "version": "2.25.1",
                 "engines": {
@@ -339,6 +518,18 @@
             "displayName": "Tokyo Night",
             "description": "A clean Visual Studio Code theme that celebrates the lights of Downtown Tokyo at night.",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Themes",
+                "Other"
+            ],
+            "tags": [
+                "theme",
+                "contrast",
+                "dark",
+                "light",
+                "tokyo",
+                "clean"
+            ],
             "latest": {
                 "version": "1.1.2",
                 "engines": {
@@ -353,6 +544,43 @@
             "displayName": "Prettier - Code formatter",
             "description": "Code formatter using prettier",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Formatters"
+            ],
+            "tags": [
+                "multi-root ready",
+                "prettier",
+                "formatter",
+                "javascript",
+                "handlebars",
+                "js",
+                "jsx",
+                "flow",
+                "typescript",
+                "ts",
+                "json",
+                "css",
+                "less",
+                "scss",
+                "styled-components",
+                "styled-jsx",
+                "markdown",
+                "md",
+                "commonmark",
+                "mdx",
+                "php",
+                "pug",
+                "ruby",
+                "swift",
+                "html",
+                "vue",
+                "ember",
+                "glimmer",
+                "angular",
+                "graphql",
+                "yaml",
+                "yml"
+            ],
             "support": {
                 "level": "full",
                 "works": [
@@ -379,6 +607,18 @@
             "displayName": "Auto Close Tag",
             "description": "Automatically add HTML/XML close tag, same as Visual Studio IDE or Sublime Text",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Other",
+                "Programming Languages"
+            ],
+            "tags": [
+                "AutoComplete",
+                "close",
+                "tag",
+                "html",
+                "xml",
+                "multi-root ready"
+            ],
             "latest": {
                 "version": "0.5.15",
                 "engines": {
@@ -394,6 +634,19 @@
             "displayName": "Go",
             "description": "Rich Go language support for Visual Studio Code",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Programming Languages",
+                "Snippets",
+                "Linters",
+                "Debuggers",
+                "Formatters",
+                "Testing"
+            ],
+            "tags": [
+                "multi-root ready",
+                "golang",
+                "gopls"
+            ],
             "support": {
                 "level": "partial",
                 "works": [
@@ -424,6 +677,17 @@
             "displayName": "HashiCorp Terraform",
             "description": "Syntax highlighting and autocompletion for Terraform",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Programming Languages",
+                "Other",
+                "Formatters",
+                "Linters"
+            ],
+            "tags": [
+                "devops",
+                "terraform",
+                "hcl"
+            ],
             "support": {
                 "level": "partial",
                 "works": [
@@ -449,6 +713,9 @@
             "displayName": "Gruvbox Theme",
             "description": "Gruvbox Theme",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Themes"
+            ],
             "latest": {
                 "version": "1.29.2",
                 "engines": {
@@ -463,6 +730,18 @@
             "displayName": "clangd",
             "description": "C/C++ completion, navigation, and insights",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Programming Languages",
+                "Linters",
+                "Formatters"
+            ],
+            "tags": [
+                "C",
+                "C++",
+                "clang",
+                "clangd",
+                "LLVM"
+            ],
             "support": {
                 "level": "partial",
                 "works": [
@@ -491,6 +770,9 @@
             "displayName": "#region folding for VS Code",
             "description": "Provides folding for text wrapped with #region comments in VS Code.",
             "kind": "proxy-hosted",
+            "categories": [
+                "Other"
+            ],
             "latest": {
                 "version": "1.0.22",
                 "engines": {
@@ -505,6 +787,20 @@
             "displayName": "Kanagawa Flavors",
             "description": "A port of the Kanagawa Neovim color theme for Visual Studio Code, including all three flavors Wave, Dragon and Lotus.",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Themes"
+            ],
+            "tags": [
+                "kanagawa",
+                "color",
+                "theme",
+                "vscode",
+                "dark",
+                "light",
+                "wave",
+                "dragon",
+                "lotus"
+            ],
             "latest": {
                 "version": "0.5.0",
                 "engines": {
@@ -519,6 +815,16 @@
             "displayName": "Rosé Pine",
             "description": "All natural pine, faux fur and a bit of soho vibes for the classy minimalist",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Themes"
+            ],
+            "tags": [
+                "minimal",
+                "aesthetic",
+                "pastel",
+                "classy",
+                "soft"
+            ],
             "latest": {
                 "version": "2.15.2",
                 "engines": {
@@ -533,6 +839,15 @@
             "displayName": "Language Support for Java(TM) by Red Hat",
             "description": "Java Linting, Intellisense, formatting, refactoring, Maven/Gradle support and more...",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Programming Languages",
+                "Linters",
+                "Formatters",
+                "Snippets"
+            ],
+            "tags": [
+                "multi-root ready"
+            ],
             "support": {
                 "level": "partial",
                 "works": [
@@ -563,6 +878,18 @@
             "displayName": "YAML",
             "description": "YAML Language Support by Red Hat, with built-in Kubernetes syntax support",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Programming Languages",
+                "Linters",
+                "Snippets",
+                "Formatters"
+            ],
+            "tags": [
+                "kubernetes",
+                "yaml",
+                "autocompletion",
+                "validation"
+            ],
             "support": {
                 "level": "full",
                 "works": [
@@ -590,6 +917,13 @@
             "displayName": "Everforest",
             "description": "Comfortable & Pleasant Color Scheme for Visual Studio Code",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Themes"
+            ],
+            "tags": [
+                "green",
+                "theme"
+            ],
             "latest": {
                 "version": "0.3.0",
                 "engines": {
@@ -604,6 +938,15 @@
             "displayName": "Trailing Spaces",
             "description": "Highlight trailing spaces and delete them in a flash!",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Other"
+            ],
+            "tags": [
+                "trailing",
+                "spaces",
+                "delete",
+                "highlight"
+            ],
             "support": {
                 "level": "full",
                 "works": [
@@ -627,6 +970,14 @@
             "displayName": "Svelte for VS Code",
             "description": "Svelte language support for VS Code",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Programming Languages",
+                "Formatters"
+            ],
+            "tags": [
+                "svelte",
+                "vscode"
+            ],
             "support": {
                 "level": "partial",
                 "works": [
@@ -656,6 +1007,19 @@
             "displayName": "Even Better TOML",
             "description": "Fully-featured TOML support",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Programming Languages",
+                "Linters",
+                "Formatters",
+                "Other"
+            ],
+            "tags": [
+                "toml",
+                "syntax",
+                "rust",
+                "formatter",
+                "config"
+            ],
             "support": {
                 "level": "full",
                 "works": [
@@ -709,6 +1073,18 @@
             "displayName": "Bazel for Java (community fork, Bazel 9)",
             "description": "Bazel support for Java Linting, Intellisense, formatting, refactoring and more... Fork of sfdc.bazel-vscode-java with Bazel 9 / bzlmod fixes.",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Programming Languages",
+                "Linters",
+                "Formatters",
+                "Snippets",
+                "Other"
+            ],
+            "tags": [
+                "multi-root ready",
+                "Bazel",
+                "Java"
+            ],
             "support": {
                 "level": "full",
                 "works": [
@@ -735,6 +1111,22 @@
             "displayName": "ShellCheck",
             "description": "Integrates ShellCheck into VS Code, a linter for Shell scripts.",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Linters",
+                "Programming Languages"
+            ],
+            "tags": [
+                "shell",
+                "shellscript",
+                "linter",
+                "lint",
+                "sh",
+                "bash",
+                "dash",
+                "ksh",
+                "posix",
+                "bats"
+            ],
             "support": {
                 "level": "partial",
                 "works": [
@@ -761,6 +1153,15 @@
             "displayName": "Vitest",
             "description": "A Vite-native testing framework. It's fast!",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Testing"
+            ],
+            "tags": [
+                "javascript",
+                "test",
+                "typescript",
+                "vitest"
+            ],
             "support": {
                 "level": "partial",
                 "works": [
@@ -793,6 +1194,14 @@
             "displayName": "Maven for Java",
             "description": "Manage Maven projects, execute goals, generate project from archetype, improve user experience for Java developers.",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Programming Languages",
+                "Other"
+            ],
+            "tags": [
+                "Maven",
+                "Java"
+            ],
             "support": {
                 "level": "partial",
                 "works": [
@@ -822,6 +1231,12 @@
             "displayName": "Solarized Dark Theme",
             "description": "Solarized dark theme for Visual Studio Code",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Themes"
+            ],
+            "tags": [
+                "Built-in"
+            ],
             "latest": {
                 "version": "1.95.3",
                 "engines": {
@@ -836,6 +1251,12 @@
             "displayName": "Solarized Light Theme",
             "description": "Solarized light theme for Visual Studio Code",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Themes"
+            ],
+            "tags": [
+                "Built-in"
+            ],
             "latest": {
                 "version": "1.95.3",
                 "engines": {
@@ -850,6 +1271,14 @@
             "displayName": "Markdown All in One",
             "description": "All you need to write Markdown (keyboard shortcuts, table of contents, auto preview and more)",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Programming Languages",
+                "Formatters",
+                "Other"
+            ],
+            "tags": [
+                "markdown"
+            ],
             "support": {
                 "level": "partial",
                 "works": [
@@ -879,6 +1308,17 @@
             "displayName": "One Dark Pro",
             "description": "Atom's iconic One Dark theme for Visual Studio Code",
             "kind": "proxy-openvsx",
+            "categories": [
+                "Themes"
+            ],
+            "tags": [
+                "one dark",
+                "onedark",
+                "one dark pro",
+                "onedark pro",
+                "theme",
+                "atom"
+            ],
             "latest": {
                 "version": "3.20.6",
                 "engines": {

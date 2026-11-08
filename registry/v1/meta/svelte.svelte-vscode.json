@@ -6,6 +6,14 @@
     "displayName": "Svelte for VS Code",
     "description": "Svelte language support for VS Code",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Programming Languages",
+        "Formatters"
+    ],
+    "tags": [
+        "svelte",
+        "vscode"
+    ],
     "support": {
         "level": "partial",
         "works": [

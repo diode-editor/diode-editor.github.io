@@ -6,6 +6,17 @@
     "displayName": "One Dark Pro",
     "description": "Atom's iconic One Dark theme for Visual Studio Code",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Themes"
+    ],
+    "tags": [
+        "one dark",
+        "onedark",
+        "one dark pro",
+        "onedark pro",
+        "theme",
+        "atom"
+    ],
     "repository": "https://github.com/Binaryify/OneDark-Pro",
     "license": "MIT",
     "readme": "# One Dark Pro\n\nAtom's iconic One Dark color theme: **One Dark Pro**, Flat, Darker, Mix and Night Flat. After installing, reload the window and pick a theme with `Preferences: Color Theme` (Ctrl+K Ctrl+T), or set `\"workbench.colorTheme\": \"One Dark Pro\"` in settings.json.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode. The themes are verified with their default options; the extension options that regenerate the theme files were not checked in Diode.\n",

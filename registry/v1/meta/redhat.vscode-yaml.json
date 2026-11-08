@@ -6,6 +6,18 @@
     "displayName": "YAML",
     "description": "YAML Language Support by Red Hat, with built-in Kubernetes syntax support",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Programming Languages",
+        "Linters",
+        "Snippets",
+        "Formatters"
+    ],
+    "tags": [
+        "kubernetes",
+        "yaml",
+        "autocompletion",
+        "validation"
+    ],
     "support": {
         "level": "full",
         "works": [

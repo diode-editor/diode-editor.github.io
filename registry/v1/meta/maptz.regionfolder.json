@@ -6,6 +6,9 @@
     "displayName": "#region folding for VS Code",
     "description": "Provides folding for text wrapped with #region comments in VS Code.",
     "kind": "proxy-hosted",
+    "categories": [
+        "Other"
+    ],
     "repository": "https://github.com/maptz/Maptz.VSCode.Extensions.customfolding",
     "license": "MIT",
     "readme": "# #region folding for VS Code\n\nAdds folding for `#region` / `#endregion` comment markers on top of indentation folding, for many languages.\n\nThis is the unmodified extension by maptz, pinned to a specific version and verified to work in Diode. It is not published on Open VSX, so the `.vsix` is rehosted in this registry under its MIT license.\n",

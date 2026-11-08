@@ -6,6 +6,15 @@
     "displayName": "Language Support for Java(TM) by Red Hat",
     "description": "Java Linting, Intellisense, formatting, refactoring, Maven/Gradle support and more...",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Programming Languages",
+        "Linters",
+        "Formatters",
+        "Snippets"
+    ],
+    "tags": [
+        "multi-root ready"
+    ],
     "support": {
         "level": "partial",
         "works": [

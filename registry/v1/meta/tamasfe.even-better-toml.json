@@ -6,6 +6,19 @@
     "displayName": "Even Better TOML",
     "description": "Fully-featured TOML support",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Programming Languages",
+        "Linters",
+        "Formatters",
+        "Other"
+    ],
+    "tags": [
+        "toml",
+        "syntax",
+        "rust",
+        "formatter",
+        "config"
+    ],
     "support": {
         "level": "full",
         "works": [

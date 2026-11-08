@@ -6,6 +6,10 @@
     "displayName": "Biome",
     "description": "Toolchain of the web",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Formatters",
+        "Linters"
+    ],
     "support": {
         "level": "full",
         "works": [

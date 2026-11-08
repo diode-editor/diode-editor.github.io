@@ -6,6 +6,14 @@
     "displayName": "Markdown All in One",
     "description": "All you need to write Markdown (keyboard shortcuts, table of contents, auto preview and more)",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Programming Languages",
+        "Formatters",
+        "Other"
+    ],
+    "tags": [
+        "markdown"
+    ],
     "support": {
         "level": "partial",
         "works": [

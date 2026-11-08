@@ -6,6 +6,15 @@
     "displayName": "Trailing Spaces",
     "description": "Highlight trailing spaces and delete them in a flash!",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Other"
+    ],
+    "tags": [
+        "trailing",
+        "spaces",
+        "delete",
+        "highlight"
+    ],
     "support": {
         "level": "full",
         "works": [

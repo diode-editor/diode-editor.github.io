@@ -6,6 +6,18 @@
     "displayName": "clangd",
     "description": "C/C++ completion, navigation, and insights",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Programming Languages",
+        "Linters",
+        "Formatters"
+    ],
+    "tags": [
+        "C",
+        "C++",
+        "clang",
+        "clangd",
+        "LLVM"
+    ],
     "support": {
         "level": "partial",
         "works": [

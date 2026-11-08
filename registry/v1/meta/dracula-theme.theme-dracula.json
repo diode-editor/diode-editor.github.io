@@ -6,6 +6,15 @@
     "displayName": "Dracula Theme Official",
     "description": "The official Dracula Theme: a dark theme for many editors, shells, and more. 🦇",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Themes"
+    ],
+    "tags": [
+        "dracula",
+        "dark",
+        "theme",
+        "color-theme"
+    ],
     "repository": "https://github.com/dracula/visual-studio-code",
     "license": "MIT",
     "readme": "# Dracula Theme Official\n\nThe official Dracula dark color theme: **Dracula Theme** and Dracula Theme Soft. After installing, reload the window and pick a theme with `Preferences: Color Theme` (Ctrl+K Ctrl+T), or set `\"workbench.colorTheme\": \"Dracula Theme\"` in settings.json.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",

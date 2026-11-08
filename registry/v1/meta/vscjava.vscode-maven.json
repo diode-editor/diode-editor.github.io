@@ -6,6 +6,14 @@
     "displayName": "Maven for Java",
     "description": "Manage Maven projects, execute goals, generate project from archetype, improve user experience for Java developers.",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Programming Languages",
+        "Other"
+    ],
+    "tags": [
+        "Maven",
+        "Java"
+    ],
     "support": {
         "level": "partial",
         "works": [

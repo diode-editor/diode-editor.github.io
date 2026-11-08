@@ -6,6 +6,21 @@
     "displayName": "Buf",
     "description": "Visual Studio Code support for Buf",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Programming Languages",
+        "Formatters",
+        "Linters"
+    ],
+    "tags": [
+        "buf",
+        "bufbuild",
+        "format",
+        "lint",
+        "proto",
+        "proto3",
+        "protobuf",
+        "protocol buffers"
+    ],
     "support": {
         "level": "full",
         "works": [

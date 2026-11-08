@@ -6,6 +6,14 @@
     "displayName": "EditorConfig",
     "description": "EditorConfig Support for Visual Studio Code",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Other"
+    ],
+    "tags": [
+        "editor",
+        "config",
+        "multi-root ready"
+    ],
     "repository": "https://github.com/editorconfig/editorconfig-vscode",
     "license": "MIT",
     "homepage": "https://editorconfig.org/",

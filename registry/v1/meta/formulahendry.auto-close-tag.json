@@ -6,6 +6,18 @@
     "displayName": "Auto Close Tag",
     "description": "Automatically add HTML/XML close tag, same as Visual Studio IDE or Sublime Text",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Other",
+        "Programming Languages"
+    ],
+    "tags": [
+        "AutoComplete",
+        "close",
+        "tag",
+        "html",
+        "xml",
+        "multi-root ready"
+    ],
     "repository": "https://github.com/formulahendry/vscode-auto-close-tag",
     "license": "MIT",
     "readme": "# Auto Close Tag\n\nAutomatically adds the closing tag when you type the `>` of an opening tag, and `Alt+.` closes the last open tag by hand.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",

@@ -6,6 +6,17 @@
     "displayName": "HashiCorp Terraform",
     "description": "Syntax highlighting and autocompletion for Terraform",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Programming Languages",
+        "Other",
+        "Formatters",
+        "Linters"
+    ],
+    "tags": [
+        "devops",
+        "terraform",
+        "hcl"
+    ],
     "support": {
         "level": "partial",
         "works": [

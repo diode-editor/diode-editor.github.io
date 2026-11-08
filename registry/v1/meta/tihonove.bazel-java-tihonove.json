@@ -6,6 +6,18 @@
     "displayName": "Bazel for Java (community fork, Bazel 9)",
     "description": "Bazel support for Java Linting, Intellisense, formatting, refactoring and more... Fork of sfdc.bazel-vscode-java with Bazel 9 / bzlmod fixes.",
     "kind": "proxy-openvsx",
+    "categories": [
+        "Programming Languages",
+        "Linters",
+        "Formatters",
+        "Snippets",
+        "Other"
+    ],
+    "tags": [
+        "multi-root ready",
+        "Bazel",
+        "Java"
+    ],
     "support": {
         "level": "full",
         "works": [

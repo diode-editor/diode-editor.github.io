@@ -6,6 +6,17 @@
     "displayName": "Claude Code for VS Code",
     "description": "Claude Code for VS Code: Harness the power of Claude Code without leaving your IDE",
     "kind": "proxy-openvsx",
+    "categories": [
+        "AI",
+        "Chat"
+    ],
+    "tags": [
+        "claude",
+        "sonnet",
+        "ai",
+        "mcp",
+        "agent"
+    ],
     "support": {
         "level": "partial",
         "works": [
