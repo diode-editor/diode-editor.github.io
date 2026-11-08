@@ -67,7 +67,16 @@ scripts/set-diode-version.mjs       версия diode в футере index.htm
    Пометка едет и в `index.json` — бейдж `Partial` виден в списке до установки, а на странице
    расширения разворачивается в два списка. Типичный повод — webview: языковая часть расширения
    работает, панель не открывается (`Supermaven.supermaven`).
-4. Проверить локально:
+4. Перенести из манифеста поля поиска — `categories` и `keywords` (в записи это `tags`):
+   ```sh
+   node scripts/registry.mjs sync-manifest <publisher>.<name>
+   ```
+   Команда скачивает артефакт последней версии и вписывает оба поля после `kind`. По ним работают
+   фильтры поиска Diode `@category:themes` и `@tag:python`, поэтому оба поля едут и в `index.json`.
+   Руками их не пишут: `validate --fetch` сверяет их с `extension/package.json` последней версии и
+   при расхождении просит запустить `sync-manifest`. Это же нужно делать при добавлении новой версии.
+   Пустой список (`[]`) значит «сверено, в манифесте пусто».
+5. Проверить локально:
    ```sh
    npm ci
    node scripts/registry.mjs validate --fetch
@@ -75,7 +84,7 @@ scripts/set-diode-version.mjs       версия diode в футере index.htm
    `--fetch` реально скачивает артефакт и сверяет `sha256` и `size` — то есть проверяет пин, а не
    его переписанную копию, — и открывает его манифест: pre-release-сборка и артефакт не той
    версии или платформы отвергаются.
-5. Прислать PR, трогающий только `extensions/` (и `artifacts/`, если расширение наше).
+6. Прислать PR, трогающий только `extensions/` (и `artifacts/`, если расширение наше).
    `registry/v1/**` собирает CI после мержа — в PR этих файлов быть не должно.
 
 Форма записи и её нормативное описание — `src/vs/platform/extensionManagement/common/registryFormat.ts`
@@ -88,6 +97,7 @@ scripts/set-diode-version.mjs       версия diode в футере index.htm
 ```sh
 node scripts/registry.mjs validate [--base <ref>] [--fetch] [--allow-removals]
 node scripts/registry.mjs build [--check]
+node scripts/registry.mjs sync-manifest [<id>...]
 ```
 
 `--base <ref>` включает проверку иммутабельности против ветки (в CI — `origin/main`).

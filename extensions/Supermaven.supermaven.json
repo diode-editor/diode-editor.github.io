@@ -6,6 +6,8 @@
     "displayName": "Supermaven",
     "description": "The fastest copilot.",
     "kind": "proxy-openvsx",
+    "categories": ["Machine Learning", "Programming Languages", "Snippets", "AI", "Chat"],
+    "tags": ["ai", "anthropic", "autocomplete", "intellicode", "intellisense", "code completion", "bash", "c", "claude", "chat", "chatgpt", "cpp", "csharp", "css", "dart", "elixir", "erlang", "go", "java", "javascript", "json", "kotlin", "lua", "markdown", "openai", "php", "python", "ruby", "rust", "scala", "sonnet", "shell", "sql", "swift", "typescript", "yaml", "super", "maven", "copilot"],
     "support": {
         "level": "partial",
         "works": [

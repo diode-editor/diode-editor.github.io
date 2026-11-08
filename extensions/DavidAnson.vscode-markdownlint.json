@@ -6,6 +6,8 @@
     "displayName": "markdownlint",
     "description": "Markdown linting and style checking for Visual Studio Code",
     "kind": "proxy-openvsx",
+    "categories": ["Linters", "Formatters"],
+    "tags": ["markdown", "lint", "commonmark", "md", "multi-root ready"],
     "repository": "https://github.com/DavidAnson/vscode-markdownlint",
     "license": "MIT",
     "homepage": "https://github.com/DavidAnson/vscode-markdownlint",

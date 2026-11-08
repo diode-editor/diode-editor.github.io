@@ -6,6 +6,8 @@
     "displayName": "Ruff",
     "description": "A Visual Studio Code extension with support for the Ruff linter and formatter for Python.",
     "kind": "proxy-openvsx",
+    "categories": ["Programming Languages", "Linters", "Formatters"],
+    "tags": ["python", "linting", "formatting", "ruff"],
     "repository": "https://github.com/astral-sh/ruff-vscode",
     "license": "MIT",
     "homepage": "https://docs.astral.sh/ruff/",

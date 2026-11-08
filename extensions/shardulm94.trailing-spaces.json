@@ -6,6 +6,8 @@
     "displayName": "Trailing Spaces",
     "description": "Highlight trailing spaces and delete them in a flash!",
     "kind": "proxy-openvsx",
+    "categories": ["Other"],
+    "tags": ["trailing", "spaces", "delete", "highlight"],
     "repository": "https://github.com/shardulm94/vscode-trailingspaces.git",
     "license": "MIT",
     "homepage": "https://github.com/shardulm94/vscode-trailingspaces#readme",

@@ -6,6 +6,8 @@
     "displayName": "Gruvbox Theme",
     "description": "Gruvbox Theme",
     "kind": "proxy-openvsx",
+    "categories": ["Themes"],
+    "tags": [],
     "repository": "https://github.com/jdinhify/vscode-theme-gruvbox",
     "license": "MIT",
     "readme": "# Gruvbox Theme\n\nRetro groove color themes: **Gruvbox Dark** and **Gruvbox Light**, each in Medium, Hard and Soft contrast. After installing, reload the window and pick a theme with `Preferences: Color Theme` (Ctrl+K Ctrl+T), or set `\"workbench.colorTheme\": \"Gruvbox Dark Medium\"` in settings.json.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",

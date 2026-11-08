@@ -6,6 +6,8 @@
     "displayName": "Biome",
     "description": "Toolchain of the web",
     "kind": "proxy-openvsx",
+    "categories": ["Formatters", "Linters"],
+    "tags": [],
     "repository": "https://github.com/biomejs/biome-vscode.git",
     "license": "MIT OR Apache-2.0",
     "homepage": "https://github.com/biomejs/biome-vscode#readme",

@@ -6,6 +6,8 @@
     "displayName": "Diode Sample Language",
     "description": "Sample registry entry: a synthetic Diode extension contributing the .diodesample language and its grammar",
     "kind": "native",
+    "categories": [],
+    "tags": [],
     "repository": "https://github.com/diode-editor/diode",
     "readme": "# Diode Sample Language\n\nA synthetic entry that exists to prove the second shape of a `native` extension: a purely **declarative** one — it contributes a language and a TextMate grammar and ships no extension code at all, so it never reaches the extension host.\n\nOpening a `.diodesample` file gives it the `Diode Sample` language, which the status bar shows. Nothing else happens, and nothing else is meant to.\n\nSource and the deterministic packer live in the Diode repository (`e2e/marketplace/sample-extension`).\n",
     "versions": [

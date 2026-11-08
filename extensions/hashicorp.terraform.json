@@ -6,6 +6,8 @@
     "displayName": "HashiCorp Terraform",
     "description": "Syntax highlighting and autocompletion for Terraform",
     "kind": "proxy-openvsx",
+    "categories": ["Programming Languages", "Other", "Formatters", "Linters"],
+    "tags": ["devops", "terraform", "hcl"],
     "repository": "https://github.com/hashicorp/vscode-terraform",
     "license": "MPL-2.0",
     "homepage": "https://github.com/hashicorp/vscode-terraform#readme",

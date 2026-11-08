@@ -6,6 +6,8 @@
     "displayName": "clangd",
     "description": "C/C++ completion, navigation, and insights",
     "kind": "proxy-openvsx",
+    "categories": ["Programming Languages", "Linters", "Formatters"],
+    "tags": ["C", "C++", "clang", "clangd", "LLVM"],
     "repository": "https://github.com/clangd/vscode-clangd.git",
     "license": "MIT",
     "homepage": "https://clangd.llvm.org/",
