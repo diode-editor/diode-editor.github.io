@@ -26,18 +26,19 @@
             "Hover with doc comments from other packages, go to definition (F12) and completion, including auto-import of the package you complete from",
             "Format on save and organize imports on save, as the extension configures them for Go files",
             "gopls is installed by the extension itself (go install) when it is not found; the Go version shows in the status bar",
-            "Go commands from the command palette, such as Go: Toggle Test File and Go: Locate Configured Go Tools; logs in Output → Go"
+            "Go commands from the command palette, such as Go: Toggle Test File and Go: Locate Configured Go Tools; logs in Output → Go",
+            "Tests in the Testing view (Diode 0.16+): run a package, a file or one test from the view, the gutter or the run test code lens; failures show after the failing line and in the Test Results panel with the go test output"
         ],
         "limits": [
-            "No debugging: Diode has no debugger",
-            "Tests are not shown in a Testing view: run go test in the terminal",
+            "No debugging, including debug test: Diode has no debugger",
+            "No test coverage yet",
             "The Go welcome page and the pprof profile viewer do not open: Diode has no webviews"
         ]
     },
     "repository": "https://github.com/golang/vscode-go",
     "license": "MIT",
     "homepage": "https://github.com/golang/vscode-go",
-    "readme": "# Go\n\nGo language support from the Go team, powered by the gopls language server: diagnostics, hover with doc comments, go to definition, completion with auto-import, and format and organize imports on save.\n\nThe extension needs the Go toolchain: the `go` binary on your `PATH` (or set `go.goroot`). Get it from https://go.dev/dl/. The gopls language server is not bundled — when it is missing, the extension installs it with `go install golang.org/x/tools/gopls@latest`, which takes a minute or two and needs network access the first time.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n\n## What works in Diode\n\nEverything gopls drives: problems in the editor and the Problems panel, hover with the doc comment of a declaration in another package, F12 to it, completion that adds the missing import, and Ctrl+S formatting the file with gofmt and dropping unused imports (the extension's own defaults for Go files). The status bar shows the Go version, `Go: Toggle Test File` switches between a file and its test, and `Go: Locate Configured Go Tools` shows what the extension found.\n\n## What does not\n\nDebugging is not available: Diode has no debugger. Tests do not appear in a Testing view; run `go test` in the terminal. The welcome page and the pprof viewer are webviews, which Diode does not have.\n",
+    "readme": "# Go\n\nGo language support from the Go team, powered by the gopls language server: diagnostics, hover with doc comments, go to definition, completion with auto-import, and format and organize imports on save.\n\nThe extension needs the Go toolchain: the `go` binary on your `PATH` (or set `go.goroot`). Get it from https://go.dev/dl/. The gopls language server is not bundled — when it is missing, the extension installs it with `go install golang.org/x/tools/gopls@latest`, which takes a minute or two and needs network access the first time.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n\n## What works in Diode\n\nEverything gopls drives: problems in the editor and the Problems panel, hover with the doc comment of a declaration in another package, F12 to it, completion that adds the missing import, and Ctrl+S formatting the file with gofmt and dropping unused imports (the extension's own defaults for Go files). The status bar shows the Go version, `Go: Toggle Test File` switches between a file and its test, and `Go: Locate Configured Go Tools` shows what the extension found.\n\nTests show up in the Testing view (Diode 0.16 or later): packages, files and test functions, with Run on a package, a file or a single test, from the view, from the glyph next to the `func Test…` line, or from the `run test` code lens. Results are icons in the tree and in the gutter, a failed test's message appears after the line that failed, and the Test Results panel has the `go test` output of each run.\n\n## What does not\n\nDebugging is not available, `debug test` included: Diode has no debugger. Test coverage is not shown yet. The welcome page and the pprof viewer are webviews, which Diode does not have.\n",
     "versions": [
         {
             "version": "0.56.1",

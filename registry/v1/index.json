@@ -654,11 +654,12 @@
                     "Hover with doc comments from other packages, go to definition (F12) and completion, including auto-import of the package you complete from",
                     "Format on save and organize imports on save, as the extension configures them for Go files",
                     "gopls is installed by the extension itself (go install) when it is not found; the Go version shows in the status bar",
-                    "Go commands from the command palette, such as Go: Toggle Test File and Go: Locate Configured Go Tools; logs in Output → Go"
+                    "Go commands from the command palette, such as Go: Toggle Test File and Go: Locate Configured Go Tools; logs in Output → Go",
+                    "Tests in the Testing view (Diode 0.16+): run a package, a file or one test from the view, the gutter or the run test code lens; failures show after the failing line and in the Test Results panel with the go test output"
                 ],
                 "limits": [
-                    "No debugging: Diode has no debugger",
-                    "Tests are not shown in a Testing view: run go test in the terminal",
+                    "No debugging, including debug test: Diode has no debugger",
+                    "No test coverage yet",
                     "The Go welcome page and the pprof profile viewer do not open: Diode has no webviews"
                 ]
             },
