@@ -2,6 +2,42 @@
     "schemaVersion": 1,
     "extensions": [
         {
+            "id": "Angular.ng-template",
+            "publisher": "Angular",
+            "name": "ng-template",
+            "displayName": "Angular Language Service",
+            "description": "Editor services for Angular templates",
+            "kind": "proxy-openvsx",
+            "categories": [
+                "Programming Languages"
+            ],
+            "tags": [
+                "Angular",
+                "multi-root ready"
+            ],
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Diagnostics of the Angular compiler in .html templates and inline templates",
+                    "Completion of the component's members, of other components and of event and property bindings",
+                    "Hover and Go to Definition from a template into the component, references from a .ts file into templates",
+                    "The Go to component lens, Go to Template, Go to Component and View Template Typecheck Block"
+                ],
+                "limits": [
+                    "Completion has no plain HTML tags: Diode has no built-in HTML language features yet",
+                    "Find All References from a .ts file lists the places in .ts files twice",
+                    "A rename started in a .ts file does not reach templates, as in VS Code"
+                ]
+            },
+            "latest": {
+                "version": "22.2.0",
+                "engines": {
+                    "diode": ">=0.18.0",
+                    "vscode": "^1.74.3"
+                }
+            }
+        },
+        {
             "id": "Anthropic.claude-code",
             "publisher": "Anthropic",
             "name": "claude-code",

@@ -1,0 +1,51 @@
+{
+    "schemaVersion": 1,
+    "id": "Angular.ng-template",
+    "publisher": "Angular",
+    "name": "ng-template",
+    "displayName": "Angular Language Service",
+    "description": "Editor services for Angular templates",
+    "kind": "proxy-openvsx",
+    "categories": [
+        "Programming Languages"
+    ],
+    "tags": [
+        "Angular",
+        "multi-root ready"
+    ],
+    "support": {
+        "level": "partial",
+        "works": [
+            "Diagnostics of the Angular compiler in .html templates and inline templates",
+            "Completion of the component's members, of other components and of event and property bindings",
+            "Hover and Go to Definition from a template into the component, references from a .ts file into templates",
+            "The Go to component lens, Go to Template, Go to Component and View Template Typecheck Block"
+        ],
+        "limits": [
+            "Completion has no plain HTML tags: Diode has no built-in HTML language features yet",
+            "Find All References from a .ts file lists the places in .ts files twice",
+            "A rename started in a .ts file does not reach templates, as in VS Code"
+        ]
+    },
+    "repository": "https://github.com/angular/angular.git",
+    "license": "MIT",
+    "homepage": "https://github.com/angular/angular#readme",
+    "readme": "# Angular Language Service\n\nThe Angular team's language service for templates, both in `.html` files and inline in the `template:` of a component: diagnostics of the Angular compiler, completion, hover and navigation between a template and its component. The language server and TypeScript are bundled; the project needs its own `@angular/core` in `node_modules`, as in VS Code.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n\nSet `strictTemplates` in `angularCompilerOptions` of `tsconfig.json` for the most complete diagnostics.\n\n## What works in Diode\n\nDiagnostics of the Angular compiler in templates (`ngtsc`), completion of the component's members, of other components and of event and property bindings, hover and Go to Definition from a template into the component, references from a `.ts` file into templates, the Go to component lens in an `.html` template, and the commands Go to Template, Go to Component and View Template Typecheck Block. Highlighting of templates comes from the grammars of the extension.\n\n## What does not\n\nCompletion has no plain HTML tags (`div`, `span`): in VS Code they come from the built-in HTML language features, which Diode does not have yet. Find All References from a `.ts` file lists the places in `.ts` files twice: both the built-in TypeScript and Angular answer. A rename started in a `.ts` file does not reach templates; this is the same in VS Code.\n",
+    "versions": [
+        {
+            "version": "22.2.0",
+            "engines": {
+                "diode": ">=0.18.0",
+                "vscode": "^1.74.3"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/Angular/ng-template/22.2.0/file/Angular.ng-template-22.2.0.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "13f97986133a7f5e0aec7ffc83ed3b8ff642f6cf09611324343b7172ed9eca36",
+            "size": 11623236,
+            "publishedAt": "2026-09-28T03:35:35.990395Z"
+        }
+    ]
+}
