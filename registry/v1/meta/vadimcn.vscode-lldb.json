@@ -1,0 +1,57 @@
+{
+    "schemaVersion": 1,
+    "id": "vadimcn.vscode-lldb",
+    "publisher": "vadimcn",
+    "name": "vscode-lldb",
+    "displayName": "CodeLLDB",
+    "description": "Debugger for native code, powered by LLDB. Debug C++, Rust, and other compiled languages.",
+    "kind": "proxy-openvsx",
+    "categories": [
+        "Debuggers"
+    ],
+    "tags": [
+        "C++",
+        "Rust",
+        "Reverse",
+        "Embedded",
+        "Debugger"
+    ],
+    "support": {
+        "level": "partial",
+        "works": [
+            "Launch and attach (${command:pickProcess}) configurations of type lldb, with preLaunchTask",
+            "Breakpoints in the gutter, stepping, Continue, Restart and Stop",
+            "VARIABLES, WATCH, CALL STACK, BREAKPOINTS and the current line in the editor",
+            "Debug Console with LLDB commands and ?expressions",
+            "The program in the integrated terminal (\"terminal\": \"integrated\") reads input",
+            "The Modules and Excluded Callers views in Run and Debug"
+        ],
+        "limits": [
+            "Webview output (debugger.display_html) is not shown",
+            "No disassembly view",
+            "Language model tools are ignored: Diode has no language models",
+            "The first start downloads the platform package from GitHub: it needs network access"
+        ]
+    },
+    "repository": "https://github.com/vadimcn/codelldb.git",
+    "license": "MIT",
+    "homepage": "https://github.com/vadimcn/codelldb#readme",
+    "readme": "# CodeLLDB\n\nA native debugger powered by LLDB: debug C, C++, Rust and other compiled languages from Run and Debug. The debug adapter and LLDB come with the extension — nothing to install on the machine.\n\nOn first activation the extension downloads its platform package (about 30 MB) from the CodeLLDB releases on GitHub and installs it; the progress shows as \"Acquiring CodeLLDB platform package\". Without network access the debugger can't start.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n\n## What works in Diode\n\n`launch.json` configurations of type `lldb` with `preLaunchTask` (build with `gcc -g`), F5, breakpoints in the gutter (F9, click), stepping (F10, F11, Shift+F11), Continue, Restart and Stop. VARIABLES, WATCH, CALL STACK and BREAKPOINTS fill from the session, the current line is highlighted, and the Debug Console evaluates LLDB commands and `?expression`. `\"terminal\": \"integrated\"` runs the program in the integrated terminal, so it reads your input. `\"request\": \"attach\"` with `${command:pickProcess}` offers the running processes. CodeLLDB's own Modules and Excluded Callers views sit in Run and Debug.\n\n## What does not\n\nWebview output (`debugger.display_html`) is not shown — a terminal can't draw HTML. There is no disassembly view. The extension's language model tools are ignored — Diode has no language models.\n",
+    "versions": [
+        {
+            "version": "1.12.3",
+            "engines": {
+                "diode": ">=0.17.0",
+                "vscode": "^1.61.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/vadimcn/vscode-lldb/1.12.3/file/vadimcn.vscode-lldb-1.12.3.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "460ac959094344ebb29b3d01bad94f6093b374d6fff44896ca456ac5b2047cd1",
+            "size": 93774,
+            "publishedAt": "2026-08-23T23:44:40.142241Z"
+        }
+    ]
+}

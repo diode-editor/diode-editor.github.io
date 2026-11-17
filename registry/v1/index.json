@@ -1148,6 +1148,48 @@
             }
         },
         {
+            "id": "vadimcn.vscode-lldb",
+            "publisher": "vadimcn",
+            "name": "vscode-lldb",
+            "displayName": "CodeLLDB",
+            "description": "Debugger for native code, powered by LLDB. Debug C++, Rust, and other compiled languages.",
+            "kind": "proxy-openvsx",
+            "categories": [
+                "Debuggers"
+            ],
+            "tags": [
+                "C++",
+                "Rust",
+                "Reverse",
+                "Embedded",
+                "Debugger"
+            ],
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Launch and attach (${command:pickProcess}) configurations of type lldb, with preLaunchTask",
+                    "Breakpoints in the gutter, stepping, Continue, Restart and Stop",
+                    "VARIABLES, WATCH, CALL STACK, BREAKPOINTS and the current line in the editor",
+                    "Debug Console with LLDB commands and ?expressions",
+                    "The program in the integrated terminal (\"terminal\": \"integrated\") reads input",
+                    "The Modules and Excluded Callers views in Run and Debug"
+                ],
+                "limits": [
+                    "Webview output (debugger.display_html) is not shown",
+                    "No disassembly view",
+                    "Language model tools are ignored: Diode has no language models",
+                    "The first start downloads the platform package from GitHub: it needs network access"
+                ]
+            },
+            "latest": {
+                "version": "1.12.3",
+                "engines": {
+                    "diode": ">=0.17.0",
+                    "vscode": "^1.61.0"
+                }
+            }
+        },
+        {
             "id": "vitest.explorer",
             "publisher": "vitest",
             "name": "explorer",
