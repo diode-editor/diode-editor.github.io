@@ -708,6 +708,43 @@
             }
         },
         {
+            "id": "jbangdev.jbang-vscode",
+            "publisher": "jbangdev",
+            "name": "jbang-vscode",
+            "displayName": "JBang",
+            "description": "JBang support for VS Code Java",
+            "kind": "proxy-openvsx",
+            "categories": [
+                "Other"
+            ],
+            "tags": [
+                "JBang",
+                "Java"
+            ],
+            "support": {
+                "level": "partial",
+                "works": [
+                    "//DEPS and //JAVA in a script are synchronized into the Java language server: imports from the declared dependencies resolve, diagnostics are real",
+                    "Code lenses on a script: Synchronize JBang, Run JBang",
+                    "Run JBang runs the script in a terminal",
+                    "Completion of //DEPS coordinates from Maven Central"
+                ],
+                "limits": [
+                    "Debug JBang does nothing: Diode has no Java debugger",
+                    "Pasting a Maven <dependency> block does not turn it into a //DEPS line",
+                    "jbang-catalog.json gets no schema validation",
+                    "Needs jbang and a JDK on your PATH (or jbang.home), and Language Support for Java by Red Hat, which is installed with it"
+                ]
+            },
+            "latest": {
+                "version": "0.12.0",
+                "engines": {
+                    "diode": ">=0.17.0",
+                    "vscode": "^1.97.0"
+                }
+            }
+        },
+        {
             "id": "jdinhlife.gruvbox",
             "publisher": "jdinhlife",
             "name": "gruvbox",
