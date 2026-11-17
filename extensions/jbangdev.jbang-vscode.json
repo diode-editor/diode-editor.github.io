@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "jbangdev.jbang-vscode",
+  "publisher": "jbangdev",
+  "name": "jbang-vscode",
+  "displayName": "JBang",
+  "description": "JBang support for VS Code Java",
+  "kind": "proxy-openvsx",
+  "categories": ["Other"],
+  "tags": ["JBang", "Java"],
+  "support": {
+    "level": "partial",
+    "works": [
+      "//DEPS and //JAVA in a script are synchronized into the Java language server: imports from the declared dependencies resolve, diagnostics are real",
+      "Code lenses on a script: Synchronize JBang, Run JBang",
+      "Run JBang runs the script in a terminal",
+      "Completion of //DEPS coordinates from Maven Central"
+    ],
+    "limits": [
+      "Debug JBang does nothing: Diode has no Java debugger",
+      "Pasting a Maven <dependency> block does not turn it into a //DEPS line",
+      "jbang-catalog.json gets no schema validation",
+      "Needs jbang and a JDK on your PATH (or jbang.home), and Language Support for Java by Red Hat, which is installed with it"
+    ]
+  },
+  "repository": "https://github.com/jbangdev/jbang-vscode",
+  "license": "MIT",
+  "homepage": "https://github.com/jbangdev/jbang-vscode#readme",
+  "readme": "# JBang\n\nSupport for [JBang](https://www.jbang.dev) scripts: single-file Java programs that declare their own dependencies with `//DEPS` comments and run without a build file. The extension feeds those dependencies to the Java language server, so a script gets the same completion, hover and diagnostics as a Maven or Gradle project, and adds code lenses to run it.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode. It depends on Language Support for Java by Red Hat, which is installed together with it.\n\n## What works in Diode\n\nOpen a `.java` file with a `//DEPS` line: the extension synchronizes the script with the language server, and imports from the declared artifacts resolve. The `Synchronize JBang` and `Run JBang` code lenses appear above the script; `Run JBang`, also on the Run button in the editor title bar, runs it in a terminal. Typing a `//DEPS` coordinate completes group and artifact ids from Maven Central.\n\n## What does not\n\n`Debug JBang` needs a Java debugger, and Diode has none. Pasting a Maven `<dependency>` block does not convert it into a `//DEPS` line, and `jbang-catalog.json` is not validated against its schema.\n\n## Requirements\n\n`jbang` on your PATH (or its location in the `jbang.home` setting), and a JDK for the language server — see Language Support for Java.\n",
+  "versions": [
+    {
+      "version": "0.12.0",
+      "engines": {
+        "diode": ">=0.17.0",
+        "vscode": "^1.97.0"
+      },
+      "artifact": {
+        "type": "url",
+        "url": "https://open-vsx.org/api/jbangdev/jbang-vscode/0.12.0/file/jbangdev.jbang-vscode-0.12.0.vsix",
+        "origin": "openvsx"
+      },
+      "sha256": "72b598a71850ab2826419cd8cf97bc764d38a3b3339aaa6f82b66cca82a07982",
+      "size": 341256,
+      "publishedAt": "2025-03-17T09:45:50.686Z"
+    }
+  ]
+}
