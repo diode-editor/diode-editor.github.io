@@ -1261,6 +1261,43 @@
             }
         },
         {
+            "id": "usernamehw.errorlens",
+            "publisher": "usernamehw",
+            "name": "errorlens",
+            "displayName": "Error Lens",
+            "description": "Improve highlighting of errors, warnings and other language diagnostics.",
+            "kind": "proxy-openvsx",
+            "categories": [
+                "Other"
+            ],
+            "tags": [
+                "highlight",
+                "problem",
+                "problems",
+                "error",
+                "warning",
+                "inline",
+                "message",
+                "diagnostic",
+                "status bar",
+                "gutter"
+            ],
+            "support": {
+                "level": "full",
+                "works": [
+                    "Diagnostic messages at the end of their lines, from any language server or linter",
+                    "Only the lines near the screen are decorated, and the messages follow a scroll (Diode 0.19.1 or newer)"
+                ]
+            },
+            "latest": {
+                "version": "3.30.0",
+                "engines": {
+                    "diode": ">=0.19.1",
+                    "vscode": "^1.107.0"
+                }
+            }
+        },
+        {
             "id": "vadimcn.vscode-lldb",
             "publisher": "vadimcn",
             "name": "vscode-lldb",

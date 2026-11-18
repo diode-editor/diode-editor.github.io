@@ -1,0 +1,51 @@
+{
+    "schemaVersion": 1,
+    "id": "usernamehw.errorlens",
+    "publisher": "usernamehw",
+    "name": "errorlens",
+    "displayName": "Error Lens",
+    "description": "Improve highlighting of errors, warnings and other language diagnostics.",
+    "kind": "proxy-openvsx",
+    "categories": [
+        "Other"
+    ],
+    "tags": [
+        "highlight",
+        "problem",
+        "problems",
+        "error",
+        "warning",
+        "inline",
+        "message",
+        "diagnostic",
+        "status bar",
+        "gutter"
+    ],
+    "support": {
+        "level": "full",
+        "works": [
+            "Diagnostic messages at the end of their lines, from any language server or linter",
+            "Only the lines near the screen are decorated, and the messages follow a scroll (Diode 0.19.1 or newer)"
+        ]
+    },
+    "repository": "https://github.com/usernamehw/vscode-error-lens",
+    "license": "MIT",
+    "readme": "# Error Lens\n\nShows diagnostics (errors, warnings, infos) inline, at the end of the line they belong to, instead of only as squiggles and in the Problems panel.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "3.30.0",
+            "engines": {
+                "diode": ">=0.19.1",
+                "vscode": "^1.107.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/usernamehw/errorlens/3.30.0/file/usernamehw.errorlens-3.30.0.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "b236000f50998b992289b2d354dcbd4fc99b64c75850eebcbb986f7a210c34f4",
+            "size": 63266,
+            "publishedAt": "2026-10-22T07:13:31.294Z"
+        }
+    ]
+}
