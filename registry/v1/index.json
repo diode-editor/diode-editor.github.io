@@ -883,6 +883,46 @@
             }
         },
         {
+            "id": "ms-vscode.js-debug",
+            "publisher": "ms-vscode",
+            "name": "js-debug",
+            "displayName": "JavaScript Debugger",
+            "description": "An extension for debugging Node.js programs and Chrome.",
+            "kind": "proxy-openvsx",
+            "categories": [
+                "Debuggers"
+            ],
+            "tags": [
+                "pwa",
+                "javascript",
+                "node",
+                "chrome",
+                "debugger"
+            ],
+            "support": {
+                "level": "partial",
+                "works": [
+                    "F5 on a JavaScript file: launch a Node.js program with breakpoints, no launch.json needed",
+                    "launch.json configurations of type node: launch, and attach to node --inspect",
+                    "Child processes (child_process.fork) as sessions under the parent in CALL STACK",
+                    "The JavaScript Debug Terminal: node run in it stops at breakpoints",
+                    "npm scripts of package.json in Select and Start Debugging (Node.js...)",
+                    "Auto attach (debug.javascript.autoAttachFilter, Debug: Toggle Auto Attach) with its status bar item"
+                ],
+                "limits": [
+                    "Debug: Diagnose Breakpoint Problems is a webview: it does not open",
+                    "Browser debugging (Chrome, Edge, the integrated browser) is not verified in Diode"
+                ]
+            },
+            "latest": {
+                "version": "1.140.1",
+                "engines": {
+                    "diode": ">=0.18.2",
+                    "vscode": "^1.80.0"
+                }
+            }
+        },
+        {
             "id": "mvllow.rose-pine",
             "publisher": "mvllow",
             "name": "rose-pine",
