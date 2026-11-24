@@ -1458,6 +1458,40 @@
             }
         },
         {
+            "id": "waderyan.gitblame",
+            "publisher": "waderyan",
+            "name": "gitblame",
+            "displayName": "Git Blame",
+            "description": "See git blame information in the status bar or in-line.",
+            "kind": "proxy-openvsx",
+            "categories": [
+                "Other"
+            ],
+            "tags": [
+                "git",
+                "gitblame",
+                "blame",
+                "codeberg",
+                "github",
+                "gitlab",
+                "bitbucket"
+            ],
+            "support": {
+                "level": "full",
+                "works": [
+                    "Blame of the current line in the status bar",
+                    "With gitblame.inlineMessageEnabled, the blame after the current line; Show Hover (Ctrl+K Ctrl+U) at the line end shows the commit (Diode 0.19.1 or newer)"
+                ]
+            },
+            "latest": {
+                "version": "13.1.0",
+                "engines": {
+                    "diode": ">=0.19.1",
+                    "vscode": ">=1.100.0"
+                }
+            }
+        },
+        {
             "id": "yzhang.markdown-all-in-one",
             "publisher": "yzhang",
             "name": "markdown-all-in-one",

@@ -1,0 +1,48 @@
+{
+    "schemaVersion": 1,
+    "id": "waderyan.gitblame",
+    "publisher": "waderyan",
+    "name": "gitblame",
+    "displayName": "Git Blame",
+    "description": "See git blame information in the status bar or in-line.",
+    "kind": "proxy-openvsx",
+    "categories": [
+        "Other"
+    ],
+    "tags": [
+        "git",
+        "gitblame",
+        "blame",
+        "codeberg",
+        "github",
+        "gitlab",
+        "bitbucket"
+    ],
+    "support": {
+        "level": "full",
+        "works": [
+            "Blame of the current line in the status bar",
+            "With gitblame.inlineMessageEnabled, the blame after the current line; Show Hover (Ctrl+K Ctrl+U) at the line end shows the commit (Diode 0.19.1 or newer)"
+        ]
+    },
+    "repository": "https://github.com/Sertion/vscode-gitblame",
+    "license": "MIT",
+    "readme": "# Git Blame\n\nShows who last changed the current line and when: in the status bar, and optionally right after the line.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode.\n",
+    "versions": [
+        {
+            "version": "13.1.0",
+            "engines": {
+                "diode": ">=0.19.1",
+                "vscode": ">=1.100.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/waderyan/gitblame/13.1.0/file/waderyan.gitblame-13.1.0.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "c2d63af3b4f13af54a130b03b18d443f4d2553a709be8905d60866493eac54e8",
+            "size": 35723,
+            "publishedAt": "2026-06-26T06:57:52.245Z"
+        }
+    ]
+}
