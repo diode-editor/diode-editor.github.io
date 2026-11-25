@@ -883,6 +883,76 @@
             }
         },
         {
+            "id": "ms-python.python",
+            "publisher": "ms-python",
+            "name": "python",
+            "displayName": "Python",
+            "description": "Python language support with extension access points for IntelliSense (Pylance), Debugging (Python Debugger), linting, formatting, refactoring, unit tests, and more.",
+            "kind": "proxy-openvsx",
+            "categories": [
+                "Programming Languages",
+                "Debuggers",
+                "Other",
+                "Data Science",
+                "Machine Learning"
+            ],
+            "tags": [
+                "python",
+                "django",
+                "unittest",
+                "multi-root ready"
+            ],
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Python: Run Python File in Terminal runs the file in the selected environment through shell integration",
+                    "Testing: pytest discovery and runs from the Testing view; a failed test shows its message after the line"
+                ],
+                "limits": [
+                    "No IntelliSense: completions, hover and go to definition come from Pylance, which is not on Open VSX. Install a language server from the marketplace instead (basedpyright, ruff)",
+                    "Debugging needs ms-python.debugpy, which is not in the Diode marketplace yet",
+                    "The extension pack is not installed with it: install Python Environments (ms-python.vscode-python-envs) separately"
+                ]
+            },
+            "latest": {
+                "version": "2026.10.0",
+                "engines": {
+                    "diode": ">=0.20.0",
+                    "vscode": "^1.95.0"
+                }
+            }
+        },
+        {
+            "id": "ms-python.vscode-python-envs",
+            "publisher": "ms-python",
+            "name": "vscode-python-envs",
+            "displayName": "Python Environments",
+            "description": "Provides a unified python environment experience",
+            "kind": "proxy-openvsx",
+            "categories": [
+                "Other"
+            ],
+            "support": {
+                "level": "partial",
+                "works": [
+                    "Finds the environments of your workspace (venv, uv) and the system interpreter, picks one per project; the status bar shows the selected one",
+                    "Terminal activation with \"python-envs.terminal.autoActivationType\": \"shellStartup\": a new terminal opens with the environment active, no command typed, your ~/.bashrc untouched",
+                    "The Python sidebar (Python Projects, Environment Managers) once \"python.useEnvironmentsExtension\": true is set"
+                ],
+                "limits": [
+                    "The default terminal activation (\"command\") does not happen: new terminals open without the environment. Set \"python-envs.terminal.autoActivationType\": \"shellStartup\". The command mode waits on window.onDidWriteTerminalData, which Diode does not have yet",
+                    "The Python sidebar is hidden until you set \"python.useEnvironmentsExtension\": true in settings.json: VS Code turns it on through an experiment, Diode has no experiments"
+                ]
+            },
+            "latest": {
+                "version": "1.44.0",
+                "engines": {
+                    "diode": ">=0.20.0",
+                    "vscode": "^1.110.0-20260204"
+                }
+            }
+        },
+        {
             "id": "ms-vscode.js-debug",
             "publisher": "ms-vscode",
             "name": "js-debug",

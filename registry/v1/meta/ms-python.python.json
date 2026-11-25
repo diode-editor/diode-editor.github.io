@@ -1,0 +1,136 @@
+{
+    "schemaVersion": 1,
+    "id": "ms-python.python",
+    "publisher": "ms-python",
+    "name": "python",
+    "displayName": "Python",
+    "description": "Python language support with extension access points for IntelliSense (Pylance), Debugging (Python Debugger), linting, formatting, refactoring, unit tests, and more.",
+    "kind": "proxy-openvsx",
+    "categories": [
+        "Programming Languages",
+        "Debuggers",
+        "Other",
+        "Data Science",
+        "Machine Learning"
+    ],
+    "tags": [
+        "python",
+        "django",
+        "unittest",
+        "multi-root ready"
+    ],
+    "support": {
+        "level": "partial",
+        "works": [
+            "Python: Run Python File in Terminal runs the file in the selected environment through shell integration",
+            "Testing: pytest discovery and runs from the Testing view; a failed test shows its message after the line"
+        ],
+        "limits": [
+            "No IntelliSense: completions, hover and go to definition come from Pylance, which is not on Open VSX. Install a language server from the marketplace instead (basedpyright, ruff)",
+            "Debugging needs ms-python.debugpy, which is not in the Diode marketplace yet",
+            "The extension pack is not installed with it: install Python Environments (ms-python.vscode-python-envs) separately"
+        ]
+    },
+    "repository": "https://github.com/microsoft/vscode-python",
+    "license": "MIT",
+    "homepage": "https://github.com/microsoft/vscode-python",
+    "readme": "# Python\n\nMicrosoft's Python extension: running Python files, testing with pytest and unittest, environments and the glue for the Python tooling extensions.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode. It ships platform-specific builds; the registry entry carries one artifact per platform.\n\n## What works in Diode\n\n**Python: Run Python File in Terminal** runs the current file in the selected environment through terminal shell integration. The **Testing** view discovers and runs pytest tests; a failed test shows its message after the line.\n\n## What does not\n\nLanguage features — completions, hover, go to definition — come from Pylance in VS Code, and Pylance is not published on Open VSX. Pair this extension with a language server from the marketplace, such as basedpyright or ruff. Debugging needs `ms-python.debugpy`, which is not in the Diode marketplace yet. Diode does not install extension packs, so install **Python Environments** (`ms-python.vscode-python-envs`) separately.\n",
+    "versions": [
+        {
+            "version": "2026.10.0",
+            "engines": {
+                "diode": ">=0.20.0",
+                "vscode": "^1.95.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/ms-python/python/linux-x64/2026.10.0/file/ms-python.python-2026.10.0@linux-x64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "4a05e50fee8d6c613a4a17f3ee1c9c0e318f0d9bcfa636dbe079d9c8e1506e05",
+            "targetPlatform": "linux-x64",
+            "size": 11326875,
+            "publishedAt": "2026-11-20T18:43:33.204Z"
+        },
+        {
+            "version": "2026.10.0",
+            "engines": {
+                "diode": ">=0.20.0",
+                "vscode": "^1.95.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/ms-python/python/linux-arm64/2026.10.0/file/ms-python.python-2026.10.0@linux-arm64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "f16870f6eb1b4303d04189029cf402c81ea5a5595323127eb4e69fa4141e9a95",
+            "targetPlatform": "linux-arm64",
+            "size": 11233240,
+            "publishedAt": "2026-11-20T18:43:30.322Z"
+        },
+        {
+            "version": "2026.10.0",
+            "engines": {
+                "diode": ">=0.20.0",
+                "vscode": "^1.95.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/ms-python/python/darwin-x64/2026.10.0/file/ms-python.python-2026.10.0@darwin-x64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "9f6e0221f372c32b61e33678040b00a468c3bcfc514dc96f220ec09103897cba",
+            "targetPlatform": "darwin-x64",
+            "size": 9139550,
+            "publishedAt": "2026-11-20T18:43:27.406Z"
+        },
+        {
+            "version": "2026.10.0",
+            "engines": {
+                "diode": ">=0.20.0",
+                "vscode": "^1.95.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/ms-python/python/darwin-arm64/2026.10.0/file/ms-python.python-2026.10.0@darwin-arm64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "2aa8344d612942e90ba61d3f6f27836e0dc3446572170a61571137f2e6eb36e4",
+            "targetPlatform": "darwin-arm64",
+            "size": 9014451,
+            "publishedAt": "2026-11-20T18:43:23.912Z"
+        },
+        {
+            "version": "2026.10.0",
+            "engines": {
+                "diode": ">=0.20.0",
+                "vscode": "^1.95.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/ms-python/python/win32-x64/2026.10.0/file/ms-python.python-2026.10.0@win32-x64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "d09641352173dcc0b2cea8dfa6f3cc07232b9f46a5f9006aff79dc1df7a79168",
+            "targetPlatform": "win32-x64",
+            "size": 9178730,
+            "publishedAt": "2026-11-20T18:43:39.535Z"
+        },
+        {
+            "version": "2026.10.0",
+            "engines": {
+                "diode": ">=0.20.0",
+                "vscode": "^1.95.0"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/ms-python/python/win32-arm64/2026.10.0/file/ms-python.python-2026.10.0@win32-arm64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "db0185d981f9122e1d1ae1455263ce4d8eab249165345b86f574096779475c02",
+            "targetPlatform": "win32-arm64",
+            "size": 8958390,
+            "publishedAt": "2026-11-20T18:43:36.484Z"
+        }
+    ]
+}
