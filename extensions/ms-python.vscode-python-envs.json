@@ -1,0 +1,125 @@
+{
+    "schemaVersion": 1,
+    "id": "ms-python.vscode-python-envs",
+    "publisher": "ms-python",
+    "name": "vscode-python-envs",
+    "displayName": "Python Environments",
+    "description": "Provides a unified python environment experience",
+    "kind": "proxy-openvsx",
+    "categories": ["Other"],
+    "tags": [],
+    "support": {
+        "level": "partial",
+        "works": [
+            "Finds the environments of your workspace (venv, uv) and the system interpreter, picks one per project; the status bar shows the selected one",
+            "Terminal activation with \"python-envs.terminal.autoActivationType\": \"shellStartup\": a new terminal opens with the environment active, no command typed, your ~/.bashrc untouched",
+            "The Python sidebar (Python Projects, Environment Managers) once \"python.useEnvironmentsExtension\": true is set"
+        ],
+        "limits": [
+            "The default terminal activation (\"command\") does not happen: new terminals open without the environment. Set \"python-envs.terminal.autoActivationType\": \"shellStartup\". The command mode waits on window.onDidWriteTerminalData, which Diode does not have yet",
+            "The Python sidebar is hidden until you set \"python.useEnvironmentsExtension\": true in settings.json: VS Code turns it on through an experiment, Diode has no experiments"
+        ]
+    },
+    "repository": "https://github.com/microsoft/vscode-python-environments",
+    "license": "MIT",
+    "homepage": "https://github.com/microsoft/vscode-python-environments",
+    "readme": "# Python Environments\n\nFinds, creates and switches Python environments — venv, uv, conda, pyenv, poetry, pipenv and the system interpreter — and activates the selected one in your terminals.\n\nThis is the unmodified extension published on Open VSX, pinned to a specific version and verified to work in Diode. It ships platform-specific builds with the native environment locator inside; the registry entry carries one artifact per platform.\n\n## What works in Diode\n\nThe extension finds the environments of your workspace and picks one per project; the status bar shows it. With `\"python-envs.terminal.autoActivationType\": \"shellStartup\"` in settings.json, every new terminal opens with that environment already active, without a visible `source …/activate` and without edits to your shell profile.\n\nSet `\"python.useEnvironmentsExtension\": true` to get the **Python** sidebar (View: Show Python) with the Python Projects and Environment Managers views.\n\n## What does not\n\nThe default activation mode, `\"command\"`, types `source …/activate` into a new terminal once shell integration is up. In Diode that step never runs yet, so terminals open without the environment: switch to `\"shellStartup\"`. Without `\"python.useEnvironmentsExtension\": true` the Python sidebar stays hidden: VS Code enables it through an experiment, and Diode has none.\n",
+    "versions": [
+        {
+            "version": "1.44.0",
+            "engines": {
+                "diode": ">=0.20.0",
+                "vscode": "^1.110.0-20260204"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/ms-python/vscode-python-envs/linux-x64/1.44.0/file/ms-python.vscode-python-envs-1.44.0@linux-x64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "7fc3a4963a44a2d25144cf1c12cd43c6fa71a6f64152315e873a26304cfc0001",
+            "targetPlatform": "linux-x64",
+            "size": 6190751,
+            "publishedAt": "2026-11-20T19:04:21.629Z"
+        },
+        {
+            "version": "1.44.0",
+            "engines": {
+                "diode": ">=0.20.0",
+                "vscode": "^1.110.0-20260204"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/ms-python/vscode-python-envs/linux-arm64/1.44.0/file/ms-python.vscode-python-envs-1.44.0@linux-arm64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "8d1c05f15c508b5f918b83ea02b79ad587fae10e45b3cc43013c648ae3021d6f",
+            "targetPlatform": "linux-arm64",
+            "size": 6092530,
+            "publishedAt": "2026-11-20T19:04:18.924Z"
+        },
+        {
+            "version": "1.44.0",
+            "engines": {
+                "diode": ">=0.20.0",
+                "vscode": "^1.110.0-20260204"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/ms-python/vscode-python-envs/darwin-x64/1.44.0/file/ms-python.vscode-python-envs-1.44.0@darwin-x64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "47bad66f336f50aa7173ae0c65468fa2fc86fda102c1407abc6e5cdb628a1ff9",
+            "targetPlatform": "darwin-x64",
+            "size": 3998857,
+            "publishedAt": "2026-11-20T19:04:15.509Z"
+        },
+        {
+            "version": "1.44.0",
+            "engines": {
+                "diode": ">=0.20.0",
+                "vscode": "^1.110.0-20260204"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/ms-python/vscode-python-envs/darwin-arm64/1.44.0/file/ms-python.vscode-python-envs-1.44.0@darwin-arm64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "f726b451763dbc45a984cfb7d802fac3b2dbc5aaa3454194c98d1b4850fccc59",
+            "targetPlatform": "darwin-arm64",
+            "size": 3873758,
+            "publishedAt": "2026-11-20T19:04:13.021Z"
+        },
+        {
+            "version": "1.44.0",
+            "engines": {
+                "diode": ">=0.20.0",
+                "vscode": "^1.110.0-20260204"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/ms-python/vscode-python-envs/win32-x64/1.44.0/file/ms-python.vscode-python-envs-1.44.0@win32-x64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "339c9579c4aee9bfaffdf2bb81706071f54729359bcccbc2f2d7244358a390a1",
+            "targetPlatform": "win32-x64",
+            "size": 4038030,
+            "publishedAt": "2026-11-20T19:04:27.390Z"
+        },
+        {
+            "version": "1.44.0",
+            "engines": {
+                "diode": ">=0.20.0",
+                "vscode": "^1.110.0-20260204"
+            },
+            "artifact": {
+                "type": "url",
+                "url": "https://open-vsx.org/api/ms-python/vscode-python-envs/win32-arm64/1.44.0/file/ms-python.vscode-python-envs-1.44.0@win32-arm64.vsix",
+                "origin": "openvsx"
+            },
+            "sha256": "c232acdc5b9f6bd47f46f5fb0b1830df8207fcc9067668a2d3287a10604d0609",
+            "targetPlatform": "win32-arm64",
+            "size": 3817688,
+            "publishedAt": "2026-11-20T19:04:24.313Z"
+        }
+    ]
+}
